@@ -1,0 +1,21 @@
+Manifest-Version: 1.0
+Automatic-Module-Name: pnpl_variability.editor.ui
+Bundle-SymbolicName: pnpl_variability.editor.ui; singleton:=true
+Require-Bundle: pnpl_variability.editor,pnpl_variability.editor.ide,pn
+ pl_variability,org.eclipse.xtext.ui,org.eclipse.xtext.ui.shared,org.e
+ clipse.xtext.ui.codetemplates.ui,org.eclipse.ui.editors;bundle-versio
+ n="3.5.0",org.eclipse.ui.ide;bundle-version="3.5.0",org.eclipse.ui,or
+ g.eclipse.compare,org.eclipse.xtext.builder,org.eclipse.xtext.xbase.l
+ ib;bundle-version="2.14.0",org.eclipse.xtend.lib;resolution:=optional
+Bundle-ManifestVersion: 2
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-Vendor: My Company
+Import-Package: org.apache.log4j
+Export-Package: pnpl_variability.editor.ui.internal,pnpl_variability.u
+ i,pnpl_variability.ui.contentassist,pnpl_variability.ui.labeling,pnpl
+ _variability.ui.outline,pnpl_variability.ui.quickfix
+Bundle-Name: pnpl_variability.editor.ui
+Bundle-Version: 1.0.0.202004131824
+Bundle-Activator: pnpl_variability.editor.ui.internal.EditorActivator
+

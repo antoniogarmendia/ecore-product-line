@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:mtl="http://www.eclipse.org/acceleo/mtl/3.0" xmlns:ocl.ecore="http://www.eclipse.org/ocl/1.1.0/Ecore">
+  <mtl:Module name="PresenceConditionServicesFile" nsURI="org::variability::definition::diagram::design::generate::template::PresenceConditionServicesFile" startHeaderPosition="29" endHeaderPosition="218">
+    <input>
+      <takesTypesFrom href="http://www.eclipse.org/emf/2002/Ecore#/"/>
+    </input>
+    <imports href="request/queriesPresenceCondUtils.emtl#/0"/>
+    <ownedModuleElement xsi:type="mtl:Template" name="presenceConditionServices" visibility="Public">
+      <body xsi:type="mtl:FileBlock" openMode="OverWrite">
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="package "/>
+        <body xsi:type="ocl.ecore:VariableExp" name="projectName" referredVariable="/0/presenceConditionServices/projectName">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=";&#xA;&#xA;import java.util.Collection;&#xA;import java.util.HashMap;&#xA;import java.util.Iterator;&#xA;&#xA;import org.eclipse.emf.ecore.EObject;&#xA;import org.eclipse.sirius.diagram.DNodeList;&#xA;import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;&#xA;import org.eclipse.sirius.viewpoint.ViewpointPackage;&#xA;import org.variability.definition.diagram.design.condition.FeatureValidation;&#xA;&#xA;import variability.BinaryExpression;&#xA;import variability.Expression;&#xA;import variability.Feature;&#xA;import variability.PresenceCondition;&#xA;import variability.UnaryExpression;&#xA;&#xA;public class PresenceConditionServices {&#xA;&#x9;&#xA;&#x9;public String getLabelParentExpression(Expression expression) {&#xA;&#x9;&#x9;return getLabelExpression(expression) + &quot;;&quot;;&#xA;&#x9;}&#xA;&#x9;&#xA;&#x9;public boolean validateExpression(PresenceCondition presenceCondition) {&#xA;&#x9;&#x9;Collection&lt;EObject> presenceCondInverse = new EObjectQuery(presenceCondition).&#xA;&#x9;&#x9;&#x9;&#x9;getInverseReferences(ViewpointPackage.Literals.DSEMANTIC_DECORATOR__TARGET);&#xA;&#x9;&#x9;DNodeList dNodeList = null;&#xA;&#x9;&#x9;Iterator&lt;EObject> itInverseObject = presenceCondInverse.iterator();&#xA;&#x9;&#x9;while (itInverseObject.hasNext()) {&#xA;&#x9;&#x9;&#x9;EObject eObject = (EObject) itInverseObject.next();&#xA;&#x9;&#x9;&#x9;if (eObject instanceof DNodeList) {&#xA;&#x9;&#x9;&#x9;&#x9;dNodeList = (DNodeList) eObject;&#xA;&#x9;&#x9;&#x9;&#x9;break;&#xA;&#x9;&#x9;&#x9;}&#x9;&#x9;&#x9;&#xA;&#x9;&#x9;&#x9;if (itInverseObject.hasNext() == false)&#xA;&#x9;&#x9;&#x9;&#x9;return true;&#xA;&#x9;&#x9;}&#xA;&#x9;&#x9;&#x9;&#x9;&#xA;&#x9;&#x9;HashMap&lt;String, Object> parameters = new HashMap&lt;String,Object>();&#xA;&#x9;&#x9;parameters.put(&quot;presenceCondition&quot;, presenceCondition);&#xA;&#x9;&#x9;parameters.put(&quot;containerView&quot;, dNodeList);&#xA;&#x9;&#x9;parameters.put(&quot;removeMarkers&quot;, &quot;false&quot;);&#xA;&#x9;&#x9;FeatureValidation featureValidation = new FeatureValidation();&#xA;&#x9;&#x9;featureValidation.execute(null, parameters);&#x9;&#x9;&#xA;&#x9;&#x9;return true;&#x9;&#xA;&#x9;}&#x9;&#xA;&#x9;&#xA;&#x9;private String getLabelExpression(Expression expression) {&#x9;&#x9;&#xA;&#x9;&#x9;if (expression instanceof Feature)&#xA;&#x9;&#x9;&#x9;return ((Feature) expression).getFeature();&#xA;&#x9;&#x9;else if (expression instanceof UnaryExpression) {&#xA;&#x9;&#x9;&#x9;UnaryExpression unaryExpression = (UnaryExpression) expression;&#xA;&#x9;&#x9;&#x9;return unaryExpression.getOperator().getLiteral().toLowerCase() + &quot; &quot; + getLabelExpression(unaryExpression.getRight());&#xA;&#x9;&#x9;}&#xA;&#x9;&#x9;else if (expression instanceof BinaryExpression) {&#xA;&#x9;&#x9;&#x9;BinaryExpression binaryExpression = (BinaryExpression) expression;&#xA;&#x9;&#x9;&#x9;return &quot;(&quot; + getLabelExpression(binaryExpression.getLeft()) + &quot; &quot; + binaryExpression.getOperator().getLiteral().toLowerCase() + &quot; &quot;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;+ getLabelExpression(binaryExpression.getRight()) + &quot;)&quot;;&#xA;&#x9;&#x9;}&#xA;&#x9;&#x9;return &quot;Undefined&quot;;&#xA;&#x9;}&#x9;&#xA;}&#xA;"/>
+        <fileUrl xsi:type="ocl.ecore:OperationCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="mtl:QueryInvocation">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <definition href="request/queriesPresenceCondUtils.emtl#/0/getPackagePathbyProjectName"/>
+            <argument xsi:type="ocl.ecore:VariableExp" name="projectName" referredVariable="/0/presenceConditionServices/projectName">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            </argument>
+          </source>
+          <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="PresenceConditionServices.java">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          </argument>
+          <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/concat"/>
+        </fileUrl>
+        <charset xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="UTF-8">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </charset>
+      </body>
+      <parameter name="projectName">
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+      </parameter>
+    </ownedModuleElement>
+  </mtl:Module>
+  <ecore:EPackage name="additions">
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_String_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Integer_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Real_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Real"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ecore_EObject_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+      </eAnnotations>
+      <eOperations name="presenceConditionServices">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL" references="/0/presenceConditionServices"/>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="projectName">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="getPackagePathbyProjectName">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="request/queriesPresenceCondUtils.emtl#/0/getPackagePathbyProjectName"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="projectName">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+      </eOperations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_OclAny_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Collection(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Collection(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Sequence(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Sequence(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_OrderedSet(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OrderedSet(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+  </ecore:EPackage>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ecore:EAnnotation source="positions">
+    <eAnnotations source="positions.0" references="/0/presenceConditionServices">
+      <details key="start" value="222"/>
+      <details key="end" value="2827"/>
+      <details key="line" value="5"/>
+    </eAnnotations>
+    <eAnnotations source="positions.1" references="/0/presenceConditionServices/%">
+      <details key="start" value="289"/>
+      <details key="end" value="2815"/>
+      <details key="line" value="6"/>
+    </eAnnotations>
+    <eAnnotations source="positions.2" references="/0/presenceConditionServices/%/%">
+      <details key="start" value="396"/>
+      <details key="end" value="404"/>
+      <details key="line" value="7"/>
+    </eAnnotations>
+    <eAnnotations source="positions.3" references="/0/presenceConditionServices/%/projectName">
+      <details key="start" value="405"/>
+      <details key="end" value="416"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.4" references="/0/presenceConditionServices/%/%.1">
+      <details key="start" value="418"/>
+      <details key="end" value="2808"/>
+      <details key="line" value="7"/>
+    </eAnnotations>
+    <eAnnotations source="positions.5" references="/0/presenceConditionServices/%/%.2">
+      <details key="start" value="296"/>
+      <details key="end" value="377"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.6" references="/0/presenceConditionServices/%/%.2/%">
+      <details key="start" value="296"/>
+      <details key="end" value="336"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.7" references="/0/presenceConditionServices/%/%.2/%/projectName">
+      <details key="start" value="324"/>
+      <details key="end" value="335"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.8" references="/0/presenceConditionServices/%/%.2/%.1">
+      <details key="start" value="344"/>
+      <details key="end" value="376"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.9" references="/0/presenceConditionServices/%/%.3">
+      <details key="start" value="386"/>
+      <details key="end" value="393"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.10" references="/0/presenceConditionServices/projectName">
+      <details key="start" value="265"/>
+      <details key="end" value="286"/>
+      <details key="line" value="5"/>
+    </eAnnotations>
+  </ecore:EAnnotation>
+</xmi:XMI>

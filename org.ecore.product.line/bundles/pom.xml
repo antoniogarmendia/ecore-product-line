@@ -1,0 +1,25 @@
+<project>
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.ecore.product.line</groupId>
+    <artifactId>org.ecore.product.line.bundles</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <parent>
+        <groupId>org.ecore.product.line</groupId>
+        <artifactId>org.ecore.product.line.root</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <modules>
+        <module>pnpl_variability</module>
+        <module>pnpl_variability.editor</module>  
+        <module>pnpl_variability.editor.ide</module>       
+        <module>pnpl_variability.editor.ui</module>
+        <module>org.variability.definition.diagram</module>
+        <module>org.variability.definition.diagram.design</module>
+        <module>org.variability.definition.diagram.edit</module>
+        <module>org.variability.definition.diagram.editor</module>
+    </modules>
+    
+</project>

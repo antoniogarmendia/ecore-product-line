@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature url="features/org.ecore.product.line.feature_1.0.0.qualifier.jar" id="org.ecore.product.line.feature" version="1.0.0.qualifier">
+      <category name="ecoreproductline"/>
+   </feature>
+   <category-def name="ecoreproductline" label="Ecore Product Line"/>
+</site>

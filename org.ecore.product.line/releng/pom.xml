@@ -1,0 +1,18 @@
+<project>
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.ecore.product.line</groupId>
+    <artifactId>org.ecore.product.line.releng</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <parent>
+        <groupId>org.ecore.product.line</groupId>
+        <artifactId>org.ecore.product.line.root</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <modules>
+       <module>org.ecore.product.line.target</module>
+       <module>org.ecore.product.line.update</module>
+    </modules>
+</project>

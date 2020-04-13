@@ -1,0 +1,22 @@
+Manifest-Version: 1.0
+Automatic-Module-Name: org.variability.definition.diagram.edit
+Bundle-SymbolicName: org.variability.definition.diagram.edit;singleton
+ :=true
+Require-Bundle: org.eclipse.core.runtime,org.variability.definition.di
+ agram;visibility:=reexport,org.eclipse.emf.edit;visibility:=reexport,
+ org.eclipse.sirius.diagram;visibility:=reexport,org.eclipse.sirius.di
+ agram.ui;visibility:=reexport,org.eclipse.emf.ecore;visibility:=reexp
+ ort,org.eclipse.emf.ecore.edit;visibility:=reexport,org.eclipse.siriu
+ s;visibility:=reexport,org.eclipse.sirius.ui;visibility:=reexport
+Bundle-ManifestVersion: 2
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ActivationPolicy: lazy
+Bundle-Vendor: %providerName
+Export-Package: pcdef.provider
+Bundle-Name: %pluginName
+Bundle-Version: 1.0.0.202004131824
+Bundle-ClassPath: .
+Bundle-Localization: plugin
+Bundle-Activator: pcdef.provider.PCDiagramDefinitionEditPlugin$Impleme
+ ntation
+

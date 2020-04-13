@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<units size='1'>
+  <unit id='pnpl_variability.editor' version='1.0.0.202004131824' generation='2'>
+    <update id='pnpl_variability.editor' range='[0.0.0,1.0.0.202004131824)' severity='0'/>
+    <properties size='5'>
+      <property name='org.eclipse.equinox.p2.name' value='pnpl_variability.editor'/>
+      <property name='org.eclipse.equinox.p2.provider' value='My Company'/>
+      <property name='maven-groupId' value='org.ecore.product.line'/>
+      <property name='maven-artifactId' value='pnpl_variability.editor'/>
+      <property name='maven-version' value='1.0.0-SNAPSHOT'/>
+    </properties>
+    <provides size='15'>
+      <provided namespace='org.eclipse.equinox.p2.iu' name='pnpl_variability.editor' version='1.0.0.202004131824'/>
+      <provided namespace='osgi.bundle' name='pnpl_variability.editor' version='1.0.0.202004131824'/>
+      <provided namespace='java.package' name='pnpl_variability' version='0.0.0'/>
+      <provided namespace='java.package' name='pnpl_variability.formatting' version='0.0.0'/>
+      <provided namespace='java.package' name='pnpl_variability.formatting2' version='0.0.0'/>
+      <provided namespace='java.package' name='pnpl_variability.generator' version='0.0.0'/>
+      <provided namespace='java.package' name='pnpl_variability.parser.antlr' version='0.0.0'/>
+      <provided namespace='java.package' name='pnpl_variability.parser.antlr.internal' version='0.0.0'/>
+      <provided namespace='java.package' name='pnpl_variability.providers' version='0.0.0'/>
+      <provided namespace='java.package' name='pnpl_variability.scoping' version='0.0.0'/>
+      <provided namespace='java.package' name='pnpl_variability.serializer' version='0.0.0'/>
+      <provided namespace='java.package' name='pnpl_variability.services' version='0.0.0'/>
+      <provided namespace='java.package' name='pnpl_variability.validation' version='0.0.0'/>
+      <provided namespace='osgi.identity' name='pnpl_variability.editor' version='1.0.0.202004131824'>
+        <properties size='1'>
+          <property name='type' value='osgi.bundle'/>
+        </properties>
+      </provided>
+      <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
+    </provides>
+    <requires size='10'>
+      <required namespace='osgi.bundle' name='pnpl_variability' range='0.0.0'/>
+      <required namespace='osgi.bundle' name='org.eclipse.xtext' range='0.0.0'/>
+      <required namespace='osgi.bundle' name='org.eclipse.xtext.xbase' range='0.0.0'/>
+      <required namespace='osgi.bundle' name='org.eclipse.equinox.common' range='3.5.0'/>
+      <required namespace='osgi.bundle' name='org.eclipse.xtext.xbase.lib' range='2.14.0'/>
+      <required namespace='osgi.bundle' name='org.eclipse.xtext.util' range='0.0.0'/>
+      <required namespace='osgi.bundle' name='org.eclipse.xtend.lib' range='0.0.0'/>
+      <required namespace='osgi.bundle' name='org.antlr.runtime' range='[3.2.0,3.2.1)'/>
+      <required namespace='java.package' name='org.apache.log4j' range='0.0.0'/>
+      <requiredProperties namespace='osgi.ee' match='(&amp;(osgi.ee=JavaSE)(version=1.8))'/>
+    </requires>
+    <artifacts size='1'>
+      <artifact classifier='osgi.bundle' id='pnpl_variability.editor' version='1.0.0.202004131824'/>
+    </artifacts>
+    <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
+    <touchpointData size='1'>
+      <instructions size='1'>
+        <instruction key='manifest'>
+          Bundle-SymbolicName: pnpl_variability.editor;singleton:=true&#xA;Bundle-Version: 1.0.0.202004131824&#xA;
+        </instruction>
+      </instructions>
+    </touchpointData>
+  </unit>
+</units>

@@ -1,0 +1,23 @@
+Manifest-Version: 1.0
+Automatic-Module-Name: org.variability.definition.diagram.editor
+Bundle-SymbolicName: org.variability.definition.diagram.editor;singlet
+ on:=true
+Require-Bundle: org.eclipse.core.runtime,org.eclipse.core.resources;vi
+ sibility:=reexport,org.variability.definition.diagram.edit;visibility
+ :=reexport,org.eclipse.emf.ecore.xmi;visibility:=reexport,org.eclipse
+ .emf.edit.ui;visibility:=reexport,org.eclipse.ui.ide;visibility:=reex
+ port,org.eclipse.sirius.diagram.ui;visibility:=reexport,org.eclipse.e
+ mf.ecore.edit;visibility:=reexport,org.eclipse.sirius.ui;visibility:=
+ reexport
+Bundle-ManifestVersion: 2
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ActivationPolicy: lazy
+Bundle-Vendor: %providerName
+Export-Package: pcdef.presentation
+Bundle-Name: %pluginName
+Bundle-Version: 1.0.0.202004131824
+Bundle-ClassPath: .
+Bundle-Localization: plugin
+Bundle-Activator: pcdef.presentation.PCDiagramDefinitionEditorPlugin$I
+ mplementation
+
