@@ -16,6 +16,6 @@ Export-Package: pnpl_variability.editor.ui.internal,pnpl_variability.u
  i,pnpl_variability.ui.contentassist,pnpl_variability.ui.labeling,pnpl
  _variability.ui.outline,pnpl_variability.ui.quickfix
 Bundle-Name: pnpl_variability.editor.ui
-Bundle-Version: 1.0.0.202004131824
+Bundle-Version: 1.0.0.202004132014
 Bundle-Activator: pnpl_variability.editor.ui.internal.EditorActivator
 

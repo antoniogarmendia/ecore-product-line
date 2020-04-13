@@ -2,7 +2,7 @@
 <feature
       id="org.ecore.product.line.feature"
       label="Feature"
-      version="1.0.0.202004131824">
+      version="1.0.0.202004132014">
 
    <description url="http://www.example.com/description">
       [Enter Feature Description here.]
@@ -20,56 +20,56 @@
          id="pnpl_variability.editor.ide"
          download-size="36"
          install-size="98"
-         version="1.0.0.202004131824"
+         version="1.0.0.202004132014"
          unpack="false"/>
 
    <plugin
          id="pnpl_variability"
          download-size="34"
          install-size="73"
-         version="0.1.0.202004131824"
+         version="0.1.0.202004132014"
          unpack="false"/>
 
    <plugin
          id="org.variability.definition.diagram"
          download-size="19"
          install-size="47"
-         version="0.1.0.202004131824"
+         version="0.1.0.202004132014"
          unpack="false"/>
 
    <plugin
          id="org.variability.definition.diagram.edit"
          download-size="10"
          install-size="18"
-         version="1.0.0.202004131824"
+         version="1.0.0.202004132014"
          unpack="false"/>
 
    <plugin
          id="org.variability.definition.diagram.editor"
          download-size="62"
          install-size="119"
-         version="1.0.0.202004131824"
+         version="1.0.0.202004132014"
          unpack="false"/>
 
    <plugin
          id="org.variability.definition.diagram.design"
          download-size="50"
          install-size="102"
-         version="1.0.0.202004131824"
+         version="1.0.0.202004132014"
          unpack="false"/>
 
    <plugin
          id="pnpl_variability.editor"
          download-size="91"
          install-size="175"
-         version="1.0.0.202004131824"
+         version="1.0.0.202004132014"
          unpack="false"/>
 
    <plugin
          id="pnpl_variability.editor.ui"
          download-size="29"
          install-size="56"
-         version="1.0.0.202004131824"
+         version="1.0.0.202004132014"
          unpack="false"/>
 
 </feature>
