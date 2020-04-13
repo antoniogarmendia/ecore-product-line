@@ -12,7 +12,7 @@
     </parent>
 
     <modules>
-      
+        <module>pnpl_variability</module>
         <module>pnpl_variability.editor</module>  
         <module>pnpl_variability.editor.ide</module>       
         <module>pnpl_variability.editor.ui</module>
