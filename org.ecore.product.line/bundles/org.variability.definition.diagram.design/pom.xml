@@ -32,11 +32,6 @@
        <url>${eclipse-site}</url>
      </repository>
      <repository>
-       <id>uml-to-java</id>
-       <layout>p2</layout>
-       <url>${uml-to-java-site}</url>
-     </repository>
-     <repository>
        <id>Eclipse - Acceleo Snapshots</id>
        <url>https://repo.eclipse.org/content/repositories/acceleo-snapshots</url>
      </repository>
