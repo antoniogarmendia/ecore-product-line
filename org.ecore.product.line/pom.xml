@@ -15,6 +15,6 @@
  	<module>bundles</module>
  	<module>releng</module>
  	<module>features</module>
- </modules>
+ </modules> 
  
 </project>
