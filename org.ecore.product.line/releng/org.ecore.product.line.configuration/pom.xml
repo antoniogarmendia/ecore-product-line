@@ -22,6 +22,26 @@
  </repositories>
 -->
 
+<profiles> 
+	<profile>
+		<build>
+			<plugins>
+				<!-- Execute Xtend with Maven Tycho -->
+				<plugin>
+					<groupId>org.eclipse.xtend</groupId>
+					<artifactId>xtend-maven-plugin</artifactId>
+					<executions>
+						<execution>
+							<id>default</id>
+							<phase>none</phase>
+						</execution>
+					</executions>
+				</plugin>
+			</plugins>
+		</build>
+	</profile>
+</profiles>
+
  <build>
   <plugins>
    <plugin>

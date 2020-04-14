@@ -22,7 +22,7 @@ Bundle-Vendor: %providerName
 Export-Package: org.variability.definition.diagram.design.condition,or
  g.variability.definition.diagram.design.generate.template
 Bundle-Name: %pluginName
-Bundle-Version: 1.0.0.202004132050
+Bundle-Version: 1.0.0.202004140858
 Bundle-Localization: plugin
 Bundle-Activator: org.variability.definition.diagram.design.Activator
 
