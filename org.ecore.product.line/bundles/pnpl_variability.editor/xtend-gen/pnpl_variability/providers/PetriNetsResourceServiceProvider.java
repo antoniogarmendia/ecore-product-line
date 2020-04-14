@@ -76,11 +76,8 @@ public class PetriNetsResourceServiceProvider implements IResourceServiceProvide
         DefaultResourceDescriptionStrategy strat = new DefaultResourceDescriptionStrategy();
         ____PetriNetsResourceServiceProvider_1 _____PetriNetsResourceServiceProvider_1 = new ____PetriNetsResourceServiceProvider_1() {
           public QualifiedName name(final EObject obj) {
-            final Function1<EStructuralFeature, Boolean> _function = new Function1<EStructuralFeature, Boolean>() {
-              @Override
-              public Boolean apply(final EStructuralFeature it) {
-                return Boolean.valueOf(it.getName().equals("name"));
-              }
+            final Function1<EStructuralFeature, Boolean> _function = (EStructuralFeature it) -> {
+              return Boolean.valueOf(it.getName().equals("name"));
             };
             EStructuralFeature fname = IterableExtensions.<EStructuralFeature>findFirst(obj.eClass().getEAllStructuralFeatures(), _function);
             if ((fname != null)) {
