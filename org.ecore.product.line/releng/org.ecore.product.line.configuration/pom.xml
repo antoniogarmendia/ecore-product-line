@@ -26,16 +26,31 @@
 	<profile>
 		<build>
 			<plugins>
-				<!-- Execute Xtend with Maven Tycho -->
+				<!-- Execute Xtext with Maven Tycho -->
 				<plugin>
-					<groupId>org.eclipse.xtend</groupId>
-					<artifactId>xtend-maven-plugin</artifactId>
+					<groupId>org.eclipse.xtext</groupId>
+					<artifactId>xtext-maven-plugin</artifactId>
+					<version>${xtext.version}</version>
 					<executions>
 						<execution>
-							<id>default</id>
-							<phase>none</phase>
+							<phase>generate-sources</phase>
+							<goals>
+								<goal>generate</goal>
+							</goals>
 						</execution>
 					</executions>
+					<configuration>
+						<languages>
+							<language>
+								<setup>org.eclipse.xtend.core.XtendStandaloneSetup</setup>
+								<outputConfigurations>
+									<outputConfiguration>
+										<outputDirectory>${project.basedir}/xtend-gen</outputDirectory>
+									</outputConfiguration>
+								</outputConfigurations>
+							</language>
+						</languages>
+					</configuration>
 				</plugin>
 			</plugins>
 		</build>

@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <?artifactRepository version='1.1.0'?>
 <artifacts size='1'>
-  <artifact classifier='osgi.bundle' id='org.variability.definition.diagram.design' version='1.0.0.202004140858'>
+  <artifact classifier='osgi.bundle' id='org.variability.definition.diagram.design' version='1.0.0.202004140915'>
     <properties size='5'>
       <property name='artifact.size' value='51604'/>
       <property name='download.size' value='51604'/>
