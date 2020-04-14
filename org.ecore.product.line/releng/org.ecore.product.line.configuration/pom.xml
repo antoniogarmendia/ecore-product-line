@@ -10,8 +10,8 @@
   <xtext.version>2.14.0</xtext.version>
   <!-- Accelo Config -->
   <acceleo-version>3.3.0</acceleo-version>
-  <acceleo-site>https://hudson.eclipse.org/hudson/job/m2t-acceleo-master/lastSuccessfulBuild/artifact/Acceleo.p2.repository/</acceleo-site>
-  <orbit-site>http://download.eclipse.org/tools/orbit/downloads/drops/S20120308061416/repository/</orbit-site>
+  <acceleo.snapshots>https://repo.eclipse.org/content/repositories/acceleo-snapshots</acceleo.snapshots>
+  <acceleo.release>https://repo.eclipse.org/content/repositories/acceleo-releases</acceleo.release>
   <!-- End Accelo Config -->
   <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   <eclipse-repo.url>http://download.eclipse.org/eclipse/updates/4.9</eclipse-repo.url>  
@@ -57,16 +57,14 @@
       <layout>p2</layout>
       <url>${eclipse-site}</url>
     </repository>
-    <repository>
-      <id>acceleo</id>
-      <layout>p2</layout>
-      <url>${acceleo-site}</url>
-    </repository>
-    <repository>
-      <id>orbit</id>
-      <layout>p2</layout>
-      <url>${orbit-site}</url>
-    </repository>
+   <repository>
+       <id>Eclipse - Acceleo Snapshots</id>
+       <url>${acceleo.snapshots}</url>
+     </repository>
+     <repository>
+       <id>Eclipse - Acceleo Release</id>
+       <url>${acceleo.release}</url>
+     </repository>
   </repositories>
   <!-- End Repository Accelo -->
    
