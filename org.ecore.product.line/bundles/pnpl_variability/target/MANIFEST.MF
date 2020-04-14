@@ -9,7 +9,7 @@ Bundle-ActivationPolicy: lazy
 Bundle-Vendor: %providerName
 Export-Package: variability,variability.impl,variability.util
 Bundle-Name: %pluginName
-Bundle-Version: 0.1.0.202004140915
+Bundle-Version: 0.1.0.202004140923
 Bundle-ClassPath: .
 Bundle-Localization: plugin
 

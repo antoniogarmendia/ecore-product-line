@@ -11,7 +11,7 @@ Bundle-ActivationPolicy: lazy
 Bundle-Vendor: %providerName
 Export-Package: pcdef,pcdef.impl,pcdef.util
 Bundle-Name: %pluginName
-Bundle-Version: 0.1.0.202004140915
+Bundle-Version: 0.1.0.202004140923
 Bundle-ClassPath: .
 Bundle-Localization: plugin
 

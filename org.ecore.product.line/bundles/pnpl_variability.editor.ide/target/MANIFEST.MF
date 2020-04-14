@@ -4,7 +4,7 @@ Bundle-SymbolicName: pnpl_variability.editor.ide; singleton:=true
 Export-Package: pnpl_variability.ide,pnpl_variability.ide.contentassis
  t.antlr,pnpl_variability.ide.contentassist.antlr.internal
 Bundle-Name: pnpl_variability.editor.ide
-Bundle-Version: 1.0.0.202004140915
+Bundle-Version: 1.0.0.202004140923
 Require-Bundle: pnpl_variability.editor,pnpl_variability,org.eclipse.x
  text.ide,org.eclipse.xtext.xbase.ide,org.antlr.runtime;bundle-version
  ="[3.2.0,3.2.1)"

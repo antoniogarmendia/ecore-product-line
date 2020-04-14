@@ -14,7 +14,7 @@ Bundle-ActivationPolicy: lazy
 Bundle-Vendor: %providerName
 Export-Package: pcdef.provider
 Bundle-Name: %pluginName
-Bundle-Version: 1.0.0.202004140915
+Bundle-Version: 1.0.0.202004140923
 Bundle-ClassPath: .
 Bundle-Localization: plugin
 Bundle-Activator: pcdef.provider.PCDiagramDefinitionEditPlugin$Impleme

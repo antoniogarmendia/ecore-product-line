@@ -42,6 +42,14 @@
 					<configuration>
 						<languages>
 							<language>
+								<setup>pnpl_variability.editor.PNPL_variabilityStandaloneSetup</setup>
+									<outputConfigurations>
+										<outputConfiguration>
+										<outputDirectory>src-gen</outputDirectory>
+									</outputConfiguration>
+								</outputConfigurations>
+							</language>
+							<language>
 								<setup>org.eclipse.xtend.core.XtendStandaloneSetup</setup>
 								<outputConfigurations>
 									<outputConfiguration>
