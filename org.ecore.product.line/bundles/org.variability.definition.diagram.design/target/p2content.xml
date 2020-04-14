@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <units size='1'>
-  <unit id='org.variability.definition.diagram.design' version='1.0.0.202004141307' generation='2'>
-    <update id='org.variability.definition.diagram.design' range='[0.0.0,1.0.0.202004141307)' severity='0'/>
+  <unit id='org.variability.definition.diagram.design' version='1.0.0.202004141907' generation='2'>
+    <update id='org.variability.definition.diagram.design' range='[0.0.0,1.0.0.202004141907)' severity='0'/>
     <properties size='8'>
       <property name='df_LT.pluginName' value='org.pc.definition.diagram.design'/>
       <property name='df_LT.providerName' value='Eclipse Modeling Project'/>
@@ -13,11 +13,11 @@
       <property name='maven-version' value='1.0.0-SNAPSHOT'/>
     </properties>
     <provides size='7'>
-      <provided namespace='org.eclipse.equinox.p2.iu' name='org.variability.definition.diagram.design' version='1.0.0.202004141307'/>
-      <provided namespace='osgi.bundle' name='org.variability.definition.diagram.design' version='1.0.0.202004141307'/>
+      <provided namespace='org.eclipse.equinox.p2.iu' name='org.variability.definition.diagram.design' version='1.0.0.202004141907'/>
+      <provided namespace='osgi.bundle' name='org.variability.definition.diagram.design' version='1.0.0.202004141907'/>
       <provided namespace='java.package' name='org.variability.definition.diagram.design.condition' version='0.0.0'/>
       <provided namespace='java.package' name='org.variability.definition.diagram.design.generate.template' version='0.0.0'/>
-      <provided namespace='osgi.identity' name='org.variability.definition.diagram.design' version='1.0.0.202004141307'>
+      <provided namespace='osgi.identity' name='org.variability.definition.diagram.design' version='1.0.0.202004141907'>
         <properties size='1'>
           <property name='type' value='osgi.bundle'/>
         </properties>
@@ -25,7 +25,7 @@
       <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
       <provided namespace='org.eclipse.equinox.p2.localization' name='df_LT' version='1.0.0'/>
     </provides>
-    <requires size='26'>
+    <requires size='27'>
       <required namespace='osgi.bundle' name='org.eclipse.ui' range='0.0.0'/>
       <required namespace='osgi.bundle' name='org.eclipse.core.runtime' range='0.0.0'/>
       <required namespace='osgi.bundle' name='org.eclipse.core.resources' range='0.0.0'/>
@@ -51,16 +51,17 @@
       <required namespace='osgi.bundle' name='org.eclipse.acceleo.common' range='0.0.0'/>
       <required namespace='osgi.bundle' name='org.eclipse.gmf.runtime.diagram.ui' range='1.8.0'/>
       <required namespace='osgi.bundle' name='org.eclipse.emf.edit.ui' range='0.0.0'/>
+      <required namespace='osgi.bundle' name='org.eclipse.acceleo.parser' range='3.7.3'/>
       <requiredProperties namespace='osgi.ee' match='(&amp;(osgi.ee=JavaSE)(version=1.8))'/>
     </requires>
     <artifacts size='1'>
-      <artifact classifier='osgi.bundle' id='org.variability.definition.diagram.design' version='1.0.0.202004141307'/>
+      <artifact classifier='osgi.bundle' id='org.variability.definition.diagram.design' version='1.0.0.202004141907'/>
     </artifacts>
     <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
     <touchpointData size='1'>
       <instructions size='1'>
         <instruction key='manifest'>
-          Bundle-SymbolicName: org.variability.definition.diagram.design;singleton:=true&#xA;Bundle-Version: 1.0.0.202004141307&#xA;
+          Bundle-SymbolicName: org.variability.definition.diagram.design;singleton:=true&#xA;Bundle-Version: 1.0.0.202004141907&#xA;
         </instruction>
       </instructions>
     </touchpointData>

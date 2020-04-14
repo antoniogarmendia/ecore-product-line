@@ -20,6 +20,6 @@
         <module>org.variability.definition.diagram.design</module>
         <module>org.variability.definition.diagram.edit</module>
         <module>org.variability.definition.diagram.editor</module>
-    </modules>
+    </modules>  
     
 </project>

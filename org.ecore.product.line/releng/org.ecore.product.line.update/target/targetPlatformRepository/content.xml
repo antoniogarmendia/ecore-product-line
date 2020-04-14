@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <?metadataRepository version='1.2.0'?>
 <repository name='TychoTargetPlatform' type='org.eclipse.equinox.internal.p2.metadata.repository.LocalMetadataRepository' version='0.0.1'>
-  <units size='269'>
+  <units size='270'>
     <unit id='org.eclipse.gmf.runtime.emf.ui' version='1.7.0.201912020813' generation='2'>
       <update id='org.eclipse.gmf.runtime.emf.ui' range='[0.0.0,1.7.0.201912020813)' severity='0'/>
       <properties size='8'>
@@ -1073,6 +1073,54 @@
         <instructions size='1'>
           <instruction key='manifest'>
             Bundle-SymbolicName: org.eclipse.sirius.diagram.layoutdata;singleton:=true&#xA;Bundle-Version: 6.0.2.201809251458
+          </instruction>
+        </instructions>
+      </touchpointData>
+    </unit>
+    <unit id='org.variability.definition.diagram.edit' version='1.0.0.202004141907' generation='2'>
+      <update id='org.variability.definition.diagram.edit' range='[0.0.0,1.0.0.202004141907)' severity='0'/>
+      <properties size='8'>
+        <property name='df_LT.pluginName' value='org.pc.definition.diagram Edit Support'/>
+        <property name='df_LT.providerName' value='www.example.org'/>
+        <property name='org.eclipse.equinox.p2.name' value='%pluginName'/>
+        <property name='org.eclipse.equinox.p2.provider' value='%providerName'/>
+        <property name='org.eclipse.equinox.p2.bundle.localization' value='plugin'/>
+        <property name='maven-groupId' value='org.ecore.product.line'/>
+        <property name='maven-artifactId' value='org.variability.definition.diagram.edit'/>
+        <property name='maven-version' value='1.0.0-SNAPSHOT'/>
+      </properties>
+      <provides size='6'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='org.variability.definition.diagram.edit' version='1.0.0.202004141907'/>
+        <provided namespace='osgi.bundle' name='org.variability.definition.diagram.edit' version='1.0.0.202004141907'/>
+        <provided namespace='java.package' name='pcdef.provider' version='0.0.0'/>
+        <provided namespace='osgi.identity' name='org.variability.definition.diagram.edit' version='1.0.0.202004141907'>
+          <properties size='1'>
+            <property name='type' value='osgi.bundle'/>
+          </properties>
+        </provided>
+        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
+        <provided namespace='org.eclipse.equinox.p2.localization' name='df_LT' version='1.0.0'/>
+      </provides>
+      <requires size='10'>
+        <required namespace='osgi.bundle' name='org.eclipse.core.runtime' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.variability.definition.diagram' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.emf.edit' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.sirius.diagram' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.sirius.diagram.ui' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.emf.ecore' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.emf.ecore.edit' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.sirius' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.sirius.ui' range='0.0.0'/>
+        <requiredProperties namespace='osgi.ee' match='(&amp;(osgi.ee=JavaSE)(version=1.8))'/>
+      </requires>
+      <artifacts size='1'>
+        <artifact classifier='osgi.bundle' id='org.variability.definition.diagram.edit' version='1.0.0.202004141907'/>
+      </artifacts>
+      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
+      <touchpointData size='1'>
+        <instructions size='1'>
+          <instruction key='manifest'>
+            Bundle-SymbolicName: org.variability.definition.diagram.edit;singleton:=true&#xA;Bundle-Version: 1.0.0.202004141907
           </instruction>
         </instructions>
       </touchpointData>
@@ -3659,43 +3707,6 @@
         </instructions>
       </touchpointData>
     </unit>
-    <unit id='org.ecore.product.line.feature.feature.jar' version='1.0.0.202004141307'>
-      <properties size='6'>
-        <property name='org.eclipse.equinox.p2.name' value='Feature'/>
-        <property name='org.eclipse.equinox.p2.description' value='[Enter Feature Description here.]'/>
-        <property name='org.eclipse.equinox.p2.description.url' value='http://www.example.com/description'/>
-        <property name='maven-groupId' value='org.ecore.product.line'/>
-        <property name='maven-artifactId' value='org.ecore.product.line.feature'/>
-        <property name='maven-version' value='1.0.0-SNAPSHOT'/>
-      </properties>
-      <provides size='3'>
-        <provided namespace='org.eclipse.equinox.p2.iu' name='org.ecore.product.line.feature.feature.jar' version='1.0.0.202004141307'/>
-        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='feature' version='1.0.0'/>
-        <provided namespace='org.eclipse.update.feature' name='org.ecore.product.line.feature' version='1.0.0.202004141307'/>
-      </provides>
-      <filter>
-        (org.eclipse.update.install.features=true)
-      </filter>
-      <artifacts size='1'>
-        <artifact classifier='org.eclipse.update.feature' id='org.ecore.product.line.feature' version='1.0.0.202004141307'/>
-      </artifacts>
-      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
-      <touchpointData size='1'>
-        <instructions size='1'>
-          <instruction key='zipped'>
-            true
-          </instruction>
-        </instructions>
-      </touchpointData>
-      <licenses size='1'>
-        <license uri='http://www.example.com/license' url='http://www.example.com/license'>
-          [Enter License Description here.]
-        </license>
-      </licenses>
-      <copyright uri='http://www.example.com/copyright' url='http://www.example.com/copyright'>
-        [Enter Copyright Description here.]
-      </copyright>
-    </unit>
     <unit id='org.eclipse.equinox.p2.touchpoint.eclipse' version='2.2.100.v20180822-1354' generation='2'>
       <update id='org.eclipse.equinox.p2.touchpoint.eclipse' range='[0.0.0,2.2.100.v20180822-1354)' severity='0'/>
       <properties size='8'>
@@ -3821,54 +3832,6 @@
         <instructions size='1'>
           <instruction key='manifest'>
             Bundle-SymbolicName: org.eclipse.equinox.preferences; singleton:=true&#xA;Bundle-Version: 3.7.200.v20180827-1235
-          </instruction>
-        </instructions>
-      </touchpointData>
-    </unit>
-    <unit id='org.variability.definition.diagram.editor' version='1.0.0.202004141307' generation='2'>
-      <update id='org.variability.definition.diagram.editor' range='[0.0.0,1.0.0.202004141307)' severity='0'/>
-      <properties size='8'>
-        <property name='df_LT.pluginName' value='org.pc.definition.diagram Editor'/>
-        <property name='df_LT.providerName' value='www.example.org'/>
-        <property name='org.eclipse.equinox.p2.name' value='%pluginName'/>
-        <property name='org.eclipse.equinox.p2.provider' value='%providerName'/>
-        <property name='org.eclipse.equinox.p2.bundle.localization' value='plugin'/>
-        <property name='maven-groupId' value='org.ecore.product.line'/>
-        <property name='maven-artifactId' value='org.variability.definition.diagram.editor'/>
-        <property name='maven-version' value='1.0.0-SNAPSHOT'/>
-      </properties>
-      <provides size='6'>
-        <provided namespace='org.eclipse.equinox.p2.iu' name='org.variability.definition.diagram.editor' version='1.0.0.202004141307'/>
-        <provided namespace='osgi.bundle' name='org.variability.definition.diagram.editor' version='1.0.0.202004141307'/>
-        <provided namespace='java.package' name='pcdef.presentation' version='0.0.0'/>
-        <provided namespace='osgi.identity' name='org.variability.definition.diagram.editor' version='1.0.0.202004141307'>
-          <properties size='1'>
-            <property name='type' value='osgi.bundle'/>
-          </properties>
-        </provided>
-        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
-        <provided namespace='org.eclipse.equinox.p2.localization' name='df_LT' version='1.0.0'/>
-      </provides>
-      <requires size='10'>
-        <required namespace='osgi.bundle' name='org.eclipse.core.runtime' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.core.resources' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='org.variability.definition.diagram.edit' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.emf.ecore.xmi' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.emf.edit.ui' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.ui.ide' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.sirius.diagram.ui' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.emf.ecore.edit' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.sirius.ui' range='0.0.0'/>
-        <requiredProperties namespace='osgi.ee' match='(&amp;(osgi.ee=JavaSE)(version=1.8))'/>
-      </requires>
-      <artifacts size='1'>
-        <artifact classifier='osgi.bundle' id='org.variability.definition.diagram.editor' version='1.0.0.202004141307'/>
-      </artifacts>
-      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
-      <touchpointData size='1'>
-        <instructions size='1'>
-          <instruction key='manifest'>
-            Bundle-SymbolicName: org.variability.definition.diagram.editor;singleton:=true&#xA;Bundle-Version: 1.0.0.202004141307
           </instruction>
         </instructions>
       </touchpointData>
@@ -4555,71 +4518,6 @@
         </instructions>
       </touchpointData>
     </unit>
-    <unit id='org.variability.definition.diagram.design' version='1.0.0.202004141307' generation='2'>
-      <update id='org.variability.definition.diagram.design' range='[0.0.0,1.0.0.202004141307)' severity='0'/>
-      <properties size='8'>
-        <property name='df_LT.pluginName' value='org.pc.definition.diagram.design'/>
-        <property name='df_LT.providerName' value='Eclipse Modeling Project'/>
-        <property name='org.eclipse.equinox.p2.name' value='%pluginName'/>
-        <property name='org.eclipse.equinox.p2.provider' value='%providerName'/>
-        <property name='org.eclipse.equinox.p2.bundle.localization' value='plugin'/>
-        <property name='maven-groupId' value='org.ecore.product.line'/>
-        <property name='maven-artifactId' value='org.variability.definition.diagram.design'/>
-        <property name='maven-version' value='1.0.0-SNAPSHOT'/>
-      </properties>
-      <provides size='7'>
-        <provided namespace='org.eclipse.equinox.p2.iu' name='org.variability.definition.diagram.design' version='1.0.0.202004141307'/>
-        <provided namespace='osgi.bundle' name='org.variability.definition.diagram.design' version='1.0.0.202004141307'/>
-        <provided namespace='java.package' name='org.variability.definition.diagram.design.condition' version='0.0.0'/>
-        <provided namespace='java.package' name='org.variability.definition.diagram.design.generate.template' version='0.0.0'/>
-        <provided namespace='osgi.identity' name='org.variability.definition.diagram.design' version='1.0.0.202004141307'>
-          <properties size='1'>
-            <property name='type' value='osgi.bundle'/>
-          </properties>
-        </provided>
-        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
-        <provided namespace='org.eclipse.equinox.p2.localization' name='df_LT' version='1.0.0'/>
-      </provides>
-      <requires size='26'>
-        <required namespace='osgi.bundle' name='org.eclipse.ui' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.core.runtime' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.core.resources' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.sirius' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.sirius.common.acceleo.aql' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='org.variability.definition.diagram' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.sirius.ui' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.emf.ecore' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.sirius.diagram.ui' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.core.expressions' range='3.6.100'/>
-        <required namespace='osgi.bundle' name='org.eclipse.sirius.editor' range='6.0.2'/>
-        <required namespace='osgi.bundle' name='org.eclipse.ui.ide' range='3.14.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.emf.common.ui' range='2.18.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.emf.transaction' range='1.9.1'/>
-        <required namespace='osgi.bundle' name='org.eclipse.osgi' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.jface' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='pnpl_variability' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='com.altran.general.integration.xtextsirius.runtime' range='0.18.0'/>
-        <required namespace='osgi.bundle' name='com.google.inject' range='3.0.0'/>
-        <required namespace='osgi.bundle' name='pnpl_variability.editor.ui' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.acceleo.engine' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.emf.common' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.acceleo.common' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.gmf.runtime.diagram.ui' range='1.8.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.emf.edit.ui' range='0.0.0'/>
-        <requiredProperties namespace='osgi.ee' match='(&amp;(osgi.ee=JavaSE)(version=1.8))'/>
-      </requires>
-      <artifacts size='1'>
-        <artifact classifier='osgi.bundle' id='org.variability.definition.diagram.design' version='1.0.0.202004141307'/>
-      </artifacts>
-      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
-      <touchpointData size='1'>
-        <instructions size='1'>
-          <instruction key='manifest'>
-            Bundle-SymbolicName: org.variability.definition.diagram.design;singleton:=true&#xA;Bundle-Version: 1.0.0.202004141307
-          </instruction>
-        </instructions>
-      </touchpointData>
-    </unit>
     <unit id='org.eclipse.ant.core' version='3.5.600.v20191122-2102' generation='2'>
       <update id='org.eclipse.ant.core' range='[0.0.0,3.5.600.v20191122-2102)' severity='0'/>
       <properties size='8'>
@@ -4660,6 +4558,60 @@
         <instructions size='1'>
           <instruction key='manifest'>
             Bundle-SymbolicName: org.eclipse.ant.core; singleton:=true&#xA;Bundle-Version: 3.5.600.v20191122-2102
+          </instruction>
+        </instructions>
+      </touchpointData>
+    </unit>
+    <unit id='pnpl_variability.editor' version='1.0.0.202004141907' generation='2'>
+      <update id='pnpl_variability.editor' range='[0.0.0,1.0.0.202004141907)' severity='0'/>
+      <properties size='5'>
+        <property name='org.eclipse.equinox.p2.name' value='pnpl_variability.editor'/>
+        <property name='org.eclipse.equinox.p2.provider' value='My Company'/>
+        <property name='maven-groupId' value='org.ecore.product.line'/>
+        <property name='maven-artifactId' value='pnpl_variability.editor'/>
+        <property name='maven-version' value='1.0.0-SNAPSHOT'/>
+      </properties>
+      <provides size='15'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='pnpl_variability.editor' version='1.0.0.202004141907'/>
+        <provided namespace='osgi.bundle' name='pnpl_variability.editor' version='1.0.0.202004141907'/>
+        <provided namespace='java.package' name='pnpl_variability' version='0.0.0'/>
+        <provided namespace='java.package' name='pnpl_variability.formatting' version='0.0.0'/>
+        <provided namespace='java.package' name='pnpl_variability.formatting2' version='0.0.0'/>
+        <provided namespace='java.package' name='pnpl_variability.generator' version='0.0.0'/>
+        <provided namespace='java.package' name='pnpl_variability.parser.antlr' version='0.0.0'/>
+        <provided namespace='java.package' name='pnpl_variability.parser.antlr.internal' version='0.0.0'/>
+        <provided namespace='java.package' name='pnpl_variability.providers' version='0.0.0'/>
+        <provided namespace='java.package' name='pnpl_variability.scoping' version='0.0.0'/>
+        <provided namespace='java.package' name='pnpl_variability.serializer' version='0.0.0'/>
+        <provided namespace='java.package' name='pnpl_variability.services' version='0.0.0'/>
+        <provided namespace='java.package' name='pnpl_variability.validation' version='0.0.0'/>
+        <provided namespace='osgi.identity' name='pnpl_variability.editor' version='1.0.0.202004141907'>
+          <properties size='1'>
+            <property name='type' value='osgi.bundle'/>
+          </properties>
+        </provided>
+        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
+      </provides>
+      <requires size='10'>
+        <required namespace='osgi.bundle' name='pnpl_variability' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.xtext' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.xtext.xbase' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.equinox.common' range='3.5.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.xtext.xbase.lib' range='2.14.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.xtext.util' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.xtend.lib' range='2.14.0'/>
+        <required namespace='osgi.bundle' name='org.antlr.runtime' range='[3.2.0,3.2.1)'/>
+        <required namespace='java.package' name='org.apache.log4j' range='0.0.0'/>
+        <requiredProperties namespace='osgi.ee' match='(&amp;(osgi.ee=JavaSE)(version=1.8))'/>
+      </requires>
+      <artifacts size='1'>
+        <artifact classifier='osgi.bundle' id='pnpl_variability.editor' version='1.0.0.202004141907'/>
+      </artifacts>
+      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
+      <touchpointData size='1'>
+        <instructions size='1'>
+          <instruction key='manifest'>
+            Bundle-SymbolicName: pnpl_variability.editor;singleton:=true&#xA;Bundle-Version: 1.0.0.202004141907
           </instruction>
         </instructions>
       </touchpointData>
@@ -4939,6 +4891,51 @@
         <instructions size='1'>
           <instruction key='manifest'>
             Bundle-SymbolicName: org.eclipse.equinox.frameworkadmin.equinox;singleton:=true&#xA;Bundle-Version: 1.1.100.v20180822-1258
+          </instruction>
+        </instructions>
+      </touchpointData>
+    </unit>
+    <unit id='org.variability.definition.diagram' version='0.1.0.202004141907' generation='2'>
+      <update id='org.variability.definition.diagram' range='[0.0.0,0.1.0.202004141907)' severity='0'/>
+      <properties size='8'>
+        <property name='df_LT.pluginName' value='org.pc.definition.diagram'/>
+        <property name='df_LT.providerName' value='www.example.org'/>
+        <property name='org.eclipse.equinox.p2.name' value='%pluginName'/>
+        <property name='org.eclipse.equinox.p2.provider' value='%providerName'/>
+        <property name='org.eclipse.equinox.p2.bundle.localization' value='plugin'/>
+        <property name='maven-groupId' value='org.ecore.product.line'/>
+        <property name='maven-artifactId' value='org.variability.definition.diagram'/>
+        <property name='maven-version' value='0.1.0-SNAPSHOT'/>
+      </properties>
+      <provides size='8'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='org.variability.definition.diagram' version='0.1.0.202004141907'/>
+        <provided namespace='osgi.bundle' name='org.variability.definition.diagram' version='0.1.0.202004141907'/>
+        <provided namespace='java.package' name='pcdef' version='0.0.0'/>
+        <provided namespace='java.package' name='pcdef.impl' version='0.0.0'/>
+        <provided namespace='java.package' name='pcdef.util' version='0.0.0'/>
+        <provided namespace='osgi.identity' name='org.variability.definition.diagram' version='0.1.0.202004141907'>
+          <properties size='1'>
+            <property name='type' value='osgi.bundle'/>
+          </properties>
+        </provided>
+        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
+        <provided namespace='org.eclipse.equinox.p2.localization' name='df_LT' version='1.0.0'/>
+      </provides>
+      <requires size='5'>
+        <required namespace='osgi.bundle' name='org.eclipse.emf.ecore' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.sirius.diagram' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.sirius' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.core.runtime' range='0.0.0'/>
+        <requiredProperties namespace='osgi.ee' match='(&amp;(osgi.ee=JavaSE)(version=1.8))'/>
+      </requires>
+      <artifacts size='1'>
+        <artifact classifier='osgi.bundle' id='org.variability.definition.diagram' version='0.1.0.202004141907'/>
+      </artifacts>
+      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
+      <touchpointData size='1'>
+        <instructions size='1'>
+          <instruction key='manifest'>
+            Bundle-SymbolicName: org.variability.definition.diagram;singleton:=true&#xA;Bundle-Version: 0.1.0.202004141907
           </instruction>
         </instructions>
       </touchpointData>
@@ -5419,6 +5416,48 @@
         <instructions size='1'>
           <instruction key='manifest'>
             Bundle-SymbolicName: org.eclipse.xtext.xbase.ide;singleton:=true&#xA;Bundle-Version: 2.14.0.v20180522-1833
+          </instruction>
+        </instructions>
+      </touchpointData>
+    </unit>
+    <unit id='pnpl_variability.editor.ide' version='1.0.0.202004141907' generation='2'>
+      <update id='pnpl_variability.editor.ide' range='[0.0.0,1.0.0.202004141907)' severity='0'/>
+      <properties size='5'>
+        <property name='org.eclipse.equinox.p2.name' value='pnpl_variability.editor.ide'/>
+        <property name='org.eclipse.equinox.p2.provider' value='My Company'/>
+        <property name='maven-groupId' value='org.ecore.product.line'/>
+        <property name='maven-artifactId' value='pnpl_variability.editor.ide'/>
+        <property name='maven-version' value='1.0.0-SNAPSHOT'/>
+      </properties>
+      <provides size='7'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='pnpl_variability.editor.ide' version='1.0.0.202004141907'/>
+        <provided namespace='osgi.bundle' name='pnpl_variability.editor.ide' version='1.0.0.202004141907'/>
+        <provided namespace='java.package' name='pnpl_variability.ide' version='0.0.0'/>
+        <provided namespace='java.package' name='pnpl_variability.ide.contentassist.antlr' version='0.0.0'/>
+        <provided namespace='java.package' name='pnpl_variability.ide.contentassist.antlr.internal' version='0.0.0'/>
+        <provided namespace='osgi.identity' name='pnpl_variability.editor.ide' version='1.0.0.202004141907'>
+          <properties size='1'>
+            <property name='type' value='osgi.bundle'/>
+          </properties>
+        </provided>
+        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
+      </provides>
+      <requires size='6'>
+        <required namespace='osgi.bundle' name='pnpl_variability.editor' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='pnpl_variability' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.xtext.ide' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.xtext.xbase.ide' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.antlr.runtime' range='[3.2.0,3.2.1)'/>
+        <requiredProperties namespace='osgi.ee' match='(&amp;(osgi.ee=JavaSE)(version=1.8))'/>
+      </requires>
+      <artifacts size='1'>
+        <artifact classifier='osgi.bundle' id='pnpl_variability.editor.ide' version='1.0.0.202004141907'/>
+      </artifacts>
+      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
+      <touchpointData size='1'>
+        <instructions size='1'>
+          <instruction key='manifest'>
+            Bundle-SymbolicName: pnpl_variability.editor.ide; singleton:=true&#xA;Bundle-Version: 1.0.0.202004141907
           </instruction>
         </instructions>
       </touchpointData>
@@ -6168,6 +6207,66 @@
         </instructions>
       </touchpointData>
     </unit>
+    <unit id='org.eclipse.acceleo.parser' version='3.7.9.201911060712' generation='2'>
+      <update id='org.eclipse.acceleo.parser' range='[0.0.0,3.7.9.201911060712)' severity='0'/>
+      <properties size='8'>
+        <property name='df_LT.pluginName' value='Acceleo Parser'/>
+        <property name='df_LT.providerName' value='Eclipse Modeling Project'/>
+        <property name='org.eclipse.equinox.p2.name' value='%pluginName'/>
+        <property name='org.eclipse.equinox.p2.provider' value='%providerName'/>
+        <property name='org.eclipse.equinox.p2.bundle.localization' value='plugin'/>
+        <property name='maven-groupId' value='org.eclipse.acceleo'/>
+        <property name='maven-artifactId' value='org.eclipse.acceleo.parser'/>
+        <property name='maven-version' value='3.7.9-SNAPSHOT'/>
+      </properties>
+      <provides size='21'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.acceleo.parser' version='3.7.9.201911060712'/>
+        <provided namespace='osgi.bundle' name='org.eclipse.acceleo.parser' version='3.7.9.201911060712'/>
+        <provided namespace='java.package' name='org.eclipse.acceleo.internal.compatibility.parser.ast.ocl.environment' version='0.0.0'/>
+        <provided namespace='java.package' name='org.eclipse.acceleo.internal.parser' version='0.0.0'/>
+        <provided namespace='java.package' name='org.eclipse.acceleo.internal.parser.ast' version='0.0.0'/>
+        <provided namespace='java.package' name='org.eclipse.acceleo.internal.parser.ast.ocl' version='0.0.0'/>
+        <provided namespace='java.package' name='org.eclipse.acceleo.internal.parser.ast.ocl.environment' version='0.0.0'/>
+        <provided namespace='java.package' name='org.eclipse.acceleo.internal.parser.compiler' version='0.0.0'/>
+        <provided namespace='java.package' name='org.eclipse.acceleo.internal.parser.cst' version='0.0.0'/>
+        <provided namespace='java.package' name='org.eclipse.acceleo.internal.parser.cst.utils' version='0.0.0'/>
+        <provided namespace='java.package' name='org.eclipse.acceleo.internal.parser.documentation' version='0.0.0'/>
+        <provided namespace='java.package' name='org.eclipse.acceleo.internal.parser.documentation.utils' version='0.0.0'/>
+        <provided namespace='java.package' name='org.eclipse.acceleo.parser' version='0.0.0'/>
+        <provided namespace='java.package' name='org.eclipse.acceleo.parser.compiler' version='0.0.0'/>
+        <provided namespace='java.package' name='org.eclipse.acceleo.parser.cst' version='0.0.0'/>
+        <provided namespace='java.package' name='org.eclipse.acceleo.parser.cst.impl' version='0.0.0'/>
+        <provided namespace='java.package' name='org.eclipse.acceleo.parser.cst.util' version='0.0.0'/>
+        <provided namespace='java.package' name='org.eclipse.acceleo.parser.interpreter' version='0.0.0'/>
+        <provided namespace='osgi.identity' name='org.eclipse.acceleo.parser' version='3.7.9.201911060712'>
+          <properties size='1'>
+            <property name='type' value='osgi.bundle'/>
+          </properties>
+        </provided>
+        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
+        <provided namespace='org.eclipse.equinox.p2.localization' name='df_LT' version='1.0.0'/>
+      </provides>
+      <requires size='7'>
+        <required namespace='osgi.bundle' name='org.eclipse.acceleo.model' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.ocl.ecore' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.acceleo.common' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.core.runtime' range='0.0.0'/>
+        <required namespace='java.package' name='com.google.common.base' range='[27.0.0,28.0.0)'/>
+        <required namespace='java.package' name='com.google.common.collect' range='[27.0.0,28.0.0)'/>
+        <requiredProperties namespace='osgi.ee' match='(&amp;(osgi.ee=JavaSE)(version=1.6))'/>
+      </requires>
+      <artifacts size='1'>
+        <artifact classifier='osgi.bundle' id='org.eclipse.acceleo.parser' version='3.7.9.201911060712'/>
+      </artifacts>
+      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
+      <touchpointData size='1'>
+        <instructions size='1'>
+          <instruction key='manifest'>
+            Bundle-SymbolicName: org.eclipse.acceleo.parser;singleton:=true&#xA;Bundle-Version: 3.7.9.201911060712
+          </instruction>
+        </instructions>
+      </touchpointData>
+    </unit>
     <unit id='org.eclipse.e4.core.services' version='2.1.200.v20180817-1215' generation='2'>
       <update id='org.eclipse.e4.core.services' range='[0.0.0,2.1.200.v20180817-1215)' severity='0'/>
       <properties size='8'>
@@ -6853,23 +6952,25 @@
         </instructions>
       </touchpointData>
     </unit>
-    <unit id='org.variability.definition.diagram.edit' version='1.0.0.202004141307' generation='2'>
-      <update id='org.variability.definition.diagram.edit' range='[0.0.0,1.0.0.202004141307)' severity='0'/>
+    <unit id='pnpl_variability' version='0.1.0.202004141907' generation='2'>
+      <update id='pnpl_variability' range='[0.0.0,0.1.0.202004141907)' severity='0'/>
       <properties size='8'>
-        <property name='df_LT.pluginName' value='org.pc.definition.diagram Edit Support'/>
+        <property name='df_LT.pluginName' value='pnpl_variability'/>
         <property name='df_LT.providerName' value='www.example.org'/>
         <property name='org.eclipse.equinox.p2.name' value='%pluginName'/>
         <property name='org.eclipse.equinox.p2.provider' value='%providerName'/>
         <property name='org.eclipse.equinox.p2.bundle.localization' value='plugin'/>
         <property name='maven-groupId' value='org.ecore.product.line'/>
-        <property name='maven-artifactId' value='org.variability.definition.diagram.edit'/>
-        <property name='maven-version' value='1.0.0-SNAPSHOT'/>
+        <property name='maven-artifactId' value='pnpl_variability'/>
+        <property name='maven-version' value='0.1.0-SNAPSHOT'/>
       </properties>
-      <provides size='6'>
-        <provided namespace='org.eclipse.equinox.p2.iu' name='org.variability.definition.diagram.edit' version='1.0.0.202004141307'/>
-        <provided namespace='osgi.bundle' name='org.variability.definition.diagram.edit' version='1.0.0.202004141307'/>
-        <provided namespace='java.package' name='pcdef.provider' version='0.0.0'/>
-        <provided namespace='osgi.identity' name='org.variability.definition.diagram.edit' version='1.0.0.202004141307'>
+      <provides size='8'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='pnpl_variability' version='0.1.0.202004141907'/>
+        <provided namespace='osgi.bundle' name='pnpl_variability' version='0.1.0.202004141907'/>
+        <provided namespace='java.package' name='variability' version='0.0.0'/>
+        <provided namespace='java.package' name='variability.impl' version='0.0.0'/>
+        <provided namespace='java.package' name='variability.util' version='0.0.0'/>
+        <provided namespace='osgi.identity' name='pnpl_variability' version='0.1.0.202004141907'>
           <properties size='1'>
             <property name='type' value='osgi.bundle'/>
           </properties>
@@ -6877,26 +6978,19 @@
         <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
         <provided namespace='org.eclipse.equinox.p2.localization' name='df_LT' version='1.0.0'/>
       </provides>
-      <requires size='10'>
-        <required namespace='osgi.bundle' name='org.eclipse.core.runtime' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='org.variability.definition.diagram' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.emf.edit' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.sirius.diagram' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.sirius.diagram.ui' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.emf.ecore' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.emf.ecore.edit' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.sirius' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.sirius.ui' range='0.0.0'/>
+      <requires size='3'>
+        <required namespace='osgi.bundle' name='org.eclipse.core.runtime' range='3.14.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.emf.ecore' range='2.18.0'/>
         <requiredProperties namespace='osgi.ee' match='(&amp;(osgi.ee=JavaSE)(version=1.8))'/>
       </requires>
       <artifacts size='1'>
-        <artifact classifier='osgi.bundle' id='org.variability.definition.diagram.edit' version='1.0.0.202004141307'/>
+        <artifact classifier='osgi.bundle' id='pnpl_variability' version='0.1.0.202004141907'/>
       </artifacts>
       <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
       <touchpointData size='1'>
         <instructions size='1'>
           <instruction key='manifest'>
-            Bundle-SymbolicName: org.variability.definition.diagram.edit;singleton:=true&#xA;Bundle-Version: 1.0.0.202004141307
+            Bundle-SymbolicName: pnpl_variability;singleton:=true&#xA;Bundle-Version: 0.1.0.202004141907
           </instruction>
         </instructions>
       </touchpointData>
@@ -8185,44 +8279,71 @@
         </instructions>
       </touchpointData>
     </unit>
-    <unit id='org.ecore.product.line.feature.feature.group' version='1.0.0.202004141307' singleton='false'>
-      <update id='org.ecore.product.line.feature.feature.group' range='[0.0.0,1.0.0.202004141307)' severity='0'/>
-      <properties size='7'>
-        <property name='org.eclipse.equinox.p2.name' value='Feature'/>
-        <property name='org.eclipse.equinox.p2.description' value='[Enter Feature Description here.]'/>
-        <property name='org.eclipse.equinox.p2.description.url' value='http://www.example.com/description'/>
-        <property name='org.eclipse.equinox.p2.type.group' value='true'/>
+    <unit id='org.variability.definition.diagram.design' version='1.0.0.202004141907' generation='2'>
+      <update id='org.variability.definition.diagram.design' range='[0.0.0,1.0.0.202004141907)' severity='0'/>
+      <properties size='8'>
+        <property name='df_LT.pluginName' value='org.pc.definition.diagram.design'/>
+        <property name='df_LT.providerName' value='Eclipse Modeling Project'/>
+        <property name='org.eclipse.equinox.p2.name' value='%pluginName'/>
+        <property name='org.eclipse.equinox.p2.provider' value='%providerName'/>
+        <property name='org.eclipse.equinox.p2.bundle.localization' value='plugin'/>
         <property name='maven-groupId' value='org.ecore.product.line'/>
-        <property name='maven-artifactId' value='org.ecore.product.line.feature'/>
+        <property name='maven-artifactId' value='org.variability.definition.diagram.design'/>
         <property name='maven-version' value='1.0.0-SNAPSHOT'/>
       </properties>
-      <provides size='1'>
-        <provided namespace='org.eclipse.equinox.p2.iu' name='org.ecore.product.line.feature.feature.group' version='1.0.0.202004141307'/>
+      <provides size='7'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='org.variability.definition.diagram.design' version='1.0.0.202004141907'/>
+        <provided namespace='osgi.bundle' name='org.variability.definition.diagram.design' version='1.0.0.202004141907'/>
+        <provided namespace='java.package' name='org.variability.definition.diagram.design.condition' version='0.0.0'/>
+        <provided namespace='java.package' name='org.variability.definition.diagram.design.generate.template' version='0.0.0'/>
+        <provided namespace='osgi.identity' name='org.variability.definition.diagram.design' version='1.0.0.202004141907'>
+          <properties size='1'>
+            <property name='type' value='osgi.bundle'/>
+          </properties>
+        </provided>
+        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
+        <provided namespace='org.eclipse.equinox.p2.localization' name='df_LT' version='1.0.0'/>
       </provides>
-      <requires size='9'>
-        <required namespace='org.eclipse.equinox.p2.iu' name='pnpl_variability.editor.ide' range='[1.0.0.202004141307,1.0.0.202004141307]'/>
-        <required namespace='org.eclipse.equinox.p2.iu' name='org.variability.definition.diagram' range='[0.1.0.202004141307,0.1.0.202004141307]'/>
-        <required namespace='org.eclipse.equinox.p2.iu' name='org.variability.definition.diagram.edit' range='[1.0.0.202004141307,1.0.0.202004141307]'/>
-        <required namespace='org.eclipse.equinox.p2.iu' name='org.variability.definition.diagram.editor' range='[1.0.0.202004141307,1.0.0.202004141307]'/>
-        <required namespace='org.eclipse.equinox.p2.iu' name='org.variability.definition.diagram.design' range='[1.0.0.202004141307,1.0.0.202004141307]'/>
-        <required namespace='org.eclipse.equinox.p2.iu' name='pnpl_variability.editor' range='[1.0.0.202004141307,1.0.0.202004141307]'/>
-        <required namespace='org.eclipse.equinox.p2.iu' name='pnpl_variability.editor.ui' range='[1.0.0.202004141307,1.0.0.202004141307]'/>
-        <required namespace='org.eclipse.equinox.p2.iu' name='pnpl_variability' range='[0.1.0.202004141307,0.1.0.202004141307]'/>
-        <required namespace='org.eclipse.equinox.p2.iu' name='org.ecore.product.line.feature.feature.jar' range='[1.0.0.202004141307,1.0.0.202004141307]'>
-          <filter>
-            (org.eclipse.update.install.features=true)
-          </filter>
-        </required>
+      <requires size='27'>
+        <required namespace='osgi.bundle' name='org.eclipse.ui' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.core.runtime' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.core.resources' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.sirius' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.sirius.common.acceleo.aql' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.variability.definition.diagram' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.sirius.ui' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.emf.ecore' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.sirius.diagram.ui' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.core.expressions' range='3.6.100'/>
+        <required namespace='osgi.bundle' name='org.eclipse.sirius.editor' range='6.0.2'/>
+        <required namespace='osgi.bundle' name='org.eclipse.ui.ide' range='3.14.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.emf.common.ui' range='2.18.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.emf.transaction' range='1.9.1'/>
+        <required namespace='osgi.bundle' name='org.eclipse.osgi' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.jface' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='pnpl_variability' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='com.altran.general.integration.xtextsirius.runtime' range='0.18.0'/>
+        <required namespace='osgi.bundle' name='com.google.inject' range='3.0.0'/>
+        <required namespace='osgi.bundle' name='pnpl_variability.editor.ui' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.acceleo.engine' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.emf.common' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.acceleo.common' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.gmf.runtime.diagram.ui' range='1.8.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.emf.edit.ui' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.acceleo.parser' range='3.7.3'/>
+        <requiredProperties namespace='osgi.ee' match='(&amp;(osgi.ee=JavaSE)(version=1.8))'/>
       </requires>
-      <touchpoint id='null' version='0.0.0'/>
-      <licenses size='1'>
-        <license uri='http://www.example.com/license' url='http://www.example.com/license'>
-          [Enter License Description here.]
-        </license>
-      </licenses>
-      <copyright uri='http://www.example.com/copyright' url='http://www.example.com/copyright'>
-        [Enter Copyright Description here.]
-      </copyright>
+      <artifacts size='1'>
+        <artifact classifier='osgi.bundle' id='org.variability.definition.diagram.design' version='1.0.0.202004141907'/>
+      </artifacts>
+      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
+      <touchpointData size='1'>
+        <instructions size='1'>
+          <instruction key='manifest'>
+            Bundle-SymbolicName: org.variability.definition.diagram.design;singleton:=true&#xA;Bundle-Version: 1.0.0.202004141907
+          </instruction>
+        </instructions>
+      </touchpointData>
     </unit>
     <unit id='org.eclipse.sirius.ext.e3.ui' version='6.0.2.201809251458' singleton='false'>
       <update id='org.eclipse.sirius.ext.e3.ui' range='[0.0.0,6.0.2.201809251458)' severity='0'/>
@@ -8259,60 +8380,6 @@
         <instructions size='1'>
           <instruction key='manifest'>
             Bundle-SymbolicName: org.eclipse.sirius.ext.e3.ui&#xA;Bundle-Version: 6.0.2.201809251458
-          </instruction>
-        </instructions>
-      </touchpointData>
-    </unit>
-    <unit id='pnpl_variability.editor' version='1.0.0.202004141307' generation='2'>
-      <update id='pnpl_variability.editor' range='[0.0.0,1.0.0.202004141307)' severity='0'/>
-      <properties size='5'>
-        <property name='org.eclipse.equinox.p2.name' value='pnpl_variability.editor'/>
-        <property name='org.eclipse.equinox.p2.provider' value='My Company'/>
-        <property name='maven-groupId' value='org.ecore.product.line'/>
-        <property name='maven-artifactId' value='pnpl_variability.editor'/>
-        <property name='maven-version' value='1.0.0-SNAPSHOT'/>
-      </properties>
-      <provides size='15'>
-        <provided namespace='org.eclipse.equinox.p2.iu' name='pnpl_variability.editor' version='1.0.0.202004141307'/>
-        <provided namespace='osgi.bundle' name='pnpl_variability.editor' version='1.0.0.202004141307'/>
-        <provided namespace='java.package' name='pnpl_variability' version='0.0.0'/>
-        <provided namespace='java.package' name='pnpl_variability.formatting' version='0.0.0'/>
-        <provided namespace='java.package' name='pnpl_variability.formatting2' version='0.0.0'/>
-        <provided namespace='java.package' name='pnpl_variability.generator' version='0.0.0'/>
-        <provided namespace='java.package' name='pnpl_variability.parser.antlr' version='0.0.0'/>
-        <provided namespace='java.package' name='pnpl_variability.parser.antlr.internal' version='0.0.0'/>
-        <provided namespace='java.package' name='pnpl_variability.providers' version='0.0.0'/>
-        <provided namespace='java.package' name='pnpl_variability.scoping' version='0.0.0'/>
-        <provided namespace='java.package' name='pnpl_variability.serializer' version='0.0.0'/>
-        <provided namespace='java.package' name='pnpl_variability.services' version='0.0.0'/>
-        <provided namespace='java.package' name='pnpl_variability.validation' version='0.0.0'/>
-        <provided namespace='osgi.identity' name='pnpl_variability.editor' version='1.0.0.202004141307'>
-          <properties size='1'>
-            <property name='type' value='osgi.bundle'/>
-          </properties>
-        </provided>
-        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
-      </provides>
-      <requires size='10'>
-        <required namespace='osgi.bundle' name='pnpl_variability' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.xtext' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.xtext.xbase' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.equinox.common' range='3.5.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.xtext.xbase.lib' range='2.14.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.xtext.util' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.xtend.lib' range='2.14.0'/>
-        <required namespace='osgi.bundle' name='org.antlr.runtime' range='[3.2.0,3.2.1)'/>
-        <required namespace='java.package' name='org.apache.log4j' range='0.0.0'/>
-        <requiredProperties namespace='osgi.ee' match='(&amp;(osgi.ee=JavaSE)(version=1.8))'/>
-      </requires>
-      <artifacts size='1'>
-        <artifact classifier='osgi.bundle' id='pnpl_variability.editor' version='1.0.0.202004141307'/>
-      </artifacts>
-      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
-      <touchpointData size='1'>
-        <instructions size='1'>
-          <instruction key='manifest'>
-            Bundle-SymbolicName: pnpl_variability.editor;singleton:=true&#xA;Bundle-Version: 1.0.0.202004141307
           </instruction>
         </instructions>
       </touchpointData>
@@ -9203,48 +9270,6 @@
         </instructions>
       </touchpointData>
     </unit>
-    <unit id='pnpl_variability.editor.ide' version='1.0.0.202004141307' generation='2'>
-      <update id='pnpl_variability.editor.ide' range='[0.0.0,1.0.0.202004141307)' severity='0'/>
-      <properties size='5'>
-        <property name='org.eclipse.equinox.p2.name' value='pnpl_variability.editor.ide'/>
-        <property name='org.eclipse.equinox.p2.provider' value='My Company'/>
-        <property name='maven-groupId' value='org.ecore.product.line'/>
-        <property name='maven-artifactId' value='pnpl_variability.editor.ide'/>
-        <property name='maven-version' value='1.0.0-SNAPSHOT'/>
-      </properties>
-      <provides size='7'>
-        <provided namespace='org.eclipse.equinox.p2.iu' name='pnpl_variability.editor.ide' version='1.0.0.202004141307'/>
-        <provided namespace='osgi.bundle' name='pnpl_variability.editor.ide' version='1.0.0.202004141307'/>
-        <provided namespace='java.package' name='pnpl_variability.ide' version='0.0.0'/>
-        <provided namespace='java.package' name='pnpl_variability.ide.contentassist.antlr' version='0.0.0'/>
-        <provided namespace='java.package' name='pnpl_variability.ide.contentassist.antlr.internal' version='0.0.0'/>
-        <provided namespace='osgi.identity' name='pnpl_variability.editor.ide' version='1.0.0.202004141307'>
-          <properties size='1'>
-            <property name='type' value='osgi.bundle'/>
-          </properties>
-        </provided>
-        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
-      </provides>
-      <requires size='6'>
-        <required namespace='osgi.bundle' name='pnpl_variability.editor' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='pnpl_variability' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.xtext.ide' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.xtext.xbase.ide' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='org.antlr.runtime' range='[3.2.0,3.2.1)'/>
-        <requiredProperties namespace='osgi.ee' match='(&amp;(osgi.ee=JavaSE)(version=1.8))'/>
-      </requires>
-      <artifacts size='1'>
-        <artifact classifier='osgi.bundle' id='pnpl_variability.editor.ide' version='1.0.0.202004141307'/>
-      </artifacts>
-      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
-      <touchpointData size='1'>
-        <instructions size='1'>
-          <instruction key='manifest'>
-            Bundle-SymbolicName: pnpl_variability.editor.ide; singleton:=true&#xA;Bundle-Version: 1.0.0.202004141307
-          </instruction>
-        </instructions>
-      </touchpointData>
-    </unit>
     <unit id='org.eclipse.text' version='3.10.0.v20191122-2108' singleton='false' generation='2'>
       <update id='org.eclipse.text' range='[0.0.0,3.10.0.v20191122-2108)' severity='0'/>
       <properties size='8'>
@@ -9293,51 +9318,6 @@
         <instructions size='1'>
           <instruction key='manifest'>
             Bundle-SymbolicName: org.eclipse.text&#xA;Bundle-Version: 3.10.0.v20191122-2108
-          </instruction>
-        </instructions>
-      </touchpointData>
-    </unit>
-    <unit id='org.variability.definition.diagram' version='0.1.0.202004141307' generation='2'>
-      <update id='org.variability.definition.diagram' range='[0.0.0,0.1.0.202004141307)' severity='0'/>
-      <properties size='8'>
-        <property name='df_LT.pluginName' value='org.pc.definition.diagram'/>
-        <property name='df_LT.providerName' value='www.example.org'/>
-        <property name='org.eclipse.equinox.p2.name' value='%pluginName'/>
-        <property name='org.eclipse.equinox.p2.provider' value='%providerName'/>
-        <property name='org.eclipse.equinox.p2.bundle.localization' value='plugin'/>
-        <property name='maven-groupId' value='org.ecore.product.line'/>
-        <property name='maven-artifactId' value='org.variability.definition.diagram'/>
-        <property name='maven-version' value='0.1.0-SNAPSHOT'/>
-      </properties>
-      <provides size='8'>
-        <provided namespace='org.eclipse.equinox.p2.iu' name='org.variability.definition.diagram' version='0.1.0.202004141307'/>
-        <provided namespace='osgi.bundle' name='org.variability.definition.diagram' version='0.1.0.202004141307'/>
-        <provided namespace='java.package' name='pcdef' version='0.0.0'/>
-        <provided namespace='java.package' name='pcdef.impl' version='0.0.0'/>
-        <provided namespace='java.package' name='pcdef.util' version='0.0.0'/>
-        <provided namespace='osgi.identity' name='org.variability.definition.diagram' version='0.1.0.202004141307'>
-          <properties size='1'>
-            <property name='type' value='osgi.bundle'/>
-          </properties>
-        </provided>
-        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
-        <provided namespace='org.eclipse.equinox.p2.localization' name='df_LT' version='1.0.0'/>
-      </provides>
-      <requires size='5'>
-        <required namespace='osgi.bundle' name='org.eclipse.emf.ecore' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.sirius.diagram' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.sirius' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.core.runtime' range='0.0.0'/>
-        <requiredProperties namespace='osgi.ee' match='(&amp;(osgi.ee=JavaSE)(version=1.8))'/>
-      </requires>
-      <artifacts size='1'>
-        <artifact classifier='osgi.bundle' id='org.variability.definition.diagram' version='0.1.0.202004141307'/>
-      </artifacts>
-      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
-      <touchpointData size='1'>
-        <instructions size='1'>
-          <instruction key='manifest'>
-            Bundle-SymbolicName: org.variability.definition.diagram;singleton:=true&#xA;Bundle-Version: 0.1.0.202004141307
           </instruction>
         </instructions>
       </touchpointData>
@@ -11373,60 +11353,6 @@
         </instructions>
       </touchpointData>
     </unit>
-    <unit id='pnpl_variability.editor.ui' version='1.0.0.202004141307' generation='2'>
-      <update id='pnpl_variability.editor.ui' range='[0.0.0,1.0.0.202004141307)' severity='0'/>
-      <properties size='5'>
-        <property name='org.eclipse.equinox.p2.name' value='pnpl_variability.editor.ui'/>
-        <property name='org.eclipse.equinox.p2.provider' value='My Company'/>
-        <property name='maven-groupId' value='org.ecore.product.line'/>
-        <property name='maven-artifactId' value='pnpl_variability.editor.ui'/>
-        <property name='maven-version' value='1.0.0-SNAPSHOT'/>
-      </properties>
-      <provides size='10'>
-        <provided namespace='org.eclipse.equinox.p2.iu' name='pnpl_variability.editor.ui' version='1.0.0.202004141307'/>
-        <provided namespace='osgi.bundle' name='pnpl_variability.editor.ui' version='1.0.0.202004141307'/>
-        <provided namespace='java.package' name='pnpl_variability.editor.ui.internal' version='0.0.0'/>
-        <provided namespace='java.package' name='pnpl_variability.ui' version='0.0.0'/>
-        <provided namespace='java.package' name='pnpl_variability.ui.contentassist' version='0.0.0'/>
-        <provided namespace='java.package' name='pnpl_variability.ui.labeling' version='0.0.0'/>
-        <provided namespace='java.package' name='pnpl_variability.ui.outline' version='0.0.0'/>
-        <provided namespace='java.package' name='pnpl_variability.ui.quickfix' version='0.0.0'/>
-        <provided namespace='osgi.identity' name='pnpl_variability.editor.ui' version='1.0.0.202004141307'>
-          <properties size='1'>
-            <property name='type' value='osgi.bundle'/>
-          </properties>
-        </provided>
-        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
-      </provides>
-      <requires size='15'>
-        <required namespace='osgi.bundle' name='pnpl_variability.editor' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='pnpl_variability.editor.ide' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='pnpl_variability' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.xtext.ui' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.xtext.ui.shared' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.xtext.ui.codetemplates.ui' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.ui.editors' range='3.5.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.ui.ide' range='3.5.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.ui' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.compare' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.xtext.builder' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.xtext.xbase.lib' range='2.14.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.xtend.lib' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='org.apache.log4j' range='0.0.0'/>
-        <requiredProperties namespace='osgi.ee' match='(&amp;(osgi.ee=JavaSE)(version=1.8))'/>
-      </requires>
-      <artifacts size='1'>
-        <artifact classifier='osgi.bundle' id='pnpl_variability.editor.ui' version='1.0.0.202004141307'/>
-      </artifacts>
-      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
-      <touchpointData size='1'>
-        <instructions size='1'>
-          <instruction key='manifest'>
-            Bundle-SymbolicName: pnpl_variability.editor.ui; singleton:=true&#xA;Bundle-Version: 1.0.0.202004141307
-          </instruction>
-        </instructions>
-      </touchpointData>
-    </unit>
     <unit id='org.eclipse.e4.core.commands' version='0.12.300.v20180828-0227' generation='2'>
       <update id='org.eclipse.e4.core.commands' range='[0.0.0,0.12.300.v20180828-0227)' severity='0'/>
       <properties size='8'>
@@ -11802,49 +11728,6 @@
         </instructions>
       </touchpointData>
     </unit>
-    <unit id='pnpl_variability' version='0.1.0.202004141307' generation='2'>
-      <update id='pnpl_variability' range='[0.0.0,0.1.0.202004141307)' severity='0'/>
-      <properties size='8'>
-        <property name='df_LT.pluginName' value='pnpl_variability'/>
-        <property name='df_LT.providerName' value='www.example.org'/>
-        <property name='org.eclipse.equinox.p2.name' value='%pluginName'/>
-        <property name='org.eclipse.equinox.p2.provider' value='%providerName'/>
-        <property name='org.eclipse.equinox.p2.bundle.localization' value='plugin'/>
-        <property name='maven-groupId' value='org.ecore.product.line'/>
-        <property name='maven-artifactId' value='pnpl_variability'/>
-        <property name='maven-version' value='0.1.0-SNAPSHOT'/>
-      </properties>
-      <provides size='8'>
-        <provided namespace='org.eclipse.equinox.p2.iu' name='pnpl_variability' version='0.1.0.202004141307'/>
-        <provided namespace='osgi.bundle' name='pnpl_variability' version='0.1.0.202004141307'/>
-        <provided namespace='java.package' name='variability' version='0.0.0'/>
-        <provided namespace='java.package' name='variability.impl' version='0.0.0'/>
-        <provided namespace='java.package' name='variability.util' version='0.0.0'/>
-        <provided namespace='osgi.identity' name='pnpl_variability' version='0.1.0.202004141307'>
-          <properties size='1'>
-            <property name='type' value='osgi.bundle'/>
-          </properties>
-        </provided>
-        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
-        <provided namespace='org.eclipse.equinox.p2.localization' name='df_LT' version='1.0.0'/>
-      </provides>
-      <requires size='3'>
-        <required namespace='osgi.bundle' name='org.eclipse.core.runtime' range='3.14.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.emf.ecore' range='2.19.0'/>
-        <requiredProperties namespace='osgi.ee' match='(&amp;(osgi.ee=JavaSE)(version=1.8))'/>
-      </requires>
-      <artifacts size='1'>
-        <artifact classifier='osgi.bundle' id='pnpl_variability' version='0.1.0.202004141307'/>
-      </artifacts>
-      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
-      <touchpointData size='1'>
-        <instructions size='1'>
-          <instruction key='manifest'>
-            Bundle-SymbolicName: pnpl_variability;singleton:=true&#xA;Bundle-Version: 0.1.0.202004141307
-          </instruction>
-        </instructions>
-      </touchpointData>
-    </unit>
     <unit id='org.eclipse.emf.workspace' version='1.5.1.201805140824'>
       <update id='org.eclipse.emf.workspace' range='[0.0.0,1.5.1.201805140824)' severity='0'/>
       <properties size='8'>
@@ -12035,6 +11918,54 @@
         <instructions size='1'>
           <instruction key='manifest'>
             Bundle-SymbolicName: org.eclipse.equinox.registry;singleton:=true&#xA;Bundle-Version: 3.8.100.v20180827-1235
+          </instruction>
+        </instructions>
+      </touchpointData>
+    </unit>
+    <unit id='org.variability.definition.diagram.editor' version='1.0.0.202004141907' generation='2'>
+      <update id='org.variability.definition.diagram.editor' range='[0.0.0,1.0.0.202004141907)' severity='0'/>
+      <properties size='8'>
+        <property name='df_LT.pluginName' value='org.pc.definition.diagram Editor'/>
+        <property name='df_LT.providerName' value='www.example.org'/>
+        <property name='org.eclipse.equinox.p2.name' value='%pluginName'/>
+        <property name='org.eclipse.equinox.p2.provider' value='%providerName'/>
+        <property name='org.eclipse.equinox.p2.bundle.localization' value='plugin'/>
+        <property name='maven-groupId' value='org.ecore.product.line'/>
+        <property name='maven-artifactId' value='org.variability.definition.diagram.editor'/>
+        <property name='maven-version' value='1.0.0-SNAPSHOT'/>
+      </properties>
+      <provides size='6'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='org.variability.definition.diagram.editor' version='1.0.0.202004141907'/>
+        <provided namespace='osgi.bundle' name='org.variability.definition.diagram.editor' version='1.0.0.202004141907'/>
+        <provided namespace='java.package' name='pcdef.presentation' version='0.0.0'/>
+        <provided namespace='osgi.identity' name='org.variability.definition.diagram.editor' version='1.0.0.202004141907'>
+          <properties size='1'>
+            <property name='type' value='osgi.bundle'/>
+          </properties>
+        </provided>
+        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
+        <provided namespace='org.eclipse.equinox.p2.localization' name='df_LT' version='1.0.0'/>
+      </provides>
+      <requires size='10'>
+        <required namespace='osgi.bundle' name='org.eclipse.core.runtime' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.core.resources' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.variability.definition.diagram.edit' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.emf.ecore.xmi' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.emf.edit.ui' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.ui.ide' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.sirius.diagram.ui' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.emf.ecore.edit' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.sirius.ui' range='0.0.0'/>
+        <requiredProperties namespace='osgi.ee' match='(&amp;(osgi.ee=JavaSE)(version=1.8))'/>
+      </requires>
+      <artifacts size='1'>
+        <artifact classifier='osgi.bundle' id='org.variability.definition.diagram.editor' version='1.0.0.202004141907'/>
+      </artifacts>
+      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
+      <touchpointData size='1'>
+        <instructions size='1'>
+          <instruction key='manifest'>
+            Bundle-SymbolicName: org.variability.definition.diagram.editor;singleton:=true&#xA;Bundle-Version: 1.0.0.202004141907
           </instruction>
         </instructions>
       </touchpointData>
@@ -12656,6 +12587,45 @@
           </instruction>
         </instructions>
       </touchpointData>
+    </unit>
+    <unit id='org.ecore.product.line.feature.feature.group' version='1.0.0.202004141907' singleton='false'>
+      <update id='org.ecore.product.line.feature.feature.group' range='[0.0.0,1.0.0.202004141907)' severity='0'/>
+      <properties size='7'>
+        <property name='org.eclipse.equinox.p2.name' value='Variability Editor'/>
+        <property name='org.eclipse.equinox.p2.description' value='[Enter Feature Description here.]'/>
+        <property name='org.eclipse.equinox.p2.description.url' value='http://www.example.com/description'/>
+        <property name='org.eclipse.equinox.p2.type.group' value='true'/>
+        <property name='maven-groupId' value='org.ecore.product.line'/>
+        <property name='maven-artifactId' value='org.ecore.product.line.feature'/>
+        <property name='maven-version' value='1.0.0-SNAPSHOT'/>
+      </properties>
+      <provides size='1'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='org.ecore.product.line.feature.feature.group' version='1.0.0.202004141907'/>
+      </provides>
+      <requires size='9'>
+        <required namespace='org.eclipse.equinox.p2.iu' name='pnpl_variability.editor.ide' range='[1.0.0.202004141907,1.0.0.202004141907]'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.variability.definition.diagram' range='[0.1.0.202004141907,0.1.0.202004141907]'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.variability.definition.diagram.edit' range='[1.0.0.202004141907,1.0.0.202004141907]'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.variability.definition.diagram.editor' range='[1.0.0.202004141907,1.0.0.202004141907]'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.variability.definition.diagram.design' range='[1.0.0.202004141907,1.0.0.202004141907]'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='pnpl_variability.editor' range='[1.0.0.202004141907,1.0.0.202004141907]'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='pnpl_variability.editor.ui' range='[1.0.0.202004141907,1.0.0.202004141907]'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='pnpl_variability' range='[0.1.0.202004141907,0.1.0.202004141907]'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.ecore.product.line.feature.feature.jar' range='[1.0.0.202004141907,1.0.0.202004141907]'>
+          <filter>
+            (org.eclipse.update.install.features=true)
+          </filter>
+        </required>
+      </requires>
+      <touchpoint id='null' version='0.0.0'/>
+      <licenses size='1'>
+        <license uri='http://www.example.com/license' url='http://www.example.com/license'>
+          [Enter License Description here.]
+        </license>
+      </licenses>
+      <copyright uri='http://www.example.com/copyright' url='http://www.example.com/copyright'>
+        [Enter Copyright Description here.]
+      </copyright>
     </unit>
     <unit id='a.jre.javase' version='9.0.0' singleton='false'>
       <provides size='248'>
@@ -14936,6 +14906,60 @@
         </instructions>
       </touchpointData>
     </unit>
+    <unit id='pnpl_variability.editor.ui' version='1.0.0.202004141907' generation='2'>
+      <update id='pnpl_variability.editor.ui' range='[0.0.0,1.0.0.202004141907)' severity='0'/>
+      <properties size='5'>
+        <property name='org.eclipse.equinox.p2.name' value='pnpl_variability.editor.ui'/>
+        <property name='org.eclipse.equinox.p2.provider' value='My Company'/>
+        <property name='maven-groupId' value='org.ecore.product.line'/>
+        <property name='maven-artifactId' value='pnpl_variability.editor.ui'/>
+        <property name='maven-version' value='1.0.0-SNAPSHOT'/>
+      </properties>
+      <provides size='10'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='pnpl_variability.editor.ui' version='1.0.0.202004141907'/>
+        <provided namespace='osgi.bundle' name='pnpl_variability.editor.ui' version='1.0.0.202004141907'/>
+        <provided namespace='java.package' name='pnpl_variability.editor.ui.internal' version='0.0.0'/>
+        <provided namespace='java.package' name='pnpl_variability.ui' version='0.0.0'/>
+        <provided namespace='java.package' name='pnpl_variability.ui.contentassist' version='0.0.0'/>
+        <provided namespace='java.package' name='pnpl_variability.ui.labeling' version='0.0.0'/>
+        <provided namespace='java.package' name='pnpl_variability.ui.outline' version='0.0.0'/>
+        <provided namespace='java.package' name='pnpl_variability.ui.quickfix' version='0.0.0'/>
+        <provided namespace='osgi.identity' name='pnpl_variability.editor.ui' version='1.0.0.202004141907'>
+          <properties size='1'>
+            <property name='type' value='osgi.bundle'/>
+          </properties>
+        </provided>
+        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
+      </provides>
+      <requires size='15'>
+        <required namespace='osgi.bundle' name='pnpl_variability.editor' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='pnpl_variability.editor.ide' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='pnpl_variability' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.xtext.ui' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.xtext.ui.shared' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.xtext.ui.codetemplates.ui' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.ui.editors' range='3.5.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.ui.ide' range='3.5.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.ui' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.compare' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.xtext.builder' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.xtext.xbase.lib' range='2.14.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.xtend.lib' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.apache.log4j' range='0.0.0'/>
+        <requiredProperties namespace='osgi.ee' match='(&amp;(osgi.ee=JavaSE)(version=1.8))'/>
+      </requires>
+      <artifacts size='1'>
+        <artifact classifier='osgi.bundle' id='pnpl_variability.editor.ui' version='1.0.0.202004141907'/>
+      </artifacts>
+      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
+      <touchpointData size='1'>
+        <instructions size='1'>
+          <instruction key='manifest'>
+            Bundle-SymbolicName: pnpl_variability.editor.ui; singleton:=true&#xA;Bundle-Version: 1.0.0.202004141907
+          </instruction>
+        </instructions>
+      </touchpointData>
+    </unit>
     <unit id='org.eclipse.e4.core.di' version='1.7.100.v20180817-1215' singleton='false' generation='2'>
       <update id='org.eclipse.e4.core.di' range='[0.0.0,1.7.100.v20180817-1215)' severity='0'/>
       <properties size='8'>
@@ -15345,6 +15369,43 @@
           </instruction>
         </instructions>
       </touchpointData>
+    </unit>
+    <unit id='org.ecore.product.line.feature.feature.jar' version='1.0.0.202004141907'>
+      <properties size='6'>
+        <property name='org.eclipse.equinox.p2.name' value='Variability Editor'/>
+        <property name='org.eclipse.equinox.p2.description' value='[Enter Feature Description here.]'/>
+        <property name='org.eclipse.equinox.p2.description.url' value='http://www.example.com/description'/>
+        <property name='maven-groupId' value='org.ecore.product.line'/>
+        <property name='maven-artifactId' value='org.ecore.product.line.feature'/>
+        <property name='maven-version' value='1.0.0-SNAPSHOT'/>
+      </properties>
+      <provides size='3'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='org.ecore.product.line.feature.feature.jar' version='1.0.0.202004141907'/>
+        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='feature' version='1.0.0'/>
+        <provided namespace='org.eclipse.update.feature' name='org.ecore.product.line.feature' version='1.0.0.202004141907'/>
+      </provides>
+      <filter>
+        (org.eclipse.update.install.features=true)
+      </filter>
+      <artifacts size='1'>
+        <artifact classifier='org.eclipse.update.feature' id='org.ecore.product.line.feature' version='1.0.0.202004141907'/>
+      </artifacts>
+      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
+      <touchpointData size='1'>
+        <instructions size='1'>
+          <instruction key='zipped'>
+            true
+          </instruction>
+        </instructions>
+      </touchpointData>
+      <licenses size='1'>
+        <license uri='http://www.example.com/license' url='http://www.example.com/license'>
+          [Enter License Description here.]
+        </license>
+      </licenses>
+      <copyright uri='http://www.example.com/copyright' url='http://www.example.com/copyright'>
+        [Enter Copyright Description here.]
+      </copyright>
     </unit>
     <unit id='org.eclipse.gmf.runtime.diagram.ui.printing' version='1.7.0.201912020813' singleton='false' generation='2'>
       <update id='org.eclipse.gmf.runtime.diagram.ui.printing' range='[0.0.0,1.7.0.201912020813)' severity='0'/>

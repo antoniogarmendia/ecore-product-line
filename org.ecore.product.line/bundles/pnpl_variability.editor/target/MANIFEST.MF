@@ -7,7 +7,7 @@ Export-Package: pnpl_variability,pnpl_variability.formatting,pnpl_vari
  ders,pnpl_variability.scoping,pnpl_variability.serializer,pnpl_variab
  ility.services,pnpl_variability.validation
 Bundle-Name: pnpl_variability.editor
-Bundle-Version: 1.0.0.202004141307
+Bundle-Version: 1.0.0.202004141907
 Require-Bundle: pnpl_variability,org.eclipse.xtext,org.eclipse.xtext.x
  base,org.eclipse.equinox.common;bundle-version="3.5.0",org.eclipse.xt
  ext.xbase.lib;bundle-version="2.14.0",org.eclipse.xtext.util,org.ecli
