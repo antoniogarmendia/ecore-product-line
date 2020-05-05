@@ -1,13 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:mtl="http://www.eclipse.org/acceleo/mtl/3.0" xmlns:ocl.ecore="http://www.eclipse.org/ocl/1.1.0/Ecore">
-  <mtl:Module name="WorkflowVariabilityEditor" nsURI="org::variability::definition::diagram::design::generate::template::WorkflowVariabilityEditor" startHeaderPosition="29" endHeaderPosition="103">
+  <mtl:Module name="WorkflowVariabilityEditor" nsURI="org::variability::definition::diagram::design::generate::template::WorkflowVariabilityEditor" startHeaderPosition="29" endHeaderPosition="154">
     <input>
       <takesTypesFrom href="http://www.eclipse.org/emf/2002/Ecore#/"/>
+    </input>
+    <input>
+      <takesTypesFrom href="http://www.eclipse.org/sirius/1.1.0#//description"/>
+      <takesTypesFrom href="http://www.eclipse.org/sirius/1.1.0#//description/style"/>
+      <takesTypesFrom href="http://www.eclipse.org/sirius/1.1.0#//description/tool"/>
+      <takesTypesFrom href="http://www.eclipse.org/sirius/1.1.0#//description/validation"/>
+      <takesTypesFrom href="http://www.eclipse.org/sirius/1.1.0#//description/audit"/>
     </input>
     <imports href="PresenceConditionServicesFile.emtl#/0"/>
     <imports href="PluginXML.emtl#/0"/>
     <imports href="MetainfFile.emtl#/0"/>
     <imports href="utils/FeatureUtils.emtl#/0"/>
+    <imports href="../composer/composerFile.emtl#/0"/>
+    <imports href="utils/EMFHandler.emtl#/0"/>
+    <imports href="../composer/featureProviderFile.emtl#/0"/>
     <ownedModuleElement xsi:type="mtl:Template" name="WorkflowVariabilityEditor" visibility="Public" main="true">
       <body xsi:type="mtl:TemplateInvocation">
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
@@ -44,6 +54,33 @@
         </argument>
       </body>
       <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
+      <body xsi:type="mtl:TemplateInvocation">
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <definition href="utils/EMFHandler.emtl#/0/generateEMFHandler"/>
+        <argument xsi:type="ocl.ecore:VariableExp" name="projectName" referredVariable="/0/WorkflowVariabilityEditor/projectName">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </argument>
+      </body>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;&#xA;"/>
+      <body xsi:type="mtl:TemplateInvocation">
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <definition href="../composer/composerFile.emtl#/0/generateComposer"/>
+        <argument xsi:type="ocl.ecore:VariableExp" name="projectName" referredVariable="/0/WorkflowVariabilityEditor/projectName">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </argument>
+        <argument xsi:type="ocl.ecore:VariableExp" name="toExtendViewpoint" referredVariable="/0/WorkflowVariabilityEditor/toExtendViewpoint">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/sirius/1.1.0#//description/Viewpoint"/>
+        </argument>
+      </body>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
+      <body xsi:type="mtl:TemplateInvocation">
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <definition href="../composer/featureProviderFile.emtl#/0/generateFeatureProviderFile"/>
+        <argument xsi:type="ocl.ecore:VariableExp" name="projectName" referredVariable="/0/WorkflowVariabilityEditor/projectName">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </argument>
+      </body>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
       <parameter name="modelEObject">
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
       </parameter>
@@ -52,6 +89,9 @@
       </parameter>
       <parameter name="modelName">
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+      </parameter>
+      <parameter name="toExtendViewpoint">
+        <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/sirius/1.1.0#//description/Viewpoint"/>
       </parameter>
     </ownedModuleElement>
   </mtl:Module>
@@ -89,6 +129,9 @@
         </eParameters>
         <eParameters name="modelName">
           <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+        <eParameters name="toExtendViewpoint">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/sirius/1.1.0#//description/Viewpoint"/>
         </eParameters>
       </eOperations>
       <eOperations name="presenceConditionServices">
@@ -136,6 +179,45 @@
         </eAnnotations>
         <eAnnotations source="MTL">
           <references href="utils/FeatureUtils.emtl#/0/generateFeatureUtils"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="projectName">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="generateComposer">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="../composer/composerFile.emtl#/0/generateComposer"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="projectName">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+        <eParameters name="toExtendViewpoint">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/sirius/1.1.0#//description/Viewpoint"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="generateEMFHandler">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="utils/EMFHandler.emtl#/0/generateEMFHandler"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="projectName">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="generateFeatureProviderFile">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="../composer/featureProviderFile.emtl#/0/generateFeatureProviderFile"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="projectName">
@@ -191,91 +273,155 @@
   <ocl.ecore:Variable name="self">
     <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
   </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
   <ecore:EAnnotation source="positions">
     <eAnnotations source="positions.0" references="/0/WorkflowVariabilityEditor">
-      <details key="start" value="491"/>
-      <details key="end" value="827"/>
-      <details key="line" value="8"/>
+      <details key="start" value="826"/>
+      <details key="end" value="1355"/>
+      <details key="line" value="11"/>
     </eAnnotations>
     <eAnnotations source="positions.1" references="/0/WorkflowVariabilityEditor/%">
-      <details key="start" value="622"/>
-      <details key="end" value="660"/>
+      <details key="start" value="988"/>
+      <details key="end" value="1026"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.2" references="/0/WorkflowVariabilityEditor/%/projectName">
-      <details key="start" value="648"/>
-      <details key="end" value="659"/>
+      <details key="start" value="1014"/>
+      <details key="end" value="1025"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.3" references="/0/WorkflowVariabilityEditor/%.1">
-      <details key="start" value="663"/>
-      <details key="end" value="665"/>
-      <details key="line" value="10"/>
+      <details key="start" value="1029"/>
+      <details key="end" value="1031"/>
+      <details key="line" value="13"/>
     </eAnnotations>
     <eAnnotations source="positions.4" references="/0/WorkflowVariabilityEditor/%.2">
-      <details key="start" value="666"/>
-      <details key="end" value="711"/>
+      <details key="start" value="1032"/>
+      <details key="end" value="1077"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.5" references="/0/WorkflowVariabilityEditor/%.2/projectName">
-      <details key="start" value="688"/>
-      <details key="end" value="699"/>
+      <details key="start" value="1054"/>
+      <details key="end" value="1065"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.6" references="/0/WorkflowVariabilityEditor/%.2/modelName">
-      <details key="start" value="701"/>
-      <details key="end" value="710"/>
+      <details key="start" value="1067"/>
+      <details key="end" value="1076"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.7" references="/0/WorkflowVariabilityEditor/%.3">
-      <details key="start" value="714"/>
-      <details key="end" value="715"/>
-      <details key="line" value="12"/>
+      <details key="start" value="1080"/>
+      <details key="end" value="1081"/>
+      <details key="line" value="15"/>
     </eAnnotations>
     <eAnnotations source="positions.8" references="/0/WorkflowVariabilityEditor/%.4">
-      <details key="start" value="716"/>
-      <details key="end" value="748"/>
+      <details key="start" value="1082"/>
+      <details key="end" value="1114"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.9" references="/0/WorkflowVariabilityEditor/%.4/projectName">
-      <details key="start" value="736"/>
-      <details key="end" value="747"/>
+      <details key="start" value="1102"/>
+      <details key="end" value="1113"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.10" references="/0/WorkflowVariabilityEditor/%.5">
-      <details key="start" value="750"/>
-      <details key="end" value="752"/>
-      <details key="line" value="13"/>
+      <details key="start" value="1116"/>
+      <details key="end" value="1118"/>
+      <details key="line" value="16"/>
     </eAnnotations>
     <eAnnotations source="positions.11" references="/0/WorkflowVariabilityEditor/%.6">
-      <details key="start" value="779"/>
-      <details key="end" value="812"/>
+      <details key="start" value="1145"/>
+      <details key="end" value="1178"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.12" references="/0/WorkflowVariabilityEditor/%.6/projectName">
-      <details key="start" value="800"/>
-      <details key="end" value="811"/>
+      <details key="start" value="1166"/>
+      <details key="end" value="1177"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.13" references="/0/WorkflowVariabilityEditor/%.7">
-      <details key="start" value="814"/>
-      <details key="end" value="815"/>
-      <details key="line" value="16"/>
+      <details key="start" value="1180"/>
+      <details key="end" value="1181"/>
+      <details key="line" value="19"/>
     </eAnnotations>
-    <eAnnotations source="positions.14" references="/0/WorkflowVariabilityEditor/modelEObject">
-      <details key="start" value="534"/>
-      <details key="end" value="556"/>
-      <details key="line" value="8"/>
+    <eAnnotations source="positions.14" references="/0/WorkflowVariabilityEditor/%.8">
+      <details key="start" value="1182"/>
+      <details key="end" value="1213"/>
+      <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.15" references="/0/WorkflowVariabilityEditor/projectName">
-      <details key="start" value="558"/>
-      <details key="end" value="579"/>
-      <details key="line" value="8"/>
+    <eAnnotations source="positions.15" references="/0/WorkflowVariabilityEditor/%.8/projectName">
+      <details key="start" value="1201"/>
+      <details key="end" value="1212"/>
+      <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.16" references="/0/WorkflowVariabilityEditor/modelName">
-      <details key="start" value="581"/>
-      <details key="end" value="600"/>
-      <details key="line" value="8"/>
+    <eAnnotations source="positions.16" references="/0/WorkflowVariabilityEditor/%.9">
+      <details key="start" value="1215"/>
+      <details key="end" value="1217"/>
+      <details key="line" value="20"/>
+    </eAnnotations>
+    <eAnnotations source="positions.17" references="/0/WorkflowVariabilityEditor/%.10">
+      <details key="start" value="1247"/>
+      <details key="end" value="1295"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.18" references="/0/WorkflowVariabilityEditor/%.10/projectName">
+      <details key="start" value="1264"/>
+      <details key="end" value="1275"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.19" references="/0/WorkflowVariabilityEditor/%.10/toExtendViewpoint">
+      <details key="start" value="1277"/>
+      <details key="end" value="1294"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.20" references="/0/WorkflowVariabilityEditor/%.11">
+      <details key="start" value="1298"/>
+      <details key="end" value="1299"/>
+      <details key="line" value="23"/>
+    </eAnnotations>
+    <eAnnotations source="positions.21" references="/0/WorkflowVariabilityEditor/%.12">
+      <details key="start" value="1300"/>
+      <details key="end" value="1340"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.22" references="/0/WorkflowVariabilityEditor/%.12/projectName">
+      <details key="start" value="1328"/>
+      <details key="end" value="1339"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.23" references="/0/WorkflowVariabilityEditor/%.13">
+      <details key="start" value="1342"/>
+      <details key="end" value="1343"/>
+      <details key="line" value="24"/>
+    </eAnnotations>
+    <eAnnotations source="positions.24" references="/0/WorkflowVariabilityEditor/modelEObject">
+      <details key="start" value="869"/>
+      <details key="end" value="891"/>
+      <details key="line" value="11"/>
+    </eAnnotations>
+    <eAnnotations source="positions.25" references="/0/WorkflowVariabilityEditor/projectName">
+      <details key="start" value="893"/>
+      <details key="end" value="914"/>
+      <details key="line" value="11"/>
+    </eAnnotations>
+    <eAnnotations source="positions.26" references="/0/WorkflowVariabilityEditor/modelName">
+      <details key="start" value="916"/>
+      <details key="end" value="935"/>
+      <details key="line" value="11"/>
+    </eAnnotations>
+    <eAnnotations source="positions.27" references="/0/WorkflowVariabilityEditor/toExtendViewpoint">
+      <details key="start" value="937"/>
+      <details key="end" value="966"/>
+      <details key="line" value="11"/>
     </eAnnotations>
   </ecore:EAnnotation>
 </xmi:XMI>

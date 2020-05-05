@@ -1,11 +1,14 @@
 [comment encoding = UTF-8 /]
-[module WorkflowVariabilityEditor('http://www.eclipse.org/emf/2002/Ecore')/]
+[module WorkflowVariabilityEditor('http://www.eclipse.org/emf/2002/Ecore', 'http://www.eclipse.org/sirius/description/1.1.0')/]
 [import org::variability::definition::diagram::design::generate::template::PresenceConditionServicesFile /]
 [import org::variability::definition::diagram::design::generate::template::PluginXML /]
 [import org::variability::definition::diagram::design::generate::template::MetainfFile /]
 [import org::variability::definition::diagram::design::generate::template::utils::FeatureUtils /]
+[import org::variability::definition::diagram::design::generate::composer::composerFile /]
+[import org::variability::definition::diagram::design::generate::template::utils::EMFHandler/]
+[import org::variability::definition::diagram::design::generate::composer::featureProviderFile /]
 
-[template public WorkflowVariabilityEditor(modelEObject : EObject, projectName : EString, modelName : EString)]
+[template public WorkflowVariabilityEditor(modelEObject : EObject, projectName : EString, modelName : EString, toExtendViewpoint : Viewpoint)]
 [comment @main /]
 [presenceConditionServices(projectName) /]	
 [generatePluginXMLFile(projectName, modelName) /]
@@ -13,5 +16,10 @@
 
 [comment Package Utils /]
 [generateFeatureUtils(projectName)/]
+[generateEMFHandler(projectName)/]
+
+[comment Package Composer /]
+[generateComposer(projectName, toExtendViewpoint) /]
+[generateFeatureProviderFile(projectName)/]
 
 [/template]

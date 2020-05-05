@@ -17,7 +17,13 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.sirius.common.acceleo.aql,
  org.eclipse.sirius.diagram;bundle-version="6.0.2",
  pnpl_variability;bundle-version="0.1.0",
- org.variability.definition.diagram.design
+ org.variability.definition.diagram.design,
+ com.google.inject,
+ org.eclipse.xtext,
+ pnpl_variability.editor,
+ formula-solver,
+ de.ovgu.featureide.fm.core;bundle-version="3.6.0",
+ de.ovgu.featureide.core;bundle-version="3.6.0"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-Vendor: %providerName

@@ -23,6 +23,6 @@ Xtext + Sirius
 v0.15 v0.22
 https://altran-mde.github.io/xtext-sirius-integration.io/p2/
 
-
-
-
+Feature IDE
+v3.6.0
+http://featureide.cs.ovgu.de/update/v3/

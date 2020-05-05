@@ -343,6 +343,21 @@ public class WorkflowVariabilityEditor extends AbstractAcceleoGenerator {
         if (!isInWorkspace(org.eclipse.emf.ecore.EcorePackage.class)) {
             resourceSet.getPackageRegistry().put(org.eclipse.emf.ecore.EcorePackage.eINSTANCE.getNsURI(), org.eclipse.emf.ecore.EcorePackage.eINSTANCE);
         }
+        if (!isInWorkspace(org.eclipse.sirius.viewpoint.description.DescriptionPackage.class)) {
+            resourceSet.getPackageRegistry().put(org.eclipse.sirius.viewpoint.description.DescriptionPackage.eINSTANCE.getNsURI(), org.eclipse.sirius.viewpoint.description.DescriptionPackage.eINSTANCE);
+        }
+        if (!isInWorkspace(org.eclipse.sirius.viewpoint.description.style.StylePackage.class)) {
+            resourceSet.getPackageRegistry().put(org.eclipse.sirius.viewpoint.description.style.StylePackage.eINSTANCE.getNsURI(), org.eclipse.sirius.viewpoint.description.style.StylePackage.eINSTANCE);
+        }
+        if (!isInWorkspace(org.eclipse.sirius.viewpoint.description.tool.ToolPackage.class)) {
+            resourceSet.getPackageRegistry().put(org.eclipse.sirius.viewpoint.description.tool.ToolPackage.eINSTANCE.getNsURI(), org.eclipse.sirius.viewpoint.description.tool.ToolPackage.eINSTANCE);
+        }
+        if (!isInWorkspace(org.eclipse.sirius.viewpoint.description.validation.ValidationPackage.class)) {
+            resourceSet.getPackageRegistry().put(org.eclipse.sirius.viewpoint.description.validation.ValidationPackage.eINSTANCE.getNsURI(), org.eclipse.sirius.viewpoint.description.validation.ValidationPackage.eINSTANCE);
+        }
+        if (!isInWorkspace(org.eclipse.sirius.viewpoint.description.audit.AuditPackage.class)) {
+            resourceSet.getPackageRegistry().put(org.eclipse.sirius.viewpoint.description.audit.AuditPackage.eINSTANCE.getNsURI(), org.eclipse.sirius.viewpoint.description.audit.AuditPackage.eINSTANCE);
+        }
         
         /*
          * If you want to change the content of this method, do NOT forget to change the "@generated"

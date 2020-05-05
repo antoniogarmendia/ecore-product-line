@@ -52,7 +52,7 @@ public class CreateVariabilityArtifacts {
 					doExtendInitDescription();
 		try {
 			//3. Generate files (e.g. PresenceConditionServices)
-	        generateFiles(groupBaseVariability, viewpointProject);
+	        generateFiles(groupBaseVariability, viewpointProject, toExtendVP);
 	        //4. Refresh project
 	        viewpointProject.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());			
 		} catch (CoreException e) {			
@@ -60,10 +60,11 @@ public class CreateVariabilityArtifacts {
 		}       
 	}	
 	
-	private void generateFiles(EObject vpBaseVariability, IResource viewpointProject) {		
-        final List<String> generatorargs = new ArrayList<String>();
+	private void generateFiles(EObject vpBaseVariability, IResource viewpointProject, Viewpoint toExtendVP) {		
+        final List<Object> generatorargs = new ArrayList<Object>();
         generatorargs.add(this.projectName);
         generatorargs.add(this.odesignName.substring(0, this.odesignName.lastIndexOf('.')));
+        generatorargs.add(toExtendVP);
         try {
         	 WorkflowVariabilityEditor generateFiles = new WorkflowVariabilityEditor(vpBaseVariability, new File(viewpointProject.getLocation().toFile().toString()),
              		generatorargs);

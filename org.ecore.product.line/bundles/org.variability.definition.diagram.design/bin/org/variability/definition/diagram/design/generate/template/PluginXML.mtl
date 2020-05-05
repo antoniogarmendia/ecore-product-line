@@ -12,6 +12,16 @@
 	       name="[modelName/]">
     </component>
   </extension>
+  <extension
+        point="de.ovgu.featureide.core.composers">
+     <composer
+           class="[projectName/].composer.GenericComposer"
+           description="[modelName/]-featureide.[modelName/]"
+           id="[projectName/]-featureide"
+           name="[projectName/]"
+           nature="[projectName/]-featureide">
+     </composer>
+ </extension>
 </plugin>
 [/file]
 [/template]

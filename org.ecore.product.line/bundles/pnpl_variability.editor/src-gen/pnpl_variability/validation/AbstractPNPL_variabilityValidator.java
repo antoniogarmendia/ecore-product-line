@@ -16,7 +16,7 @@ public abstract class AbstractPNPL_variabilityValidator extends AbstractDeclarat
 	@Override
 	protected List<EPackage> getEPackages() {
 		List<EPackage> result = new ArrayList<EPackage>();
-		result.add(EPackage.Registry.INSTANCE.getEPackage("/PNPL_variability/model/pnpl_variability"));
+		result.add(EPackage.Registry.INSTANCE.getEPackage("/pnpl_variability/model/pnpl_variability"));
 		result.add(EPackage.Registry.INSTANCE.getEPackage("http://www.eclipse.org/emf/2002/Ecore"));
 		return result;
 	}

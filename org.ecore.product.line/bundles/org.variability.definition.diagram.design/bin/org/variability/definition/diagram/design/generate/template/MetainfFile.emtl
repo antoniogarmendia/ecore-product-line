@@ -14,7 +14,7 @@
         <body xsi:type="ocl.ecore:VariableExp" name="projectName" referredVariable="/0/generateMETAINFFile/projectName">
           <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         </body>
-        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=".Activator&#xA;Bundle-Localization: plugin&#xA;Require-Bundle: org.eclipse.ui,&#xA; org.eclipse.core.runtime,&#xA; org.eclipse.core.resources,&#xA; org.eclipse.sirius,&#xA; org.eclipse.sirius.common.acceleo.aql,&#xA; org.eclipse.sirius.diagram;bundle-version=&quot;6.0.2&quot;,&#xA; pnpl_variability;bundle-version=&quot;0.1.0&quot;,&#xA; org.variability.definition.diagram.design&#xA;Bundle-ActivationPolicy: lazy&#xA;Bundle-RequiredExecutionEnvironment: JavaSE-1.8&#xA;Bundle-Vendor: %providerName&#xA;Automatic-Module-Name: "/>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=".Activator&#xA;Bundle-Localization: plugin&#xA;Require-Bundle: org.eclipse.ui,&#xA; org.eclipse.core.runtime,&#xA; org.eclipse.core.resources,&#xA; org.eclipse.sirius,&#xA; org.eclipse.sirius.common.acceleo.aql,&#xA; org.eclipse.sirius.diagram;bundle-version=&quot;6.0.2&quot;,&#xA; pnpl_variability;bundle-version=&quot;0.1.0&quot;,&#xA; org.variability.definition.diagram.design,&#xA; com.google.inject,&#xA; org.eclipse.xtext,&#xA; pnpl_variability.editor,&#xA; formula-solver,&#xA; de.ovgu.featureide.fm.core;bundle-version=&quot;3.6.0&quot;,&#xA; de.ovgu.featureide.core;bundle-version=&quot;3.6.0&quot;&#xA;Bundle-ActivationPolicy: lazy&#xA;Bundle-RequiredExecutionEnvironment: JavaSE-1.8&#xA;Bundle-Vendor: %providerName&#xA;Automatic-Module-Name: "/>
         <body xsi:type="ocl.ecore:VariableExp" name="projectName" referredVariable="/0/generateMETAINFFile/projectName">
           <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         </body>
@@ -116,12 +116,12 @@
   <ecore:EAnnotation source="positions">
     <eAnnotations source="positions.0" references="/0/generateMETAINFFile">
       <details key="start" value="92"/>
-      <details key="end" value="879"/>
+      <details key="end" value="1063"/>
       <details key="line" value="4"/>
     </eAnnotations>
     <eAnnotations source="positions.1" references="/0/generateMETAINFFile/%">
       <details key="start" value="153"/>
-      <details key="end" value="867"/>
+      <details key="end" value="1051"/>
       <details key="line" value="5"/>
     </eAnnotations>
     <eAnnotations source="positions.2" references="/0/generateMETAINFFile/%/%">
@@ -146,18 +146,18 @@
     </eAnnotations>
     <eAnnotations source="positions.6" references="/0/generateMETAINFFile/%/%.2">
       <details key="start" value="390"/>
-      <details key="end" value="845"/>
+      <details key="end" value="1029"/>
       <details key="line" value="11"/>
     </eAnnotations>
     <eAnnotations source="positions.7" references="/0/generateMETAINFFile/%/projectName.2">
-      <details key="start" value="846"/>
-      <details key="end" value="857"/>
+      <details key="start" value="1030"/>
+      <details key="end" value="1041"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.8" references="/0/generateMETAINFFile/%/%.3">
-      <details key="start" value="859"/>
-      <details key="end" value="860"/>
-      <details key="line" value="25"/>
+      <details key="start" value="1043"/>
+      <details key="end" value="1044"/>
+      <details key="line" value="31"/>
     </eAnnotations>
     <eAnnotations source="positions.9" references="/0/generateMETAINFFile/%/%.4">
       <details key="start" value="160"/>
