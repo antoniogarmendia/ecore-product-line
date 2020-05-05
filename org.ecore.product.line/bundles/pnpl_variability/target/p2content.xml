@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <units size='1'>
-  <unit id='pnpl_variability' version='0.1.0.202004141907' generation='2'>
-    <update id='pnpl_variability' range='[0.0.0,0.1.0.202004141907)' severity='0'/>
+  <unit id='pnpl_variability' version='0.1.0.202005050936' generation='2'>
+    <update id='pnpl_variability' range='[0.0.0,0.1.0.202005050936)' severity='0'/>
     <properties size='8'>
       <property name='df_LT.pluginName' value='pnpl_variability'/>
       <property name='df_LT.providerName' value='www.example.org'/>
@@ -13,12 +13,12 @@
       <property name='maven-version' value='0.1.0-SNAPSHOT'/>
     </properties>
     <provides size='8'>
-      <provided namespace='org.eclipse.equinox.p2.iu' name='pnpl_variability' version='0.1.0.202004141907'/>
-      <provided namespace='osgi.bundle' name='pnpl_variability' version='0.1.0.202004141907'/>
+      <provided namespace='org.eclipse.equinox.p2.iu' name='pnpl_variability' version='0.1.0.202005050936'/>
+      <provided namespace='osgi.bundle' name='pnpl_variability' version='0.1.0.202005050936'/>
       <provided namespace='java.package' name='variability' version='0.0.0'/>
       <provided namespace='java.package' name='variability.impl' version='0.0.0'/>
       <provided namespace='java.package' name='variability.util' version='0.0.0'/>
-      <provided namespace='osgi.identity' name='pnpl_variability' version='0.1.0.202004141907'>
+      <provided namespace='osgi.identity' name='pnpl_variability' version='0.1.0.202005050936'>
         <properties size='1'>
           <property name='type' value='osgi.bundle'/>
         </properties>
@@ -32,13 +32,13 @@
       <requiredProperties namespace='osgi.ee' match='(&amp;(osgi.ee=JavaSE)(version=1.8))'/>
     </requires>
     <artifacts size='1'>
-      <artifact classifier='osgi.bundle' id='pnpl_variability' version='0.1.0.202004141907'/>
+      <artifact classifier='osgi.bundle' id='pnpl_variability' version='0.1.0.202005050936'/>
     </artifacts>
     <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
     <touchpointData size='1'>
       <instructions size='1'>
         <instruction key='manifest'>
-          Bundle-SymbolicName: pnpl_variability;singleton:=true&#xA;Bundle-Version: 0.1.0.202004141907&#xA;
+          Bundle-SymbolicName: pnpl_variability;singleton:=true&#xA;Bundle-Version: 0.1.0.202005050936&#xA;
         </instruction>
       </instructions>
     </touchpointData>

@@ -2,7 +2,7 @@
 <feature
       id="org.ecore.product.line.feature"
       label="Variability Editor"
-      version="1.0.0.202004141907">
+      version="1.0.0.202005050936">
 
    <description url="http://www.example.com/description">
       [Enter Feature Description here.]
@@ -20,56 +20,56 @@
          id="pnpl_variability.editor.ide"
          download-size="36"
          install-size="98"
-         version="1.0.0.202004141907"
+         version="1.0.0.202005050936"
          unpack="false"/>
 
    <plugin
          id="org.variability.definition.diagram"
          download-size="19"
          install-size="47"
-         version="0.1.0.202004141907"
+         version="0.1.0.202005050936"
          unpack="false"/>
 
    <plugin
          id="org.variability.definition.diagram.edit"
          download-size="10"
          install-size="18"
-         version="1.0.0.202004141907"
+         version="1.0.0.202005050936"
          unpack="false"/>
 
    <plugin
          id="org.variability.definition.diagram.editor"
          download-size="62"
          install-size="119"
-         version="1.0.0.202004141907"
+         version="1.0.0.202005050936"
          unpack="false"/>
 
    <plugin
          id="org.variability.definition.diagram.design"
-         download-size="53"
-         install-size="113"
-         version="1.0.0.202004141907"
+         download-size="109"
+         install-size="275"
+         version="1.0.0.202005050936"
          unpack="false"/>
 
    <plugin
          id="pnpl_variability.editor"
          download-size="94"
          install-size="180"
-         version="1.0.0.202004141907"
+         version="1.0.0.202005050936"
          unpack="false"/>
 
    <plugin
          id="pnpl_variability.editor.ui"
          download-size="31"
          install-size="60"
-         version="1.0.0.202004141907"
+         version="1.0.0.202005050936"
          unpack="false"/>
 
    <plugin
          id="pnpl_variability"
          download-size="34"
          install-size="73"
-         version="0.1.0.202004141907"
+         version="0.1.0.202005050936"
          unpack="false"/>
 
 </feature>

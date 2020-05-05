@@ -726,16 +726,16 @@
       </instructions>
     </touchpointData>
   </unit>
-  <unit id='202004141907.ecoreproductline' version='1.0.0.2--cKjyk6773733A5A5K3G'>
+  <unit id='202005050936.ecoreproductline' version='1.0.0.2--cKjyk6773733C3C3K9E'>
     <properties size='2'>
       <property name='org.eclipse.equinox.p2.name' value='Ecore Product Line'/>
       <property name='org.eclipse.equinox.p2.type.category' value='true'/>
     </properties>
     <provides size='1'>
-      <provided namespace='org.eclipse.equinox.p2.iu' name='202004141907.ecoreproductline' version='1.0.0.2--cKjyk6773733A5A5K3G'/>
+      <provided namespace='org.eclipse.equinox.p2.iu' name='202005050936.ecoreproductline' version='1.0.0.2--cKjyk6773733C3C3K9E'/>
     </provides>
     <requires size='1'>
-      <required namespace='org.eclipse.equinox.p2.iu' name='org.ecore.product.line.feature.feature.group' range='[1.0.0.202004141907,1.0.0.202004141907]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.ecore.product.line.feature.feature.group' range='[1.0.0.202005050936,1.0.0.202005050936]'/>
     </requires>
     <touchpoint id='null' version='0.0.0'/>
   </unit>

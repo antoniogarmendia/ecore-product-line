@@ -8,75 +8,10 @@
  <properties>
   <tycho.version>1.6.0</tycho.version>
   <xtext.version>2.14.0</xtext.version>
-  <!-- Accelo Config -->
-  <acceleo-version>3.3.0</acceleo-version>
-  <acceleo.snapshots>https://repo.eclipse.org/content/repositories/acceleo-snapshots</acceleo.snapshots>
-  <acceleo.release>https://repo.eclipse.org/content/repositories/acceleo-releases</acceleo.release>
-  <!-- End Accelo Config -->
   <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   <eclipse-repo.url>http://download.eclipse.org/eclipse/updates/4.9</eclipse-repo.url>  
  </properties>
  
- <profiles>
- 	<!-- Accelo Profile -->
-    <profile>
-      <id>platform-indigo</id>
-      <activation>
-         <activeByDefault>true</activeByDefault>
-        <property>
-          <name>platform-version-name</name>
-          <value>indigo</value>
-        </property>
-      </activation>
-      <properties>
-        <eclipse-site>http://download.eclipse.org/releases/indigo</eclipse-site>
-        <platform-version>[3.7,3.8)</platform-version>
-      </properties>
-    </profile>
-    <profile>
-      <id>platform-juno</id>
-      <activation>
-         <activeByDefault>false</activeByDefault>
-        <property>
-          <name>platform-version-name</name>
-          <value>juno</value>
-        </property>
-      </activation>
-      <properties>
-        <eclipse-site>http://download.eclipse.org/releases/juno</eclipse-site>
-        <platform-version>[3.8,4.2)</platform-version>
-      </properties>
-    </profile>
-    <!-- End Accelo Profile -->
-  </profiles>
-  
-  <!--Repository Accelo -->
-  <repositories>
-    <repository>
-      <id>eclipse-platform</id>
-      <layout>p2</layout>
-      <url>${eclipse-site}</url>
-    </repository>
-   <repository>
-       <id>Eclipse - Acceleo Snapshots</id>
-       <url>${acceleo.snapshots}</url>
-     </repository>
-     <repository>
-       <id>Eclipse - Acceleo Release</id>
-       <url>${acceleo.release}</url>
-     </repository>
-  </repositories>
-  <!-- End Repository Accelo -->
-   
-  <!-- Accelo Plug-in Repositories -->
-  <pluginRepositories>
-    <pluginRepository>
-      <id>codehaus.snapshots</id>
-      <url>http://snapshots.repository.codehaus.org/</url>
-    </pluginRepository>
-  </pluginRepositories>
-  <!-- End Accelo Plug-in Repositories -->
-
 <build>
   <plugins>
    <plugin>
@@ -178,7 +113,7 @@
   </plugins>
   <pluginManagement>
       <plugins>
-        <plugin>
+       <plugin>
           <groupId>org.eclipse.tycho</groupId>
           <artifactId>tycho-compiler-plugin</artifactId>
           <version>${tycho.version}</version>
@@ -212,7 +147,7 @@
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-antrun-plugin</artifactId>
           <version>1.3</version>
-        </plugin>
+        </plugin>        
       </plugins>
     </pluginManagement>
  </build>
