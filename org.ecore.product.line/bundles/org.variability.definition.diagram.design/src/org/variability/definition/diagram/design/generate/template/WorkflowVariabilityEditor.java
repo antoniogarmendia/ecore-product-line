@@ -33,9 +33,9 @@ public class WorkflowVariabilityEditor extends AbstractAcceleoGenerator {
     /**
      * The name of the module.
      *
-     * @generated
+     * @generated NOT
      */
-    public static final String MODULE_FILE_NAME = "/org/variability/definition/diagram/design/generate/template/WorkflowVariabilityEditor";
+    public static final String MODULE_FILE_NAME = "/bin/org/variability/definition/diagram/design/generate/template/WorkflowVariabilityEditor";
     
     /**
      * The name of the templates that are to be generated.
