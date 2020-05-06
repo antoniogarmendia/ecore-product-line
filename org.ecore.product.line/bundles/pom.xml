@@ -12,6 +12,7 @@
     </parent>
 
     <modules>
+    	<module>formula-solver</module>
         <module>pnpl_variability</module>
         <module>pnpl_variability.editor</module>  
         <module>pnpl_variability.editor.ide</module>       
