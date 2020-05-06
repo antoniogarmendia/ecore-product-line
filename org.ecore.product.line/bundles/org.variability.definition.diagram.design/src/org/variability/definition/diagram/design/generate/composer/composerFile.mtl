@@ -23,6 +23,7 @@ import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
@@ -172,7 +173,10 @@ public class GenericComposer extends ComposerExtensionClass {
 	}
 	
 	private String getNameOf(EObject obj) {
-		return obj.eGet(obj.eClass().getEStructuralFeature("name")).toString();		
+		EStructuralFeature featureName = obj.eClass().getEStructuralFeature("name");
+		if (featureName != null)		
+			return obj.eGet(featureName).toString();	
+		return null;	
 	}
 	
 	private void persistConfig(IFolder folder, Configuration configuration, String cfgName) {
