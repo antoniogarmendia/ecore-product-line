@@ -5,9 +5,13 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
+import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.impl.ExtensibleURIConverterImpl;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.editor.tools.internal.presentation.WorkspaceAndPluginsResourceDialog;
@@ -29,9 +33,19 @@ public class LoadOdesign implements IExternalJavaAction {
 				(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), false, Arrays.asList("odesign"));
 		loadDialog.open();
 		List<String> paths = loadDialog.getPaths();
+		addSemanticResources(paths, session);			
+	}
+	
+	public void addSemanticResources(List<String> paths, Session session) {
 		if (paths.size() > 0) {
-			session.addSemanticResource(URI.createPlatformPluginURI(paths.get(0), true), new NullProgressMonitor());
-		}		
+            for (String path : paths) {            	
+            	IFile file = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(path));
+            	if (file.exists() == true)
+            		session.addSemanticResource(URI.createPlatformResourceURI(paths.get(0), true), new NullProgressMonitor());
+            	else 
+            		session.addSemanticResource(URI.createPlatformPluginURI(paths.get(0), true), new NullProgressMonitor());            	
+            }
+        }
 	}
 
 	@Override
