@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" name="diagram" version="12.0.0.2017041100">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" name="diagram" version="12.0.0.2017041100">
   <ownedViewpoints name="PCDiagramVp" modelFileExtension="pcdef">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="PCDiagramDefinition" showOnStartup="true" domainClass="pcdef::PCDiagramDefinition" enablePopupBars="true">
       <metamodel href="http://www.eclipse.org/sirius/diagram/1.1.0#//description"/>
@@ -7,24 +7,41 @@
       <defaultLayer name="Default">
         <containerMappings name="GraphicalElementsContainer" semanticCandidatesExpression="aql:self" domainClass="pcdef::PCDiagramDefinition" childrenPresentation="List">
           <subNodeMappings name="NodeMappingNode" semanticCandidatesExpression="aql:self.graphicalElements->select(ele | ele.oclIsKindOf(description::NodeMapping) = true)" domainClass="description::DiagramElementMapping">
-            <style xsi:type="style:SquareDescription" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
+            <style xsi:type="style:SquareDescription" labelSize="12" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             </style>
           </subNodeMappings>
           <subNodeMappings name="EdgeMappingEdge" semanticCandidatesExpression="aql:self.graphicalElements->select(ele | ele.oclIsKindOf(description::EdgeMapping) = true)" domainClass="description::DiagramElementMapping">
-            <style xsi:type="style:SquareDescription" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
+            <style xsi:type="style:SquareDescription" labelSize="12" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             </style>
           </subNodeMappings>
-          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="PC to Graphical Elements">
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12" showIcon="false" labelExpression="Attach PC to Graphical Elements">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelFormat>bold</labelFormat>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+          </style>
+        </containerMappings>
+        <containerMappings name="StrongerThanContainer" semanticCandidatesExpression="aql:self" domainClass="pcdef::PCDiagramDefinition" childrenPresentation="List">
+          <subNodeMappings name="StrongerThanNode" semanticCandidatesExpression="feature:predicates" domainClass="pcdef::StrongerThan">
+            <style xsi:type="style:SquareDescription" labelSize="12" showIcon="false" labelExpression="aql:'(' + if (self.isSourceStronger = true) then self.ref.eContainer().name + ',  '+ self.ref.eType.name else self.ref.eType.name + ', '+ self.ref.eContainer().name endif + ', ' + self.ref.name + ' : ' + self.ref.eType.name +  ')'" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </subNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12" showIcon="false" labelExpression="Stronger-than relations">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelFormat>bold</labelFormat>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
           </style>
         </containerMappings>
         <toolSections>
@@ -37,6 +54,15 @@
                 </firstModelOperations>
               </initialOperation>
             </menuItemDescription>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" name="Create Predicate Stronger-Than" nodeMappings="//@ownedViewpoints[name='PCDiagramVp']/@ownedRepresentations[name='PCDiagramDefinition']/@defaultLayer/@containerMappings[name='StrongerThanContainer']/@subNodeMappings[name='StrongerThanNode']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:container">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="pcdef::StrongerThan" referenceName="predicates"/>
+              </firstModelOperations>
+            </initialOperation>
           </ownedTools>
         </toolSections>
       </defaultLayer>

@@ -96,6 +96,29 @@ public class PcdefItemProviderAdapterFactory extends PcdefAdapterFactory
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link pcdef.StrongerThan} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected StrongerThanItemProvider strongerThanItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link pcdef.StrongerThan}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createStrongerThanAdapter() {
+		if (strongerThanItemProvider == null) {
+			strongerThanItemProvider = new StrongerThanItemProvider(this);
+		}
+
+		return strongerThanItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -202,6 +225,8 @@ public class PcdefItemProviderAdapterFactory extends PcdefAdapterFactory
 	public void dispose() {
 		if (pcDiagramDefinitionItemProvider != null)
 			pcDiagramDefinitionItemProvider.dispose();
+		if (strongerThanItemProvider != null)
+			strongerThanItemProvider.dispose();
 	}
 
 }

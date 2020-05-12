@@ -57,6 +57,8 @@ public class PcdefFactoryImpl extends EFactoryImpl implements PcdefFactory {
 		switch (eClass.getClassifierID()) {
 		case PcdefPackage.PC_DIAGRAM_DEFINITION:
 			return createPCDiagramDefinition();
+		case PcdefPackage.STRONGER_THAN:
+			return createStrongerThan();
 		default:
 			throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -71,6 +73,17 @@ public class PcdefFactoryImpl extends EFactoryImpl implements PcdefFactory {
 	public PCDiagramDefinition createPCDiagramDefinition() {
 		PCDiagramDefinitionImpl pcDiagramDefinition = new PCDiagramDefinitionImpl();
 		return pcDiagramDefinition;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public StrongerThan createStrongerThan() {
+		StrongerThanImpl strongerThan = new StrongerThanImpl();
+		return strongerThan;
 	}
 
 	/**

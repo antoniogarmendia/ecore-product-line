@@ -20,6 +20,7 @@ import pcdef.PCDiagramDefinition;
 import pcdef.PcdefFactory;
 import pcdef.PcdefPackage;
 import pcdef.RepresentationExtensionFeature;
+import pcdef.StrongerThan;
 
 /**
  * <!-- begin-user-doc -->
@@ -41,6 +42,13 @@ public class PcdefPackageImpl extends EPackageImpl implements PcdefPackage {
 	 * @generated
 	 */
 	private EClass pcDiagramDefinitionEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass strongerThanEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -177,6 +185,46 @@ public class PcdefPackageImpl extends EPackageImpl implements PcdefPackage {
 	 * @generated
 	 */
 	@Override
+	public EReference getPCDiagramDefinition_Predicates() {
+		return (EReference) pcDiagramDefinitionEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getStrongerThan() {
+		return strongerThanEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getStrongerThan_Ref() {
+		return (EReference) strongerThanEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getStrongerThan_IsSourceStronger() {
+		return (EAttribute) strongerThanEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public PcdefFactory getPcdefFactory() {
 		return (PcdefFactory) getEFactoryInstance();
 	}
@@ -208,6 +256,11 @@ public class PcdefPackageImpl extends EPackageImpl implements PcdefPackage {
 
 		pcDiagramDefinitionEClass = createEClass(PC_DIAGRAM_DEFINITION);
 		createEReference(pcDiagramDefinitionEClass, PC_DIAGRAM_DEFINITION__GRAPHICAL_ELEMENTS);
+		createEReference(pcDiagramDefinitionEClass, PC_DIAGRAM_DEFINITION__PREDICATES);
+
+		strongerThanEClass = createEClass(STRONGER_THAN);
+		createEReference(strongerThanEClass, STRONGER_THAN__REF);
+		createEAttribute(strongerThanEClass, STRONGER_THAN__IS_SOURCE_STRONGER);
 	}
 
 	/**
@@ -237,6 +290,7 @@ public class PcdefPackageImpl extends EPackageImpl implements PcdefPackage {
 		// Obtain other dependent packages
 		DescriptionPackage theDescriptionPackage = (DescriptionPackage) EPackage.Registry.INSTANCE
 				.getEPackage(DescriptionPackage.eNS_URI);
+		EcorePackage theEcorePackage = (EcorePackage) EPackage.Registry.INSTANCE.getEPackage(EcorePackage.eNS_URI);
 
 		// Create type parameters
 
@@ -263,6 +317,18 @@ public class PcdefPackageImpl extends EPackageImpl implements PcdefPackage {
 		initEReference(getPCDiagramDefinition_GraphicalElements(), theDescriptionPackage.getDiagramElementMapping(),
 				null, "graphicalElements", null, 1, -1, PCDiagramDefinition.class, !IS_TRANSIENT, !IS_VOLATILE,
 				IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPCDiagramDefinition_Predicates(), this.getStrongerThan(), null, "predicates", null, 0, -1,
+				PCDiagramDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(strongerThanEClass, StrongerThan.class, "StrongerThan", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getStrongerThan_Ref(), theEcorePackage.getEReference(), null, "ref", null, 1, 1,
+				StrongerThan.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getStrongerThan_IsSourceStronger(), theEcorePackage.getEBoolean(), "isSourceStronger", "true", 0,
+				1, StrongerThan.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

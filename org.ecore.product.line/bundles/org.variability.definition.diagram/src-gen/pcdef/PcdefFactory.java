@@ -31,6 +31,15 @@ public interface PcdefFactory extends EFactory {
 	PCDiagramDefinition createPCDiagramDefinition();
 
 	/**
+	 * Returns a new object of class '<em>Stronger Than</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Stronger Than</em>'.
+	 * @generated
+	 */
+	StrongerThan createStrongerThan();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

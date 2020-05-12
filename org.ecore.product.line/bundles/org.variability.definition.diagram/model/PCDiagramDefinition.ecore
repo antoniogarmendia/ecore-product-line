@@ -10,6 +10,13 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PCDiagramDefinition" eSuperTypes="#//RepresentationExtensionFeature">
     <eStructuralFeatures xsi:type="ecore:EReference" name="graphicalElements" lowerBound="1"
-        upperBound="-1" eType="ecore:EClass platform:/plugin/org.eclipse.sirius.diagram/model/diagram.ecore#//description/DiagramElementMapping"/>
+        upperBound="-1" eType="ecore:EClass ../../org.eclipse.sirius.diagram/model/diagram.ecore#//description/DiagramElementMapping"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="predicates" upperBound="-1"
+        eType="#//StrongerThan" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="StrongerThan">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ref" lowerBound="1" eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EReference"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isSourceStronger" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"
+        defaultValueLiteral="true"/>
   </eClassifiers>
 </ecore:EPackage>
