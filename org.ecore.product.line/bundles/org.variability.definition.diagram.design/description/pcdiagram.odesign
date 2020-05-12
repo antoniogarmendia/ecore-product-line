@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" name="diagram" version="12.0.0.2017041100">
   <ownedViewpoints name="PCDiagramVp" modelFileExtension="pcdef">
-    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="PCDiagramDefinition" showOnStartup="true" domainClass="pcdef::PCDiagramDefinition" enablePopupBars="true">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="PCDiagramDefinition" initialisation="true" domainClass="pcdef::PCDiagramDefinition" enablePopupBars="true">
       <metamodel href="http://www.eclipse.org/sirius/diagram/1.1.0#//description"/>
       <metamodel href="../../org.variability.definition.diagram/model/PCDiagramDefinition.ecore#/"/>
       <defaultLayer name="Default">
         <containerMappings name="GraphicalElementsContainer" semanticCandidatesExpression="aql:self" domainClass="pcdef::PCDiagramDefinition" childrenPresentation="List">
-          <subNodeMappings name="NodeMappingNode" semanticCandidatesExpression="aql:self.graphicalElements->select(ele | ele.oclIsKindOf(description::NodeMapping) = true)" domainClass="description::DiagramElementMapping">
+          <subNodeMappings name="NodeMappingNode" semanticCandidatesExpression="aql:self.graphicalElements" domainClass="description::NodeMapping">
             <style xsi:type="style:SquareDescription" labelSize="12" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             </style>
           </subNodeMappings>
-          <subNodeMappings name="EdgeMappingEdge" semanticCandidatesExpression="aql:self.graphicalElements->select(ele | ele.oclIsKindOf(description::EdgeMapping) = true)" domainClass="description::DiagramElementMapping">
+          <subNodeMappings name="EdgeMappingEdge" semanticCandidatesExpression="aql:self.graphicalElements" domainClass="description::EdgeMapping">
             <style xsi:type="style:SquareDescription" labelSize="12" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             </style>
           </subNodeMappings>
-          <subNodeMappings name="ContainerMappingNode" semanticCandidatesExpression="aql:self.graphicalElements->select(ele | ele.oclIsKindOf(description::ContainerMapping) = true)" domainClass="description::DiagramElementMapping">
+          <subNodeMappings name="ContainerMappingNode" semanticCandidatesExpression="aql:self.graphicalElements" domainClass="description::ContainerMapping">
             <style xsi:type="style:SquareDescription" labelSize="12" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>

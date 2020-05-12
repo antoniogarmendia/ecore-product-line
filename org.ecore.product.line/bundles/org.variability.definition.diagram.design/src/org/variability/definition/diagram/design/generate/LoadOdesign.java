@@ -11,7 +11,6 @@ import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.resource.impl.ExtensibleURIConverterImpl;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.editor.tools.internal.presentation.WorkspaceAndPluginsResourceDialog;
@@ -40,6 +39,7 @@ public class LoadOdesign implements IExternalJavaAction {
 		if (paths.size() > 0) {
             for (String path : paths) {            	
             	IFile file = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(path));
+            	//Check if the odesign is in the current workspace workspace 
             	if (file.exists() == true)
             		session.addSemanticResource(URI.createPlatformResourceURI(paths.get(0), true), new NullProgressMonitor());
             	else 

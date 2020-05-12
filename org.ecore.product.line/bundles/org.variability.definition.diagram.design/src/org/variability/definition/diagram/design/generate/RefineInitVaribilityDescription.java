@@ -1,17 +1,24 @@
 package org.variability.definition.diagram.design.generate;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.xmi.XMLResource;
+import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
 import org.eclipse.sirius.diagram.description.AdditionalLayer;
+import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.DiagramExtensionDescription;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
+import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.viewpoint.description.JavaExtension;
 import org.eclipse.sirius.viewpoint.description.RepresentationExtensionDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
+import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 import org.variability.definition.diagram.design.vp.ViewpointSpecificationProjectExtended;
 
 import pcdef.PCDiagramDefinition;
@@ -40,9 +47,50 @@ public class RefineInitVaribilityDescription {
 		updateAttributesViewpoint();
 		updateDiagramExtension();
 		updateTargetDiagramElements();
+		createPCUpdatePrecondition();
 		// Save Viewpoint
 		saveViewpoint();
 	}
+	
+	// update precondition of Create PC
+	private void createPCUpdatePrecondition() {
+		RepresentationExtensionDescription representation = this.vpBaseVariability.getOwnedRepresentationExtensions().get(0);
+		if (representation instanceof DiagramExtensionDescription) {
+			DiagramExtensionDescription diagramExtension = (DiagramExtensionDescription) representation;
+			AdditionalLayer layer = diagramExtension.getLayers().get(0);
+			EList<AbstractToolDescription> listOfTools = layer.getAllTools();
+			AbstractToolDescription pcCreationTool = listOfTools.get(0);
+			pcCreationTool.setPrecondition(createPreCondition());			
+		}		
+	}
+
+	private String createPreCondition() {
+		String preCondition = "aql:";
+		String endifConcatenation = " false";
+		Iterator<DiagramElementMapping> itDiagramElements = this.diagramDefinition.getGraphicalElements().iterator();	
+		List<String> listOfDomains = new ArrayList<String>();
+		while (itDiagramElements.hasNext()) {
+			DiagramElementMapping diagramElementMapping = (DiagramElementMapping) itDiagramElements.next();
+			String domainClass = null;
+			//Nodes and Containers
+			if (diagramElementMapping instanceof AbstractNodeMapping) {
+				AbstractNodeMapping abstractNode = (AbstractNodeMapping) diagramElementMapping;
+				domainClass = abstractNode.getDomainClass();				
+			} else if (diagramElementMapping instanceof EdgeMapping) {
+				EdgeMapping edgeMapping = (EdgeMapping) diagramElementMapping;
+				domainClass = edgeMapping.getDomainClass();
+			}
+			// Check if the domain class was added already
+			if (domainClass != null && listOfDomains.indexOf(domainClass) == -1) {
+				listOfDomains.add(domainClass);
+				preCondition += "if (self.oclIsKindOf(" + domainClass + ") and self.name <> null ) then true else ";
+				endifConcatenation += " endif";
+			}
+		}		
+		return preCondition + endifConcatenation;
+	}
+	
+	
 	
 	private void saveViewpoint() {
 		// Save the contents of the resource to the file system.
@@ -89,7 +137,7 @@ public class RefineInitVaribilityDescription {
 						while (itEdgeMappings.hasNext()) {
 							EdgeMapping edgeMapping = (EdgeMapping) itEdgeMappings.next();
 							if (edgeMapping.getName().equals(EDGE_MAPPING_PC_ID)) {
-								edgeMapping.getTargetMapping().addAll(diagramDefinition.getGraphicalElements());								
+								edgeMapping.getTargetMapping().addAll(this.diagramDefinition.getGraphicalElements());								
 							}
 						}
 					}

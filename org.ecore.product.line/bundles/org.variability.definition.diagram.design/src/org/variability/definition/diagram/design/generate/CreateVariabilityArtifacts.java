@@ -58,8 +58,8 @@ public class CreateVariabilityArtifacts {
 		} catch (CoreException e) {			
 			e.printStackTrace();
 		}       
-	}	
-	
+	}
+
 	private void generateFiles(EObject vpBaseVariability, IResource viewpointProject, Viewpoint toExtendVP) {		
         final List<Object> generatorargs = new ArrayList<Object>();
         generatorargs.add(this.projectName);
