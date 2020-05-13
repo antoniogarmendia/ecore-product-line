@@ -2,11 +2,5 @@
 <?eclipse version="3.4"?>
 <plugin>
 
-   <extension point="org.eclipse.xtext.extension_resourceServiceProvider">
-      <resourceServiceProvider
-            class="pnpl_variability.providers.PetriNetsResourceServiceProvider"
-            uriExtension="petrinets">
-      </resourceServiceProvider>
-   </extension>
 
 </plugin>

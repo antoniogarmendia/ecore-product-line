@@ -7,11 +7,12 @@
 [import org::variability::definition::diagram::design::generate::composer::composerFile /]
 [import org::variability::definition::diagram::design::generate::template::utils::EMFHandler/]
 [import org::variability::definition::diagram::design::generate::composer::featureProviderFile /]
+[import org::variability::definition::diagram::design::generate::providers::genericResourceProviderFile /]
 
 [template public WorkflowVariabilityEditor(modelEObject : EObject, projectName : EString, modelName : EString, toExtendViewpoint : Viewpoint)]
 [comment @main /]
 [presenceConditionServices(projectName) /]	
-[generatePluginXMLFile(projectName, modelName) /]
+[generatePluginXMLFile(projectName, modelName, toExtendViewpoint) /]
 [generateMETAINFFile(projectName)/]
 
 [comment Package Utils /]
@@ -21,5 +22,8 @@
 [comment Package Composer /]
 [generateComposer(projectName, toExtendViewpoint) /]
 [generateFeatureProviderFile(projectName)/]
+
+[comment Package Providers /]
+[generateResourceProvider(projectName, toExtendViewpoint)/]
 
 [/template]

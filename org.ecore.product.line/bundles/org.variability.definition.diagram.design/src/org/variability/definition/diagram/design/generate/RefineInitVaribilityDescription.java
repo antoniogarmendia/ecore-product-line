@@ -1,20 +1,16 @@
 package org.variability.definition.diagram.design.generate;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.xmi.XMLResource;
-import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
 import org.eclipse.sirius.diagram.description.AdditionalLayer;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.DiagramExtensionDescription;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
-import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.viewpoint.description.JavaExtension;
 import org.eclipse.sirius.viewpoint.description.RepresentationExtensionDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
@@ -65,32 +61,16 @@ public class RefineInitVaribilityDescription {
 	}
 
 	private String createPreCondition() {
-		String preCondition = "aql:";
-		String endifConcatenation = " false";
+		String preCondition = "aql:if (self.name = null) then false else ";
+		String endifConcatenation = " false endif";
 		Iterator<DiagramElementMapping> itDiagramElements = this.diagramDefinition.getGraphicalElements().iterator();	
-		List<String> listOfDomains = new ArrayList<String>();
 		while (itDiagramElements.hasNext()) {
 			DiagramElementMapping diagramElementMapping = (DiagramElementMapping) itDiagramElements.next();
-			String domainClass = null;
-			//Nodes and Containers
-			if (diagramElementMapping instanceof AbstractNodeMapping) {
-				AbstractNodeMapping abstractNode = (AbstractNodeMapping) diagramElementMapping;
-				domainClass = abstractNode.getDomainClass();				
-			} else if (diagramElementMapping instanceof EdgeMapping) {
-				EdgeMapping edgeMapping = (EdgeMapping) diagramElementMapping;
-				domainClass = edgeMapping.getDomainClass();
-			}
-			// Check if the domain class was added already
-			if (domainClass != null && listOfDomains.indexOf(domainClass) == -1) {
-				listOfDomains.add(domainClass);
-				preCondition += "if (self.oclIsKindOf(" + domainClass + ") and self.name <> null ) then true else ";
-				endifConcatenation += " endif";
-			}
+			preCondition += "if (elementView.diagramElementMapping.name.equals('" + diagramElementMapping.getName() + "')) then true else ";			
+			endifConcatenation += " endif";			
 		}		
 		return preCondition + endifConcatenation;
-	}
-	
-	
+	}	
 	
 	private void saveViewpoint() {
 		// Save the contents of the resource to the file system.

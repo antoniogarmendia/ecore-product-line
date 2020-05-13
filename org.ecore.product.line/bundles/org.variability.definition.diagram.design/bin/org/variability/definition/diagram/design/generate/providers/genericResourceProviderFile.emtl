@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:mtl="http://www.eclipse.org/acceleo/mtl/3.0" xmlns:ocl.ecore="http://www.eclipse.org/ocl/1.1.0/Ecore">
+  <mtl:Module name="genericResourceProviderFile" nsURI="org::variability::definition::diagram::design::generate::providers::genericResourceProviderFile" startHeaderPosition="29" endHeaderPosition="267">
+    <input>
+      <takesTypesFrom href="http://www.eclipse.org/emf/2002/Ecore#/"/>
+    </input>
+    <input>
+      <takesTypesFrom href="http://www.eclipse.org/sirius/1.1.0#//description"/>
+      <takesTypesFrom href="http://www.eclipse.org/sirius/1.1.0#//description/style"/>
+      <takesTypesFrom href="http://www.eclipse.org/sirius/1.1.0#//description/tool"/>
+      <takesTypesFrom href="http://www.eclipse.org/sirius/1.1.0#//description/validation"/>
+      <takesTypesFrom href="http://www.eclipse.org/sirius/1.1.0#//description/audit"/>
+    </input>
+    <imports href="../template/request/queriesPresenceCondUtils.emtl#/0"/>
+    <ownedModuleElement xsi:type="mtl:Template" name="generateResourceProvider" visibility="Public">
+      <body xsi:type="mtl:FileBlock" openMode="OverWrite">
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="package "/>
+        <body xsi:type="ocl.ecore:VariableExp" name="projectName" referredVariable="/0/generateResourceProvider/projectName">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=".providers;&#xA;&#xA;import java.util.Collection;&#xA;import java.util.Collections;&#xA;import java.util.List;&#xA;&#xA;import org.eclipse.emf.common.util.URI;&#xA;import org.eclipse.emf.ecore.EObject;&#xA;import org.eclipse.emf.ecore.EStructuralFeature;&#xA;import org.eclipse.emf.ecore.resource.Resource;&#xA;import org.eclipse.xtext.naming.IQualifiedNameProvider;&#xA;import org.eclipse.xtext.naming.QualifiedName;&#xA;import org.eclipse.xtext.parser.IEncodingProvider;&#xA;import org.eclipse.xtext.resource.IResourceDescription.Delta;&#xA;import org.eclipse.xtext.resource.IResourceDescription.Manager;&#xA;import org.eclipse.xtext.resource.IResourceDescription;&#xA;import org.eclipse.xtext.resource.IResourceDescriptions;&#xA;import org.eclipse.xtext.resource.IResourceServiceProvider;&#xA;import org.eclipse.xtext.resource.impl.DefaultResourceDescription;&#xA;import org.eclipse.xtext.resource.impl.DefaultResourceDescriptionDelta;&#xA;import org.eclipse.xtext.resource.impl.DefaultResourceDescriptionStrategy;&#xA;import org.eclipse.xtext.resource.impl.SimpleResourceDescriptionsBasedContainerManager;&#xA;import org.eclipse.xtext.service.OperationCanceledError;&#xA;import org.eclipse.xtext.util.CancelIndicator;&#xA;import org.eclipse.xtext.validation.CheckMode;&#xA;import org.eclipse.xtext.validation.IResourceValidator;&#xA;import org.eclipse.xtext.validation.Issue;&#xA;&#xA;public class GenericResourceServiceProvider implements IResourceServiceProvider {&#xA;&#x9;&#xA;&#x9;public GenericResourceServiceProvider() {&#xA;&#x9;&#x9;// Do nothing&#xA;&#x9;}&#xA;&#xA;&#x9;@Override&#xA;&#x9;public IResourceValidator getResourceValidator() {&#xA;&#x9;&#x9;return new IResourceValidator() {&#xA;&#xA;&#x9;&#x9;&#x9;@Override&#xA;&#x9;&#x9;&#x9;public List&lt;Issue> validate(Resource resource, CheckMode mode, CancelIndicator indicator)&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;throws OperationCanceledError {&#x9;&#x9;&#x9;&#x9;&#xA;&#x9;&#x9;&#x9;&#x9;return Collections.emptyList();&#xA;&#x9;&#x9;&#x9;}&#x9;&#x9;&#x9;&#xA;&#x9;&#x9;};&#xA;&#x9;}&#xA;&#xA;&#x9;@Override&#xA;&#x9;public Manager getResourceDescriptionManager() {&#xA;&#x9;&#x9;return new Manager() {&#xA;&#x9;&#x9;&#x9;&#xA;&#x9;&#x9;&#x9;@Override&#xA;&#x9;&#x9;&#x9;public boolean isAffected(Collection&lt;Delta> deltas, IResourceDescription candidate, IResourceDescriptions context)&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;throws IllegalArgumentException {&#x9;&#x9;&#x9;&#x9;&#xA;&#x9;&#x9;&#x9;&#x9;return false;&#xA;&#x9;&#x9;&#x9;}&#xA;&#x9;&#x9;&#x9;&#xA;&#x9;&#x9;&#x9;@Override&#xA;&#x9;&#x9;&#x9;public boolean isAffected(Delta delta, IResourceDescription candidate) throws IllegalArgumentException {&#x9;&#x9;&#x9;&#x9;&#xA;&#x9;&#x9;&#x9;&#x9;return false;&#xA;&#x9;&#x9;&#x9;}&#xA;&#x9;&#x9;&#x9;&#xA;&#x9;&#x9;&#x9;@Override&#xA;&#x9;&#x9;&#x9;public IResourceDescription getResourceDescription(Resource resource) {&#xA;&#x9;&#x9;&#x9;&#x9;DefaultResourceDescriptionStrategy descriptionStrategy = new DefaultResourceDescriptionStrategy();&#xA;&#x9;&#x9;&#x9;&#x9;descriptionStrategy.setQualifiedNameProvider(new IQualifiedNameProvider() {&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;private QualifiedName getGeneralQualifiedName(EObject eObject) {&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;EStructuralFeature fName = eObject.eClass().getEAllStructuralFeatures().stream().filter(struct -> struct.getName().equals(&quot;name&quot;)).findFirst().get();&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;if (fName != null)&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;return QualifiedName.create(eObject.eGet(fName).toString());&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;return null;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;}&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;@Override&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;public QualifiedName apply(EObject input) {&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;return getGeneralQualifiedName(input);&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;}&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;@Override&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;public QualifiedName getFullyQualifiedName(EObject obj) {&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;return getGeneralQualifiedName(obj);&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;}&#xA;&#x9;&#x9;&#x9;&#x9;});&#x9;&#x9;&#x9;&#x9;&#xA;&#x9;&#x9;&#x9;&#x9;&#xA;&#x9;&#x9;&#x9;&#x9;return new DefaultResourceDescription(resource, descriptionStrategy);&#xA;&#x9;&#x9;&#x9;}&#xA;&#x9;&#x9;&#x9;&#xA;&#x9;&#x9;&#x9;@Override&#xA;&#x9;&#x9;&#x9;public Delta createDelta(IResourceDescription oldDescription, IResourceDescription newDescription) {&#xA;&#x9;&#x9;&#x9;&#x9;return new DefaultResourceDescriptionDelta(oldDescription, newDescription);&#xA;&#x9;&#x9;&#x9;}&#xA;&#x9;&#x9;};&#xA;&#x9;}&#xA;&#xA;&#x9;@Override&#xA;&#x9;public org.eclipse.xtext.resource.IContainer.Manager getContainerManager() {&#xA;&#x9;&#x9;return new SimpleResourceDescriptionsBasedContainerManager();&#xA;&#x9;}&#xA;&#xA;&#x9;@Override&#xA;&#x9;public boolean canHandle(URI uri) {&#x9;&#x9;&#xA;&#x9;&#x9;return uri.fileExtension().equals(&quot;"/>
+        <body xsi:type="ocl.ecore:PropertyCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:VariableExp" name="toExtendViewpoint" referredVariable="/0/generateResourceProvider/toExtendViewpoint">
+            <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/sirius/1.1.0#//description/Viewpoint"/>
+          </source>
+          <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/sirius/1.1.0#//description/Viewpoint/modelFileExtension"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&quot;);&#xA;&#x9;}&#xA;&#xA;&#x9;@Override&#xA;&#x9;public IEncodingProvider getEncodingProvider() {&#xA;&#x9;&#x9;throw new UnsupportedOperationException(&quot;Unsupported Operation&quot;);&#xA;&#x9;}&#xA;&#xA;&#x9;@Override&#xA;&#x9;public &lt;T> T get(Class&lt;T> t) {&#x9;&#x9;&#xA;&#x9;&#x9;return null;&#xA;&#x9;}&#xA;&#xA;}&#xA;"/>
+        <fileUrl xsi:type="ocl.ecore:OperationCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="mtl:QueryInvocation">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <definition href="../template/request/queriesPresenceCondUtils.emtl#/0/getPackagePathbyProjectName"/>
+            <argument xsi:type="ocl.ecore:VariableExp" name="projectName" referredVariable="/0/generateResourceProvider/projectName">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            </argument>
+          </source>
+          <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="/providers/GenericResourceServiceProvider.java">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          </argument>
+          <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/concat"/>
+        </fileUrl>
+        <charset xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="UTF-8">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </charset>
+      </body>
+      <parameter name="projectName">
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+      </parameter>
+      <parameter name="toExtendViewpoint">
+        <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/sirius/1.1.0#//description/Viewpoint"/>
+      </parameter>
+    </ownedModuleElement>
+  </mtl:Module>
+  <ecore:EPackage name="additions">
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_String_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Integer_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Real_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Real"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ecore_EObject_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+      </eAnnotations>
+      <eOperations name="generateResourceProvider">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL" references="/0/generateResourceProvider"/>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="projectName">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+        <eParameters name="toExtendViewpoint">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/sirius/1.1.0#//description/Viewpoint"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="getPackagePathbyProjectName">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="../template/request/queriesPresenceCondUtils.emtl#/0/getPackagePathbyProjectName"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="projectName">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+      </eOperations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_OclAny_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Collection(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Collection(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Sequence(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Sequence(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_OrderedSet(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OrderedSet(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+  </ecore:EPackage>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ecore:EAnnotation source="positions">
+    <eAnnotations source="positions.0" references="/0/generateResourceProvider">
+      <details key="start" value="271"/>
+      <details key="end" value="4378"/>
+      <details key="line" value="5"/>
+    </eAnnotations>
+    <eAnnotations source="positions.1" references="/0/generateResourceProvider/%">
+      <details key="start" value="368"/>
+      <details key="end" value="4366"/>
+      <details key="line" value="6"/>
+    </eAnnotations>
+    <eAnnotations source="positions.2" references="/0/generateResourceProvider/%/%">
+      <details key="start" value="491"/>
+      <details key="end" value="499"/>
+      <details key="line" value="7"/>
+    </eAnnotations>
+    <eAnnotations source="positions.3" references="/0/generateResourceProvider/%/projectName">
+      <details key="start" value="500"/>
+      <details key="end" value="511"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.4" references="/0/generateResourceProvider/%/%.1">
+      <details key="start" value="513"/>
+      <details key="end" value="4113"/>
+      <details key="line" value="7"/>
+    </eAnnotations>
+    <eAnnotations source="positions.5" references="/0/generateResourceProvider/%/%.2">
+      <details key="start" value="4114"/>
+      <details key="end" value="4150"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.6" references="/0/generateResourceProvider/%/%.2/toExtendViewpoint">
+      <details key="start" value="4114"/>
+      <details key="end" value="4131"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.7" references="/0/generateResourceProvider/%/%.3">
+      <details key="start" value="4152"/>
+      <details key="end" value="4359"/>
+      <details key="line" value="108"/>
+    </eAnnotations>
+    <eAnnotations source="positions.8" references="/0/generateResourceProvider/%/%.4">
+      <details key="start" value="375"/>
+      <details key="end" value="472"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.9" references="/0/generateResourceProvider/%/%.4/%">
+      <details key="start" value="375"/>
+      <details key="end" value="415"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.10" references="/0/generateResourceProvider/%/%.4/%/projectName">
+      <details key="start" value="403"/>
+      <details key="end" value="414"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.11" references="/0/generateResourceProvider/%/%.4/%.1">
+      <details key="start" value="423"/>
+      <details key="end" value="471"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.12" references="/0/generateResourceProvider/%/%.5">
+      <details key="start" value="481"/>
+      <details key="end" value="488"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.13" references="/0/generateResourceProvider/projectName">
+      <details key="start" value="313"/>
+      <details key="end" value="334"/>
+      <details key="line" value="5"/>
+    </eAnnotations>
+    <eAnnotations source="positions.14" references="/0/generateResourceProvider/toExtendViewpoint">
+      <details key="start" value="336"/>
+      <details key="end" value="365"/>
+      <details key="line" value="5"/>
+    </eAnnotations>
+  </ecore:EAnnotation>
+</xmi:XMI>

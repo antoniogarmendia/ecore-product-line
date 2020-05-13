@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:mtl="http://www.eclipse.org/acceleo/mtl/3.0" xmlns:ocl.ecore="http://www.eclipse.org/ocl/1.1.0/Ecore">
-  <mtl:Module name="PluginXML" nsURI="org::variability::definition::diagram::design::generate::template::PluginXML" startHeaderPosition="29" endHeaderPosition="378">
+  <mtl:Module name="PluginXML" nsURI="org::variability::definition::diagram::design::generate::template::PluginXML" startHeaderPosition="29" endHeaderPosition="460">
     <input>
       <takesTypesFrom href="http://www.eclipse.org/emf/2002/Ecore#/"/>
+    </input>
+    <input>
+      <takesTypesFrom href="http://www.eclipse.org/sirius/1.1.0#//description"/>
+      <takesTypesFrom href="http://www.eclipse.org/sirius/1.1.0#//description/style"/>
+      <takesTypesFrom href="http://www.eclipse.org/sirius/1.1.0#//description/tool"/>
+      <takesTypesFrom href="http://www.eclipse.org/sirius/1.1.0#//description/validation"/>
+      <takesTypesFrom href="http://www.eclipse.org/sirius/1.1.0#//description/audit"/>
     </input>
     <ownedModuleElement xsi:type="mtl:Template" name="generatePluginXMLFile" visibility="Public">
       <body xsi:type="mtl:FileBlock" openMode="OverWrite">
@@ -42,7 +49,19 @@
         <body xsi:type="ocl.ecore:VariableExp" name="projectName" referredVariable="/0/generatePluginXMLFile/projectName">
           <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         </body>
-        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="-featureide&quot;>&#xA;     &lt;/composer>&#xA; &lt;/extension>&#xA;&lt;/plugin>&#xA;"/>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="-featureide&quot;>&#xA;     &lt;/composer>&#xA; &lt;/extension>&#xA;  &lt;extension point=&quot;org.eclipse.xtext.extension_resourceServiceProvider&quot;>&#xA;      &lt;resourceServiceProvider&#xA;            class=&quot;"/>
+        <body xsi:type="ocl.ecore:VariableExp" name="projectName" referredVariable="/0/generatePluginXMLFile/projectName">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=".providers.GenericResourceServiceProvider&quot;&#xA;            uriExtension=&quot;"/>
+        <body xsi:type="ocl.ecore:PropertyCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:VariableExp" name="toExtendViewpoint" referredVariable="/0/generatePluginXMLFile/toExtendViewpoint">
+            <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/sirius/1.1.0#//description/Viewpoint"/>
+          </source>
+          <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/sirius/1.1.0#//description/Viewpoint/modelFileExtension"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&quot;>&#xA;      &lt;/resourceServiceProvider>&#xA;   &lt;/extension>&#xA;&lt;/plugin>&#xA;"/>
         <fileUrl xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="plugin.xml">
           <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         </fileUrl>
@@ -55,6 +74,9 @@
       </parameter>
       <parameter name="modelName">
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+      </parameter>
+      <parameter name="toExtendViewpoint">
+        <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/sirius/1.1.0#//description/Viewpoint"/>
       </parameter>
     </ownedModuleElement>
   </mtl:Module>
@@ -89,6 +111,9 @@
         </eParameters>
         <eParameters name="modelName">
           <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+        <eParameters name="toExtendViewpoint">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/sirius/1.1.0#//description/Viewpoint"/>
         </eParameters>
       </eOperations>
     </eClassifiers>
@@ -159,132 +184,168 @@
     <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
   </ocl.ecore:Variable>
   <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
     <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
   </ocl.ecore:Variable>
   <ecore:EAnnotation source="positions">
     <eAnnotations source="positions.0" references="/0/generatePluginXMLFile">
-      <details key="start" value="90"/>
-      <details key="end" value="870"/>
+      <details key="start" value="141"/>
+      <details key="end" value="1250"/>
       <details key="line" value="4"/>
     </eAnnotations>
     <eAnnotations source="positions.1" references="/0/generatePluginXMLFile/%">
-      <details key="start" value="174"/>
-      <details key="end" value="858"/>
+      <details key="start" value="256"/>
+      <details key="end" value="1238"/>
       <details key="line" value="5"/>
     </eAnnotations>
     <eAnnotations source="positions.2" references="/0/generatePluginXMLFile/%/%">
-      <details key="start" value="212"/>
-      <details key="end" value="366"/>
+      <details key="start" value="294"/>
+      <details key="end" value="448"/>
       <details key="line" value="6"/>
     </eAnnotations>
     <eAnnotations source="positions.3" references="/0/generatePluginXMLFile/%/projectName">
-      <details key="start" value="367"/>
-      <details key="end" value="378"/>
+      <details key="start" value="449"/>
+      <details key="end" value="460"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.4" references="/0/generatePluginXMLFile/%/%.1">
-      <details key="start" value="380"/>
-      <details key="end" value="411"/>
+      <details key="start" value="462"/>
+      <details key="end" value="493"/>
       <details key="line" value="10"/>
     </eAnnotations>
     <eAnnotations source="positions.5" references="/0/generatePluginXMLFile/%/projectName.1">
-      <details key="start" value="412"/>
-      <details key="end" value="423"/>
+      <details key="start" value="494"/>
+      <details key="end" value="505"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.6" references="/0/generatePluginXMLFile/%/%.2">
-      <details key="start" value="425"/>
-      <details key="end" value="441"/>
+      <details key="start" value="507"/>
+      <details key="end" value="523"/>
       <details key="line" value="11"/>
     </eAnnotations>
     <eAnnotations source="positions.7" references="/0/generatePluginXMLFile/%/modelName">
-      <details key="start" value="442"/>
-      <details key="end" value="451"/>
+      <details key="start" value="524"/>
+      <details key="end" value="533"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.8" references="/0/generatePluginXMLFile/%/%.3">
-      <details key="start" value="453"/>
-      <details key="end" value="585"/>
+      <details key="start" value="535"/>
+      <details key="end" value="667"/>
       <details key="line" value="12"/>
     </eAnnotations>
     <eAnnotations source="positions.9" references="/0/generatePluginXMLFile/%/projectName.2">
-      <details key="start" value="586"/>
-      <details key="end" value="597"/>
+      <details key="start" value="668"/>
+      <details key="end" value="679"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.10" references="/0/generatePluginXMLFile/%/%.4">
-      <details key="start" value="599"/>
-      <details key="end" value="650"/>
+      <details key="start" value="681"/>
+      <details key="end" value="732"/>
       <details key="line" value="18"/>
     </eAnnotations>
     <eAnnotations source="positions.11" references="/0/generatePluginXMLFile/%/modelName.1">
-      <details key="start" value="651"/>
-      <details key="end" value="660"/>
+      <details key="start" value="733"/>
+      <details key="end" value="742"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.12" references="/0/generatePluginXMLFile/%/%.5">
-      <details key="start" value="662"/>
-      <details key="end" value="674"/>
+      <details key="start" value="744"/>
+      <details key="end" value="756"/>
       <details key="line" value="19"/>
     </eAnnotations>
     <eAnnotations source="positions.13" references="/0/generatePluginXMLFile/%/modelName.2">
-      <details key="start" value="675"/>
-      <details key="end" value="684"/>
+      <details key="start" value="757"/>
+      <details key="end" value="766"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.14" references="/0/generatePluginXMLFile/%/%.6">
-      <details key="start" value="686"/>
-      <details key="end" value="703"/>
+      <details key="start" value="768"/>
+      <details key="end" value="785"/>
       <details key="line" value="19"/>
     </eAnnotations>
     <eAnnotations source="positions.15" references="/0/generatePluginXMLFile/%/projectName.3">
-      <details key="start" value="704"/>
-      <details key="end" value="715"/>
+      <details key="start" value="786"/>
+      <details key="end" value="797"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.16" references="/0/generatePluginXMLFile/%/%.7">
-      <details key="start" value="717"/>
-      <details key="end" value="747"/>
+      <details key="start" value="799"/>
+      <details key="end" value="829"/>
       <details key="line" value="20"/>
     </eAnnotations>
     <eAnnotations source="positions.17" references="/0/generatePluginXMLFile/%/projectName.4">
-      <details key="start" value="748"/>
-      <details key="end" value="759"/>
+      <details key="start" value="830"/>
+      <details key="end" value="841"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.18" references="/0/generatePluginXMLFile/%/%.8">
-      <details key="start" value="761"/>
-      <details key="end" value="782"/>
+      <details key="start" value="843"/>
+      <details key="end" value="864"/>
       <details key="line" value="21"/>
     </eAnnotations>
     <eAnnotations source="positions.19" references="/0/generatePluginXMLFile/%/projectName.5">
-      <details key="start" value="783"/>
-      <details key="end" value="794"/>
+      <details key="start" value="865"/>
+      <details key="end" value="876"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.20" references="/0/generatePluginXMLFile/%/%.9">
-      <details key="start" value="796"/>
-      <details key="end" value="851"/>
+      <details key="start" value="878"/>
+      <details key="end" value="1047"/>
       <details key="line" value="22"/>
     </eAnnotations>
-    <eAnnotations source="positions.21" references="/0/generatePluginXMLFile/%/%.10">
-      <details key="start" value="181"/>
-      <details key="end" value="193"/>
+    <eAnnotations source="positions.21" references="/0/generatePluginXMLFile/%/projectName.6">
+      <details key="start" value="1048"/>
+      <details key="end" value="1059"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.22" references="/0/generatePluginXMLFile/%/%.11">
-      <details key="start" value="202"/>
-      <details key="end" value="209"/>
+    <eAnnotations source="positions.22" references="/0/generatePluginXMLFile/%/%.10">
+      <details key="start" value="1061"/>
+      <details key="end" value="1130"/>
+      <details key="line" value="27"/>
+    </eAnnotations>
+    <eAnnotations source="positions.23" references="/0/generatePluginXMLFile/%/%.11">
+      <details key="start" value="1131"/>
+      <details key="end" value="1167"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.23" references="/0/generatePluginXMLFile/projectName">
-      <details key="start" value="129"/>
-      <details key="end" value="150"/>
+    <eAnnotations source="positions.24" references="/0/generatePluginXMLFile/%/%.11/toExtendViewpoint">
+      <details key="start" value="1131"/>
+      <details key="end" value="1148"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.25" references="/0/generatePluginXMLFile/%/%.12">
+      <details key="start" value="1169"/>
+      <details key="end" value="1231"/>
+      <details key="line" value="28"/>
+    </eAnnotations>
+    <eAnnotations source="positions.26" references="/0/generatePluginXMLFile/%/%.13">
+      <details key="start" value="263"/>
+      <details key="end" value="275"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.27" references="/0/generatePluginXMLFile/%/%.14">
+      <details key="start" value="284"/>
+      <details key="end" value="291"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.28" references="/0/generatePluginXMLFile/projectName">
+      <details key="start" value="180"/>
+      <details key="end" value="201"/>
       <details key="line" value="4"/>
     </eAnnotations>
-    <eAnnotations source="positions.24" references="/0/generatePluginXMLFile/modelName">
-      <details key="start" value="152"/>
-      <details key="end" value="171"/>
+    <eAnnotations source="positions.29" references="/0/generatePluginXMLFile/modelName">
+      <details key="start" value="203"/>
+      <details key="end" value="222"/>
+      <details key="line" value="4"/>
+    </eAnnotations>
+    <eAnnotations source="positions.30" references="/0/generatePluginXMLFile/toExtendViewpoint">
+      <details key="start" value="224"/>
+      <details key="end" value="253"/>
       <details key="line" value="4"/>
     </eAnnotations>
   </ecore:EAnnotation>

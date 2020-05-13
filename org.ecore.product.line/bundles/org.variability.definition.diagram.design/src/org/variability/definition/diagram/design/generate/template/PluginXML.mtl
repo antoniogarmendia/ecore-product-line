@@ -1,7 +1,7 @@
 [comment encoding = UTF-8 /]
-[module PluginXML('http://www.eclipse.org/emf/2002/Ecore')]
+[module PluginXML('http://www.eclipse.org/emf/2002/Ecore', 'http://www.eclipse.org/sirius/description/1.1.0')]
 
-[template public generatePluginXMLFile(projectName : EString, modelName : EString)]
+[template public generatePluginXMLFile(projectName : EString, modelName : EString, toExtendViewpoint : Viewpoint)]
 [file ('plugin.xml', false, 'UTF-8')]
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.0"?>
@@ -22,6 +22,12 @@
            nature="[projectName/]-featureide">
      </composer>
  </extension>
+  <extension point="org.eclipse.xtext.extension_resourceServiceProvider">
+      <resourceServiceProvider
+            class="[projectName/].providers.GenericResourceServiceProvider"
+            uriExtension="[toExtendViewpoint.modelFileExtension/]">
+      </resourceServiceProvider>
+   </extension>
 </plugin>
 [/file]
 [/template]
