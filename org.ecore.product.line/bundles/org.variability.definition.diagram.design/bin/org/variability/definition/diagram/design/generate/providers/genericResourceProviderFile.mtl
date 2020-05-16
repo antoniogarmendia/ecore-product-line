@@ -9,11 +9,13 @@ package [projectName/].providers;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.xtext.naming.IQualifiedNameProvider;
 import org.eclipse.xtext.naming.QualifiedName;
 import org.eclipse.xtext.parser.IEncodingProvider;
@@ -71,9 +73,12 @@ public class GenericResourceServiceProvider implements IResourceServiceProvider 
 				descriptionStrategy.setQualifiedNameProvider(new IQualifiedNameProvider() {
 					
 					private QualifiedName getGeneralQualifiedName(EObject eObject) {
-						EStructuralFeature fName = eObject.eClass().getEAllStructuralFeatures().stream().filter(struct -> struct.getName().equals("name")).findFirst().get();
-						if (fName != null)
-							return QualifiedName.create(eObject.eGet(fName).toString());
+						String eObjectID = EcoreUtil.getID(eObject);
+						if (eObjectID == null) {
+							Optional<EStructuralFeature> possibleFeatures = eObject.eClass().getEAllStructuralFeatures().stream().filter(struct -> struct.getName().equals("name")).findAny();
+							if (possibleFeatures.isPresent() == true)
+								return QualifiedName.create(eObject.eGet(possibleFeatures.get()).toString());
+						}
 						return null;
 					}
 					
@@ -101,12 +106,7 @@ public class GenericResourceServiceProvider implements IResourceServiceProvider 
 	@Override
 	public org.eclipse.xtext.resource.IContainer.Manager getContainerManager() {
 		return new SimpleResourceDescriptionsBasedContainerManager();
-	}
-
-	@Override
-	public boolean canHandle(URI uri) {		
-		return uri.fileExtension().equals("[toExtendViewpoint.modelFileExtension/]");
-	}
+	}	
 
 	@Override
 	public IEncodingProvider getEncodingProvider() {
@@ -116,6 +116,11 @@ public class GenericResourceServiceProvider implements IResourceServiceProvider 
 	@Override
 	public <T> T get(Class<T> t) {		
 		return null;
+	}
+	
+	@Override
+	public boolean canHandle(URI uri) {
+		return true;
 	}
 
 }

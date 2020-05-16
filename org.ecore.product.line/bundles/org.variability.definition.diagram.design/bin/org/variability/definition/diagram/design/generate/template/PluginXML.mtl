@@ -23,10 +23,12 @@
      </composer>
  </extension>
   <extension point="org.eclipse.xtext.extension_resourceServiceProvider">
+	[for (ext : String | toExtendViewpoint.modelFileExtension.tokenize(' '))]
       <resourceServiceProvider
             class="[projectName/].providers.GenericResourceServiceProvider"
-            uriExtension="[toExtendViewpoint.modelFileExtension/]">
+            uriExtension="[ext/]">
       </resourceServiceProvider>
+	[/for]
    </extension>
 </plugin>
 [/file]
