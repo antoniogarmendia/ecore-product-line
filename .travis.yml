@@ -10,7 +10,7 @@ cache:
   - $HOME/.m2
  
 script: 
-  - mvn -f org.ecore.product.line/pom.xml --quiet clean install
+  - mvn -X -f org.ecore.product.line/pom.xml --quiet clean install
 
 deploy:
   provider: pages
