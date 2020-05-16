@@ -1,7 +1,7 @@
 [comment encoding = UTF-8 /]
-[module PluginXML('http://www.eclipse.org/emf/2002/Ecore')]
+[module PluginXML('http://www.eclipse.org/emf/2002/Ecore', 'http://www.eclipse.org/sirius/description/1.1.0')]
 
-[template public generatePluginXMLFile(projectName : EString, modelName : EString)]
+[template public generatePluginXMLFile(projectName : EString, modelName : EString, toExtendViewpoint : Viewpoint)]
 [file ('plugin.xml', false, 'UTF-8')]
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.0"?>
@@ -12,6 +12,24 @@
 	       name="[modelName/]">
     </component>
   </extension>
+  <extension
+        point="de.ovgu.featureide.core.composers">
+     <composer
+           class="[projectName/].composer.GenericComposer"
+           description="[modelName/]-featureide.[modelName/]"
+           id="[projectName/]-featureide"
+           name="[projectName/]"
+           nature="[projectName/]-featureide">
+     </composer>
+ </extension>
+  <extension point="org.eclipse.xtext.extension_resourceServiceProvider">
+	[for (ext : String | toExtendViewpoint.modelFileExtension.tokenize(' '))]
+      <resourceServiceProvider
+            class="[projectName/].providers.GenericResourceServiceProvider"
+            uriExtension="[ext/]">
+      </resourceServiceProvider>
+	[/for]
+   </extension>
 </plugin>
 [/file]
 [/template]

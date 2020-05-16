@@ -1,0 +1,43 @@
+[comment encoding = UTF-8 /]
+[module featureProviderFile('http://www.eclipse.org/emf/2002/Ecore', 'http://www.eclipse.org/sirius/description/1.1.0')]
+[import org::variability::definition::diagram::design::generate::template::request::queriesPresenceCondUtils /]
+
+[template public generateFeatureProviderFile(projectName : EString)]
+[file (getPackagePathbyProjectName(projectName).concat('/composer/FeatureIDEProvider.java'), false, 'UTF-8')]
+package [projectName/].composer;
+
+import de.ovgu.featureide.fm.core.configuration.Configuration;
+import de.ovgu.featureide.fm.core.configuration.SelectableFeature;
+import solver.features.IFeature;
+import solver.features.IFeatureProvider;
+import solver.features.impl.Feature;
+
+public class FeatureIDEProvider implements IFeatureProvider {
+	
+	private Configuration cfg;
+	
+	public FeatureIDEProvider (Configuration cfg) {
+		this.cfg = cfg;
+	}
+
+	@Override
+	public boolean isValidFeature(String name) {
+		for (SelectableFeature sf : this.cfg.getFeatures() ) 
+			if (sf.getName().equals(name)) return true;		
+		return false;
+	}
+
+	@Override
+	public IFeature getFeature(String token) {
+		if (isValidFeature(token)) return new Feature(token);
+		return null;
+	}
+
+	@Override
+	public boolean getFeatureValue(String name) {
+		return this.cfg.getSelectedFeatureNames().contains(name);
+	}
+}
+
+[/file]
+[/template]

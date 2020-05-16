@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Automatic-Module-Name: formula-solver
+Bundle-SymbolicName: formula-solver
+Export-Package: solver,solver.features,solver.features.impl,solver.for
+ mulas,solver.formulas.cnf,solver.issues,solver.presenceConditions
+Bundle-Name: formula-solver
+Bundle-Version: 1.0.0.202005160859
+Require-Bundle: org.sat4j.core;bundle-version="2.3.5"
+Bundle-ManifestVersion: 2
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+
