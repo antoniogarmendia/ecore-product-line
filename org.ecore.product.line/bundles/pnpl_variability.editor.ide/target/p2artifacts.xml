@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <?artifactRepository version='1.1.0'?>
 <artifacts size='1'>
-  <artifact classifier='osgi.bundle' id='pnpl_variability.editor.ide' version='1.0.0.202005160859'>
+  <artifact classifier='osgi.bundle' id='pnpl_variability.editor.ide' version='1.0.0.202005160927'>
     <properties size='5'>
-      <property name='artifact.size' value='37028'/>
-      <property name='download.size' value='37028'/>
+      <property name='artifact.size' value='37029'/>
+      <property name='download.size' value='37029'/>
       <property name='maven-groupId' value='org.ecore.product.line'/>
       <property name='maven-artifactId' value='pnpl_variability.editor.ide'/>
       <property name='maven-version' value='1.0.0-SNAPSHOT'/>

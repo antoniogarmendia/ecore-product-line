@@ -21,6 +21,10 @@
             actionClass="org.variability.definition.diagram.design.condition.PresenceConditionCreation"
             id="org.variability.definition.diagram.design.condition.IdCreatePresenceCondition">
       </javaActions>
+      <javaActions
+            actionClass="org.variability.definition.diagram.design.generate.LoadEcore"
+            id="org.variability.definition.diagram.design.condition.LoadEcore">
+      </javaActions>
   </extension>
   <extension
         point="org.eclipse.ui.menus">

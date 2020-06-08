@@ -1,8 +1,8 @@
 [comment encoding = UTF-8 /]
-[module composerFile('http://www.eclipse.org/emf/2002/Ecore', 'http://www.eclipse.org/sirius/description/1.1.0')]
+[module composerFile('http://www.eclipse.org/emf/2002/Ecore', 'http://www.eclipse.org/sirius/description/1.1.0','http://org.pc.definition.diagram/1.0')]
 [import org::variability::definition::diagram::design::generate::template::request::queriesPresenceCondUtils /]
 
-[template public generateComposer(projectName : EString, toExtendViewpoint : Viewpoint)]
+[template public generateComposer(projectName : EString, toExtendViewpoint : Viewpoint, pcDiagramDef : PCDiagramDefinition)]
 [file (getPackagePathbyProjectName(projectName).concat('/composer/GenericComposer.java'), false, 'UTF-8')]
 package [projectName/].composer;
 
@@ -11,7 +11,9 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+import java.util.regex.Pattern;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
@@ -36,18 +38,20 @@ import de.ovgu.featureide.fm.core.configuration.Configuration;
 import de.ovgu.featureide.fm.core.configuration.DefaultFormat;
 import de.ovgu.featureide.fm.core.io.IPersistentFormat;
 import de.ovgu.featureide.fm.core.io.manager.SimpleFileHandler;
-import solver.presenceConditions.ConditionParser;
-import variability.PresenceCondition;
+import pcdef.PCDiagramDefinition;
 import variability.Variability;
 
 public class GenericComposer extends ComposerExtensionClass {
 	
-	private static final String modelExtension = ".[toExtendViewpoint.modelFileExtension/]";
+	private static final String modelExtensions = "[toExtendViewpoint.modelFileExtension/]";
 	private static final String annotExtension = ".vrb";
+	private static final String PC_URI = "[workspacePath(pcDiagramDef.oclAsType(EObject)) /]";
+
 	private File net, annot;
 	private Resource genericResource, annResource;
 	private EMFHandler emh = null;
 	private Variability vRoot = null;
+	private PCDiagramDefinition pcDiagramDefinition = null;
 	
 	public GenericComposer() {
 		System.out.println("['['/] [toExtendViewpoint.modelFileExtension/] PLs] Initializing (constructor)");
@@ -65,7 +69,7 @@ public class GenericComposer extends ComposerExtensionClass {
 			IProject pr = this.featureProject.getProject();
 			try {
 				for (IResource res : pr.members()) {
-					if (res.getName().endsWith(modelExtension)) {
+					if (validModelExtension(res.getFileExtension())) {
 						net = res.getLocation().toFile();
 						System.out.println("['['/] [toExtendViewpoint.modelFileExtension/] PLs] Processing file: "+(net == null ? "none" : this.net.getName()));
 					}
@@ -73,12 +77,19 @@ public class GenericComposer extends ComposerExtensionClass {
 						annot = res.getLocation().toFile();
 						System.out.println("['['/] [toExtendViewpoint.modelFileExtension/] PLs] Annotation file: "+(net == null ? "none" : this.annot.getName()));
 					}
+					if (this.net != null && this.annot != null)
+						break;
 				}
 			} catch (CoreException e) {				
 				e.printStackTrace();
 			}
 		}
 	}	
+	
+	private boolean validModelExtension(String fileExtension) {
+		String pattern = ".*" + fileExtension + ".*";		
+		return Pattern.matches(pattern, modelExtensions);
+	}
 	
 	public void performFullBuild(IFile config) {		
 		System.out.println("['['/] [toExtendViewpoint.modelFileExtension/] PLs] Full build" + config.getFullPath());
@@ -101,37 +112,19 @@ public class GenericComposer extends ComposerExtensionClass {
 		this.loadModels();
 		String fileName = this.net.getName();
 		URI uri = URI.createFileURI(new File(folder.getLocation().toOSString()+File.separator+fileName).getAbsolutePath());
-		
-		Resource newr = this.genericResource.getResourceSet().createResource(uri);
-		newr.getContents().addAll(EcoreUtil.copyAll(this.genericResource.getContents()));
-		
 		FeatureIDEProvider fip = new FeatureIDEProvider(config);
+		Resource newr = this.genericResource.getResourceSet().createResource(uri);
 		if (this.emh==null) this.emh = new EMFHandler();
-				
-		List<EObject> toDelete = new ArrayList<>();
-		TreeIterator<EObject> allContents = newr.getAllContents();
-		while (allContents.hasNext()) {
-			EObject obj = allContents.next();
-			String name = getNameOf(obj);
-			if (name == null) continue;
-			PresenceCondition pc = vRoot.getPresencecondition(name);
-			if (pc != null ) {
-				ConditionParser cp = new ConditionParser(this.emh.object2xtext(pc.getExpression()), fip);
-				if (!cp.eval()) {
-					toDelete.add(obj);
-					System.out.println("['['/] [toExtendViewpoint.modelFileExtension/] PLs] CFG " + config.getSelectedFeatureNames() + "deleting " + obj);
-				}
-			}
-		}		
-		this.emh.removeAllPNObjects(newr, toDelete);
-				
+		CopierModelConfiguration copier = new CopierModelConfiguration(vRoot, fip, this.emh,null);
+		Collection<EObject> copyModel = copier.copyAll(this.genericResource.getContents());
+		copier.copyReferences();
+		newr.getContents().addAll(copyModel);		
 		try {
 			newr.save(null);
 		} catch (IOException e) {
-			System.err.println("['['/] [toExtendViewpoint.modelFileExtension/] PLs] Error saving file" + uri);
-		}
-		
-		System.out.println("['['/] [toExtendViewpoint.modelFileExtension/] PLs] saved model " + uri);
+			System.err.println("['['/] petrinets pn PLs] Error saving file" + uri);
+		}		
+		System.out.println("['['/] petrinets pn PLs] saved model " + uri);		
 	}
 	
 	private void removeJavaNature() {
@@ -168,16 +161,11 @@ public class GenericComposer extends ComposerExtensionClass {
 			this.genericResource = this.emh.loadModel(this.net);
 			this.annResource = this.emh.loadXtextModel(this.annot);			
 			if (this.vRoot==null) this.vRoot = (Variability)this.annResource.getContents().get(0);
+			if (this.pcDiagramDefinition == null) this.pcDiagramDefinition = (PCDiagramDefinition) this.emh.
+					getResourceFromURI(URI.createPlatformPluginURI(PC_URI, false)).getContents().get(0);
 			EcoreUtil.resolveAll(vRoot);			
 		}
-	}
-	
-	private String getNameOf(EObject obj) {
-		EStructuralFeature featureName = obj.eClass().getEStructuralFeature("name");
-		if (featureName != null)		
-			return obj.eGet(featureName).toString();	
-		return null;	
-	}
+	}	
 	
 	private void persistConfig(IFolder folder, Configuration configuration, String cfgName) {
 		IPersistentFormat<Configuration> format;

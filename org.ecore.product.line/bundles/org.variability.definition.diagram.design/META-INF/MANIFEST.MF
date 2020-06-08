@@ -30,10 +30,13 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.acceleo.common,
  org.eclipse.gmf.runtime.diagram.ui;bundle-version="1.8.0",
  org.eclipse.emf.edit.ui,
- org.eclipse.acceleo.parser;bundle-version="3.7.3"
+ org.eclipse.acceleo.parser;bundle-version="3.7.3",
+ org.eclipse.emf.ecore.editor;bundle-version="2.17.0",
+ org.eclipse.swt
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-Vendor: %providerName
 Automatic-Module-Name: org.pc.definition.diagram.design
 Export-Package: org.variability.definition.diagram.design.condition,
- org.variability.definition.diagram.design.generate.template
+ org.variability.definition.diagram.design.generate.template,
+ org.variability.definition.diagram.design.generate.template.request

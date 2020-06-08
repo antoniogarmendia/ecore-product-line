@@ -158,13 +158,13 @@ public interface PcdefPackage extends EPackage {
 	int PC_DIAGRAM_DEFINITION__GRAPHICAL_ELEMENTS = REPRESENTATION_EXTENSION_FEATURE_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Predicates</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Stronger</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PC_DIAGRAM_DEFINITION__PREDICATES = REPRESENTATION_EXTENSION_FEATURE_FEATURE_COUNT + 1;
+	int PC_DIAGRAM_DEFINITION__STRONGER = REPRESENTATION_EXTENSION_FEATURE_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>PC Diagram Definition</em>' class.
@@ -195,22 +195,13 @@ public interface PcdefPackage extends EPackage {
 	int STRONGER_THAN = 2;
 
 	/**
-	 * The feature id for the '<em><b>Ref</b></em>' reference.
+	 * The feature id for the '<em><b>Stronger Than Ref</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int STRONGER_THAN__REF = 0;
-
-	/**
-	 * The feature id for the '<em><b>Is Source Stronger</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STRONGER_THAN__IS_SOURCE_STRONGER = 1;
+	int STRONGER_THAN__STRONGER_THAN_REF = 0;
 
 	/**
 	 * The number of structural features of the '<em>Stronger Than</em>' class.
@@ -219,7 +210,7 @@ public interface PcdefPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STRONGER_THAN_FEATURE_COUNT = 2;
+	int STRONGER_THAN_FEATURE_COUNT = 1;
 
 	/**
 	 * The number of operations of the '<em>Stronger Than</em>' class.
@@ -295,15 +286,15 @@ public interface PcdefPackage extends EPackage {
 	EReference getPCDiagramDefinition_GraphicalElements();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link pcdef.PCDiagramDefinition#getPredicates <em>Predicates</em>}'.
+	 * Returns the meta object for the containment reference '{@link pcdef.PCDiagramDefinition#getStronger <em>Stronger</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Predicates</em>'.
-	 * @see pcdef.PCDiagramDefinition#getPredicates()
+	 * @return the meta object for the containment reference '<em>Stronger</em>'.
+	 * @see pcdef.PCDiagramDefinition#getStronger()
 	 * @see #getPCDiagramDefinition()
 	 * @generated
 	 */
-	EReference getPCDiagramDefinition_Predicates();
+	EReference getPCDiagramDefinition_Stronger();
 
 	/**
 	 * Returns the meta object for class '{@link pcdef.StrongerThan <em>Stronger Than</em>}'.
@@ -316,26 +307,15 @@ public interface PcdefPackage extends EPackage {
 	EClass getStrongerThan();
 
 	/**
-	 * Returns the meta object for the reference '{@link pcdef.StrongerThan#getRef <em>Ref</em>}'.
+	 * Returns the meta object for the reference list '{@link pcdef.StrongerThan#getStrongerThanRef <em>Stronger Than Ref</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Ref</em>'.
-	 * @see pcdef.StrongerThan#getRef()
+	 * @return the meta object for the reference list '<em>Stronger Than Ref</em>'.
+	 * @see pcdef.StrongerThan#getStrongerThanRef()
 	 * @see #getStrongerThan()
 	 * @generated
 	 */
-	EReference getStrongerThan_Ref();
-
-	/**
-	 * Returns the meta object for the attribute '{@link pcdef.StrongerThan#isIsSourceStronger <em>Is Source Stronger</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Is Source Stronger</em>'.
-	 * @see pcdef.StrongerThan#isIsSourceStronger()
-	 * @see #getStrongerThan()
-	 * @generated
-	 */
-	EAttribute getStrongerThan_IsSourceStronger();
+	EReference getStrongerThan_StrongerThanRef();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -415,12 +395,12 @@ public interface PcdefPackage extends EPackage {
 		EReference PC_DIAGRAM_DEFINITION__GRAPHICAL_ELEMENTS = eINSTANCE.getPCDiagramDefinition_GraphicalElements();
 
 		/**
-		 * The meta object literal for the '<em><b>Predicates</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Stronger</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference PC_DIAGRAM_DEFINITION__PREDICATES = eINSTANCE.getPCDiagramDefinition_Predicates();
+		EReference PC_DIAGRAM_DEFINITION__STRONGER = eINSTANCE.getPCDiagramDefinition_Stronger();
 
 		/**
 		 * The meta object literal for the '{@link pcdef.impl.StrongerThanImpl <em>Stronger Than</em>}' class.
@@ -433,20 +413,12 @@ public interface PcdefPackage extends EPackage {
 		EClass STRONGER_THAN = eINSTANCE.getStrongerThan();
 
 		/**
-		 * The meta object literal for the '<em><b>Ref</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Stronger Than Ref</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference STRONGER_THAN__REF = eINSTANCE.getStrongerThan_Ref();
-
-		/**
-		 * The meta object literal for the '<em><b>Is Source Stronger</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute STRONGER_THAN__IS_SOURCE_STRONGER = eINSTANCE.getStrongerThan_IsSourceStronger();
+		EReference STRONGER_THAN__STRONGER_THAN_REF = eINSTANCE.getStrongerThan_StrongerThanRef();
 
 	}
 

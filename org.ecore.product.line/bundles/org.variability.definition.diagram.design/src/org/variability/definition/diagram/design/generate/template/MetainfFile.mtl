@@ -23,7 +23,8 @@ Require-Bundle: org.eclipse.ui,
  pnpl_variability.editor,
  formula-solver,
  de.ovgu.featureide.fm.core;bundle-version="3.6.0",
- de.ovgu.featureide.core;bundle-version="3.6.0"
+ de.ovgu.featureide.core;bundle-version="3.6.0",
+ org.variability.definition.diagram;bundle-version="0.1.0"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-Vendor: %providerName

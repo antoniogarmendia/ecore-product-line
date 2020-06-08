@@ -1,5 +1,6 @@
 [comment encoding = UTF-8 /]
-[module WorkflowVariabilityEditor('http://www.eclipse.org/emf/2002/Ecore', 'http://www.eclipse.org/sirius/description/1.1.0')/]
+[module WorkflowVariabilityEditor('http://www.eclipse.org/emf/2002/Ecore', 'http://www.eclipse.org/sirius/description/1.1.0', 
+	'http://org.pc.definition.diagram/1.0')/]
 [import org::variability::definition::diagram::design::generate::template::PresenceConditionServicesFile /]
 [import org::variability::definition::diagram::design::generate::template::PluginXML /]
 [import org::variability::definition::diagram::design::generate::template::MetainfFile /]
@@ -8,8 +9,9 @@
 [import org::variability::definition::diagram::design::generate::template::utils::EMFHandler/]
 [import org::variability::definition::diagram::design::generate::composer::featureProviderFile /]
 [import org::variability::definition::diagram::design::generate::providers::genericResourceProviderFile /]
+[import org::variability::definition::diagram::design::generate::composer::copierModelConfigurationFile /]
 
-[template public WorkflowVariabilityEditor(modelEObject : EObject, projectName : EString, modelName : EString, toExtendViewpoint : Viewpoint)]
+[template public WorkflowVariabilityEditor(pcDiagramDef : PCDiagramDefinition, projectName : EString, modelName : EString, toExtendViewpoint : Viewpoint)]
 [comment @main /]
 [presenceConditionServices(projectName) /]	
 [generatePluginXMLFile(projectName, modelName, toExtendViewpoint) /]
@@ -20,8 +22,9 @@
 [generateEMFHandler(projectName)/]
 
 [comment Package Composer /]
-[generateComposer(projectName, toExtendViewpoint) /]
+[generateComposer(projectName, toExtendViewpoint, pcDiagramDef) /]
 [generateFeatureProviderFile(projectName)/]
+[generateCopierModelConfigurationFile(projectName)/]
 
 [comment Package Providers /]
 [generateResourceProvider(projectName, toExtendViewpoint)/]

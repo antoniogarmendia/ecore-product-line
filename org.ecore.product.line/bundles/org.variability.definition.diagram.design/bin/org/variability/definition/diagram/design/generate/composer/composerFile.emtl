@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:mtl="http://www.eclipse.org/acceleo/mtl/3.0" xmlns:ocl.ecore="http://www.eclipse.org/ocl/1.1.0/Ecore">
-  <mtl:Module name="composerFile" nsURI="org::variability::definition::diagram::design::generate::composer::composerFile" startHeaderPosition="29" endHeaderPosition="252">
+  <mtl:Module name="composerFile" nsURI="org::variability::definition::diagram::design::generate::composer::composerFile" startHeaderPosition="29" endHeaderPosition="291">
     <input>
       <takesTypesFrom href="http://www.eclipse.org/emf/2002/Ecore#/"/>
     </input>
@@ -11,6 +11,9 @@
       <takesTypesFrom href="http://www.eclipse.org/sirius/1.1.0#//description/validation"/>
       <takesTypesFrom href="http://www.eclipse.org/sirius/1.1.0#//description/audit"/>
     </input>
+    <input>
+      <takesTypesFrom href="http://org.pc.definition.diagram/1.0#/"/>
+    </input>
     <imports href="../template/request/queriesPresenceCondUtils.emtl#/0"/>
     <ownedModuleElement xsi:type="mtl:Template" name="generateComposer" visibility="Public">
       <body xsi:type="mtl:FileBlock" openMode="OverWrite">
@@ -18,11 +21,11 @@
         <body xsi:type="ocl.ecore:VariableExp" name="projectName" referredVariable="/0/generateComposer/projectName">
           <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         </body>
-        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=".composer;&#xA;&#xA;import java.io.File;&#xA;import java.io.IOException;&#xA;import java.nio.file.Path;&#xA;import java.nio.file.Paths;&#xA;import java.util.ArrayList;&#xA;import java.util.List;&#xA;&#xA;import org.eclipse.core.resources.IFile;&#xA;import org.eclipse.core.resources.IFolder;&#xA;import org.eclipse.core.resources.IProject;&#xA;import org.eclipse.core.resources.IProjectDescription;&#xA;import org.eclipse.core.resources.IResource;&#xA;import org.eclipse.core.runtime.CoreException;&#xA;import org.eclipse.core.runtime.NullProgressMonitor;&#xA;import org.eclipse.emf.common.util.TreeIterator;&#xA;import org.eclipse.emf.common.util.URI;&#xA;import org.eclipse.emf.ecore.EObject;&#xA;import org.eclipse.emf.ecore.EStructuralFeature;&#xA;import org.eclipse.emf.ecore.resource.Resource;&#xA;import org.eclipse.emf.ecore.util.EcoreUtil;&#xA;&#xA;import "/>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=".composer;&#xA;&#xA;import java.io.File;&#xA;import java.io.IOException;&#xA;import java.nio.file.Path;&#xA;import java.nio.file.Paths;&#xA;import java.util.ArrayList;&#xA;import java.util.Collection;&#xA;import java.util.List;&#xA;import java.util.regex.Pattern;&#xA;&#xA;import org.eclipse.core.resources.IFile;&#xA;import org.eclipse.core.resources.IFolder;&#xA;import org.eclipse.core.resources.IProject;&#xA;import org.eclipse.core.resources.IProjectDescription;&#xA;import org.eclipse.core.resources.IResource;&#xA;import org.eclipse.core.runtime.CoreException;&#xA;import org.eclipse.core.runtime.NullProgressMonitor;&#xA;import org.eclipse.emf.common.util.TreeIterator;&#xA;import org.eclipse.emf.common.util.URI;&#xA;import org.eclipse.emf.ecore.EObject;&#xA;import org.eclipse.emf.ecore.EStructuralFeature;&#xA;import org.eclipse.emf.ecore.resource.Resource;&#xA;import org.eclipse.emf.ecore.util.EcoreUtil;&#xA;&#xA;import "/>
         <body xsi:type="ocl.ecore:VariableExp" name="projectName" referredVariable="/0/generateComposer/projectName">
           <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         </body>
-        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=".utils.EMFHandler;&#xA;import de.ovgu.featureide.core.IFeatureProject;&#xA;import de.ovgu.featureide.core.builder.ComposerExtensionClass;&#xA;import de.ovgu.featureide.fm.core.ExtensionManager.NoSuchExtensionException;&#xA;import de.ovgu.featureide.fm.core.base.impl.ConfigFormatManager;&#xA;import de.ovgu.featureide.fm.core.configuration.Configuration;&#xA;import de.ovgu.featureide.fm.core.configuration.DefaultFormat;&#xA;import de.ovgu.featureide.fm.core.io.IPersistentFormat;&#xA;import de.ovgu.featureide.fm.core.io.manager.SimpleFileHandler;&#xA;import solver.presenceConditions.ConditionParser;&#xA;import variability.PresenceCondition;&#xA;import variability.Variability;&#xA;&#xA;public class GenericComposer extends ComposerExtensionClass {&#xA;&#x9;&#xA;&#x9;private static final String modelExtension = &quot;."/>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=".utils.EMFHandler;&#xA;import de.ovgu.featureide.core.IFeatureProject;&#xA;import de.ovgu.featureide.core.builder.ComposerExtensionClass;&#xA;import de.ovgu.featureide.fm.core.ExtensionManager.NoSuchExtensionException;&#xA;import de.ovgu.featureide.fm.core.base.impl.ConfigFormatManager;&#xA;import de.ovgu.featureide.fm.core.configuration.Configuration;&#xA;import de.ovgu.featureide.fm.core.configuration.DefaultFormat;&#xA;import de.ovgu.featureide.fm.core.io.IPersistentFormat;&#xA;import de.ovgu.featureide.fm.core.io.manager.SimpleFileHandler;&#xA;import pcdef.PCDiagramDefinition;&#xA;import variability.Variability;&#xA;&#xA;public class GenericComposer extends ComposerExtensionClass {&#xA;&#x9;&#xA;&#x9;private static final String modelExtensions = &quot;"/>
         <body xsi:type="ocl.ecore:PropertyCallExp">
           <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
           <source xsi:type="ocl.ecore:VariableExp" name="toExtendViewpoint" referredVariable="/0/generateComposer/toExtendViewpoint">
@@ -30,7 +33,22 @@
           </source>
           <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/sirius/1.1.0#//description/Viewpoint/modelFileExtension"/>
         </body>
-        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&quot;;&#xA;&#x9;private static final String annotExtension = &quot;.vrb&quot;;&#xA;&#x9;private File net, annot;&#xA;&#x9;private Resource genericResource, annResource;&#xA;&#x9;private EMFHandler emh = null;&#xA;&#x9;private Variability vRoot = null;&#xA;&#x9;&#xA;&#x9;public GenericComposer() {&#xA;&#x9;&#x9;System.out.println(&quot;"/>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&quot;;&#xA;&#x9;private static final String annotExtension = &quot;.vrb&quot;;&#xA;&#x9;private static final String PC_URI = &quot;"/>
+        <body xsi:type="mtl:QueryInvocation">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <definition href="../template/request/queriesPresenceCondUtils.emtl#/0/workspacePath"/>
+          <argument xsi:type="ocl.ecore:OperationCallExp">
+            <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+            <source xsi:type="ocl.ecore:VariableExp" name="pcDiagramDef" referredVariable="/0/generateComposer/pcDiagramDef">
+              <eType xsi:type="ecore:EClass" href="http://org.pc.definition.diagram/1.0#//PCDiagramDefinition"/>
+            </source>
+            <argument xsi:type="ocl.ecore:TypeExp" eType="/13/EObject">
+              <referredType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+            </argument>
+            <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny_Class/oclAsType"/>
+          </argument>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&quot;;&#xA;&#xA;&#x9;private File net, annot;&#xA;&#x9;private Resource genericResource, annResource;&#xA;&#x9;private EMFHandler emh = null;&#xA;&#x9;private Variability vRoot = null;&#xA;&#x9;private PCDiagramDefinition pcDiagramDefinition = null;&#xA;&#x9;&#xA;&#x9;public GenericComposer() {&#xA;&#x9;&#x9;System.out.println(&quot;"/>
         <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="[">
           <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         </body>
@@ -54,7 +72,7 @@
           </source>
           <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/sirius/1.1.0#//description/Viewpoint/modelFileExtension"/>
         </body>
-        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=" PLs] Initializing (constructor)&quot;);&#xA;&#x9;&#x9;this.removeJavaNature(); &#xA;&#x9;&#x9;this.vRoot = vrb;&#xA;&#x9;}&#xA;&#x9;&#xA;&#x9;private void findFiles()  {&#xA;&#x9;&#x9;if (net == null) {&#xA;&#x9;&#x9;&#x9;IProject pr = this.featureProject.getProject();&#xA;&#x9;&#x9;&#x9;try {&#xA;&#x9;&#x9;&#x9;&#x9;for (IResource res : pr.members()) {&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;if (res.getName().endsWith(modelExtension)) {&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;net = res.getLocation().toFile();&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;System.out.println(&quot;"/>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=" PLs] Initializing (constructor)&quot;);&#xA;&#x9;&#x9;this.removeJavaNature(); &#xA;&#x9;&#x9;this.vRoot = vrb;&#xA;&#x9;}&#xA;&#x9;&#xA;&#x9;private void findFiles()  {&#xA;&#x9;&#x9;if (net == null) {&#xA;&#x9;&#x9;&#x9;IProject pr = this.featureProject.getProject();&#xA;&#x9;&#x9;&#x9;try {&#xA;&#x9;&#x9;&#x9;&#x9;for (IResource res : pr.members()) {&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;if (validModelExtension(res.getFileExtension())) {&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;net = res.getLocation().toFile();&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;System.out.println(&quot;"/>
         <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="[">
           <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         </body>
@@ -78,7 +96,7 @@
           </source>
           <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/sirius/1.1.0#//description/Viewpoint/modelFileExtension"/>
         </body>
-        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=" PLs] Annotation file: &quot;+(net == null ? &quot;none&quot; : this.annot.getName()));&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;}&#xA;&#x9;&#x9;&#x9;&#x9;}&#xA;&#x9;&#x9;&#x9;} catch (CoreException e) {&#x9;&#x9;&#x9;&#x9;&#xA;&#x9;&#x9;&#x9;&#x9;e.printStackTrace();&#xA;&#x9;&#x9;&#x9;}&#xA;&#x9;&#x9;}&#xA;&#x9;}&#x9;&#xA;&#x9;&#xA;&#x9;public void performFullBuild(IFile config) {&#x9;&#x9;&#xA;&#x9;&#x9;System.out.println(&quot;"/>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=" PLs] Annotation file: &quot;+(net == null ? &quot;none&quot; : this.annot.getName()));&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;}&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;if (this.net != null &amp;&amp; this.annot != null)&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;break;&#xA;&#x9;&#x9;&#x9;&#x9;}&#xA;&#x9;&#x9;&#x9;} catch (CoreException e) {&#x9;&#x9;&#x9;&#x9;&#xA;&#x9;&#x9;&#x9;&#x9;e.printStackTrace();&#xA;&#x9;&#x9;&#x9;}&#xA;&#x9;&#x9;}&#xA;&#x9;}&#x9;&#xA;&#x9;&#xA;&#x9;private boolean validModelExtension(String fileExtension) {&#xA;&#x9;&#x9;String pattern = &quot;.*&quot; + fileExtension + &quot;.*&quot;;&#x9;&#x9;&#xA;&#x9;&#x9;return Pattern.matches(pattern, modelExtensions);&#xA;&#x9;}&#xA;&#x9;&#xA;&#x9;public void performFullBuild(IFile config) {&#x9;&#x9;&#xA;&#x9;&#x9;System.out.println(&quot;"/>
         <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="[">
           <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         </body>
@@ -102,43 +120,15 @@
           </source>
           <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/sirius/1.1.0#//description/Viewpoint/modelFileExtension"/>
         </body>
-        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=" PLs] Selected features = &quot; + configuration.getSelectedFeatureNames());&#xA;&#x9;&#x9;if (this.isInitialized())&#x9;&#x9;&#xA;&#x9;&#x9;&#x9;super.buildConfiguration(folder, configuration, cfgName);&#xA;&#x9;&#x9;else&#xA;&#x9;&#x9;&#x9;this.persistConfig(folder, configuration, cfgName);&#xA;&#x9;&#x9;genModel(folder, configuration);&#xA;&#x9;}&#xA;&#x9;&#xA;&#x9;private void genModel(IFolder folder, Configuration config) {&#x9;&#xA;&#x9;&#x9;this.loadModels();&#xA;&#x9;&#x9;String fileName = this.net.getName();&#xA;&#x9;&#x9;URI uri = URI.createFileURI(new File(folder.getLocation().toOSString()+File.separator+fileName).getAbsolutePath());&#xA;&#x9;&#x9;&#xA;&#x9;&#x9;Resource newr = this.genericResource.getResourceSet().createResource(uri);&#xA;&#x9;&#x9;newr.getContents().addAll(EcoreUtil.copyAll(this.genericResource.getContents()));&#xA;&#x9;&#x9;&#xA;&#x9;&#x9;FeatureIDEProvider fip = new FeatureIDEProvider(config);&#xA;&#x9;&#x9;if (this.emh==null) this.emh = new EMFHandler();&#xA;&#x9;&#x9;&#x9;&#x9;&#xA;&#x9;&#x9;List&lt;EObject> toDelete = new ArrayList&lt;>();&#xA;&#x9;&#x9;TreeIterator&lt;EObject> allContents = newr.getAllContents();&#xA;&#x9;&#x9;while (allContents.hasNext()) {&#xA;&#x9;&#x9;&#x9;EObject obj = allContents.next();&#xA;&#x9;&#x9;&#x9;String name = getNameOf(obj);&#xA;&#x9;&#x9;&#x9;if (name == null) continue;&#xA;&#x9;&#x9;&#x9;PresenceCondition pc = vRoot.getPresencecondition(name);&#xA;&#x9;&#x9;&#x9;if (pc != null ) {&#xA;&#x9;&#x9;&#x9;&#x9;ConditionParser cp = new ConditionParser(this.emh.object2xtext(pc.getExpression()), fip);&#xA;&#x9;&#x9;&#x9;&#x9;if (!cp.eval()) {&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;toDelete.add(obj);&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;System.out.println(&quot;"/>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=" PLs] Selected features = &quot; + configuration.getSelectedFeatureNames());&#xA;&#x9;&#x9;if (this.isInitialized())&#x9;&#x9;&#xA;&#x9;&#x9;&#x9;super.buildConfiguration(folder, configuration, cfgName);&#xA;&#x9;&#x9;else&#xA;&#x9;&#x9;&#x9;this.persistConfig(folder, configuration, cfgName);&#xA;&#x9;&#x9;genModel(folder, configuration);&#xA;&#x9;}&#xA;&#x9;&#xA;&#x9;private void genModel(IFolder folder, Configuration config) {&#x9;&#xA;&#x9;&#x9;this.loadModels();&#xA;&#x9;&#x9;String fileName = this.net.getName();&#xA;&#x9;&#x9;URI uri = URI.createFileURI(new File(folder.getLocation().toOSString()+File.separator+fileName).getAbsolutePath());&#xA;&#x9;&#x9;FeatureIDEProvider fip = new FeatureIDEProvider(config);&#xA;&#x9;&#x9;Resource newr = this.genericResource.getResourceSet().createResource(uri);&#xA;&#x9;&#x9;if (this.emh==null) this.emh = new EMFHandler();&#xA;&#x9;&#x9;CopierModelConfiguration copier = new CopierModelConfiguration(vRoot, fip, this.emh,null);&#xA;&#x9;&#x9;Collection&lt;EObject> copyModel = copier.copyAll(this.genericResource.getContents());&#xA;&#x9;&#x9;copier.copyReferences();&#xA;&#x9;&#x9;newr.getContents().addAll(copyModel);&#x9;&#x9;&#xA;&#x9;&#x9;try {&#xA;&#x9;&#x9;&#x9;newr.save(null);&#xA;&#x9;&#x9;} catch (IOException e) {&#xA;&#x9;&#x9;&#x9;System.err.println(&quot;"/>
         <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="[">
           <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         </body>
-        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=" "/>
-        <body xsi:type="ocl.ecore:PropertyCallExp">
-          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-          <source xsi:type="ocl.ecore:VariableExp" name="toExtendViewpoint" referredVariable="/0/generateComposer/toExtendViewpoint">
-            <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/sirius/1.1.0#//description/Viewpoint"/>
-          </source>
-          <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/sirius/1.1.0#//description/Viewpoint/modelFileExtension"/>
-        </body>
-        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=" PLs] CFG &quot; + config.getSelectedFeatureNames() + &quot;deleting &quot; + obj);&#xA;&#x9;&#x9;&#x9;&#x9;}&#xA;&#x9;&#x9;&#x9;}&#xA;&#x9;&#x9;}&#x9;&#x9;&#xA;&#x9;&#x9;this.emh.removeAllPNObjects(newr, toDelete);&#xA;&#x9;&#x9;&#x9;&#x9;&#xA;&#x9;&#x9;try {&#xA;&#x9;&#x9;&#x9;newr.save(null);&#xA;&#x9;&#x9;} catch (IOException e) {&#xA;&#x9;&#x9;&#x9;System.err.println(&quot;"/>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=" petrinets pn PLs] Error saving file&quot; + uri);&#xA;&#x9;&#x9;}&#x9;&#x9;&#xA;&#x9;&#x9;System.out.println(&quot;"/>
         <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="[">
           <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         </body>
-        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=" "/>
-        <body xsi:type="ocl.ecore:PropertyCallExp">
-          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-          <source xsi:type="ocl.ecore:VariableExp" name="toExtendViewpoint" referredVariable="/0/generateComposer/toExtendViewpoint">
-            <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/sirius/1.1.0#//description/Viewpoint"/>
-          </source>
-          <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/sirius/1.1.0#//description/Viewpoint/modelFileExtension"/>
-        </body>
-        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=" PLs] Error saving file&quot; + uri);&#xA;&#x9;&#x9;}&#xA;&#x9;&#x9;&#xA;&#x9;&#x9;System.out.println(&quot;"/>
-        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="[">
-          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-        </body>
-        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=" "/>
-        <body xsi:type="ocl.ecore:PropertyCallExp">
-          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-          <source xsi:type="ocl.ecore:VariableExp" name="toExtendViewpoint" referredVariable="/0/generateComposer/toExtendViewpoint">
-            <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/sirius/1.1.0#//description/Viewpoint"/>
-          </source>
-          <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/sirius/1.1.0#//description/Viewpoint/modelFileExtension"/>
-        </body>
-        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=" PLs] saved model &quot; + uri);&#xA;&#x9;}&#xA;&#x9;&#xA;&#x9;private void removeJavaNature() {&#xA;&#x9;&#x9;&#x9;if (this.featureProject == null) return;&#xA;&#x9;&#x9;&#x9;IProject pr = this.featureProject.getProject();&#xA;&#x9;&#x9;&#x9;System.out.println(&quot;"/>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=" petrinets pn PLs] saved model &quot; + uri);&#x9;&#x9;&#xA;&#x9;}&#xA;&#x9;&#xA;&#x9;private void removeJavaNature() {&#xA;&#x9;&#x9;&#x9;if (this.featureProject == null) return;&#xA;&#x9;&#x9;&#x9;IProject pr = this.featureProject.getProject();&#xA;&#x9;&#x9;&#x9;System.out.println(&quot;"/>
         <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="[">
           <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         </body>
@@ -178,7 +168,7 @@
           </source>
           <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/sirius/1.1.0#//description/Viewpoint/modelFileExtension"/>
         </body>
-        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=" PLs] initialize project&quot;);&#xA;&#x9;&#x9;this.removeJavaNature();&#x9;&#x9;&#x9;&#xA;&#x9;&#x9;return ret;&#xA;&#x9;}&#xA;&#x9;&#xA;&#x9;private void loadModels() {&#xA;&#x9;&#x9;if (this.genericResource == null) {&#xA;&#x9;&#x9;&#x9;if (this.emh==null) this.emh = new EMFHandler();&#xA;&#x9;&#x9;&#x9;this.genericResource = this.emh.loadModel(this.net);&#xA;&#x9;&#x9;&#x9;this.annResource = this.emh.loadXtextModel(this.annot);&#x9;&#x9;&#x9;&#xA;&#x9;&#x9;&#x9;if (this.vRoot==null) this.vRoot = (Variability)this.annResource.getContents().get(0);&#xA;&#x9;&#x9;&#x9;EcoreUtil.resolveAll(vRoot);&#x9;&#x9;&#x9;&#xA;&#x9;&#x9;}&#xA;&#x9;}&#xA;&#x9;&#xA;&#x9;private String getNameOf(EObject obj) {&#xA;&#x9;&#x9;EStructuralFeature featureName = obj.eClass().getEStructuralFeature(&quot;name&quot;);&#xA;&#x9;&#x9;if (featureName != null)&#x9;&#x9;&#xA;&#x9;&#x9;&#x9;return obj.eGet(featureName).toString();&#x9;&#xA;&#x9;&#x9;return null;&#x9;&#xA;&#x9;}&#xA;&#x9;&#xA;&#x9;private void persistConfig(IFolder folder, Configuration configuration, String cfgName) {&#xA;&#x9;&#x9;IPersistentFormat&lt;Configuration> format;&#xA;&#x9;&#x9;try {&#xA;&#x9;&#x9;&#x9;if (!folder.exists()) {&#xA;&#x9;&#x9;&#x9;&#x9;folder.create(true, true, null);&#xA;&#x9;&#x9;&#x9;}&#xA;&#x9;&#x9;&#x9;format = ConfigFormatManager.getInstance().getFormatById(DefaultFormat.ID);&#xA;&#x9;&#x9;&#x9;final IFile configurationFile = folder.getFile(cfgName + &quot;.&quot; + format.getSuffix());&#xA;&#x9;&#x9;&#x9;SimpleFileHandler.save(Paths.get(configurationFile.getLocationURI()), configuration, format);&#xA;&#x9;&#x9;} catch (NoSuchExtensionException | CoreException e) {&#xA;&#x9;&#x9;&#x9;System.err.println(&quot;"/>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=" PLs] initialize project&quot;);&#xA;&#x9;&#x9;this.removeJavaNature();&#x9;&#x9;&#x9;&#xA;&#x9;&#x9;return ret;&#xA;&#x9;}&#xA;&#x9;&#xA;&#x9;private void loadModels() {&#xA;&#x9;&#x9;if (this.genericResource == null) {&#xA;&#x9;&#x9;&#x9;if (this.emh==null) this.emh = new EMFHandler();&#xA;&#x9;&#x9;&#x9;this.genericResource = this.emh.loadModel(this.net);&#xA;&#x9;&#x9;&#x9;this.annResource = this.emh.loadXtextModel(this.annot);&#x9;&#x9;&#x9;&#xA;&#x9;&#x9;&#x9;if (this.vRoot==null) this.vRoot = (Variability)this.annResource.getContents().get(0);&#xA;&#x9;&#x9;&#x9;if (this.pcDiagramDefinition == null) this.pcDiagramDefinition = (PCDiagramDefinition) this.emh.&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;getResourceFromURI(URI.createPlatformPluginURI(PC_URI, false)).getContents().get(0);&#xA;&#x9;&#x9;&#x9;EcoreUtil.resolveAll(vRoot);&#x9;&#x9;&#x9;&#xA;&#x9;&#x9;}&#xA;&#x9;}&#x9;&#xA;&#x9;&#xA;&#x9;private void persistConfig(IFolder folder, Configuration configuration, String cfgName) {&#xA;&#x9;&#x9;IPersistentFormat&lt;Configuration> format;&#xA;&#x9;&#x9;try {&#xA;&#x9;&#x9;&#x9;if (!folder.exists()) {&#xA;&#x9;&#x9;&#x9;&#x9;folder.create(true, true, null);&#xA;&#x9;&#x9;&#x9;}&#xA;&#x9;&#x9;&#x9;format = ConfigFormatManager.getInstance().getFormatById(DefaultFormat.ID);&#xA;&#x9;&#x9;&#x9;final IFile configurationFile = folder.getFile(cfgName + &quot;.&quot; + format.getSuffix());&#xA;&#x9;&#x9;&#x9;SimpleFileHandler.save(Paths.get(configurationFile.getLocationURI()), configuration, format);&#xA;&#x9;&#x9;} catch (NoSuchExtensionException | CoreException e) {&#xA;&#x9;&#x9;&#x9;System.err.println(&quot;"/>
         <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="[">
           <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         </body>
@@ -215,6 +205,9 @@
       <parameter name="toExtendViewpoint">
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/sirius/1.1.0#//description/Viewpoint"/>
       </parameter>
+      <parameter name="pcDiagramDef">
+        <eType xsi:type="ecore:EClass" href="http://org.pc.definition.diagram/1.0#//PCDiagramDefinition"/>
+      </parameter>
     </ownedModuleElement>
   </mtl:Module>
   <ecore:EPackage name="additions">
@@ -249,6 +242,9 @@
         <eParameters name="toExtendViewpoint">
           <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/sirius/1.1.0#//description/Viewpoint"/>
         </eParameters>
+        <eParameters name="pcDiagramDef">
+          <eType xsi:type="ecore:EClass" href="http://org.pc.definition.diagram/1.0#//PCDiagramDefinition"/>
+        </eParameters>
       </eOperations>
       <eOperations name="getPackagePathbyProjectName">
         <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
@@ -260,6 +256,18 @@
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="projectName">
           <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="workspacePath">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="../template/request/queriesPresenceCondUtils.emtl#/0/workspacePath"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="eObject">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
         </eParameters>
       </eOperations>
     </eClassifiers>
@@ -317,14 +325,16 @@
   <ocl.ecore:Variable name="self">
     <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
   </ocl.ecore:Variable>
+  <ecore:EPackage name="types">
+    <eClassifiers xsi:type="ocl.ecore:TypeType" name="EObject">
+      <referredType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+    </eClassifiers>
+  </ecore:EPackage>
   <ocl.ecore:Variable name="self">
-    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
   </ocl.ecore:Variable>
   <ocl.ecore:Variable name="self">
-    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-  </ocl.ecore:Variable>
-  <ocl.ecore:Variable name="self">
-    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
   </ocl.ecore:Variable>
   <ocl.ecore:Variable name="self">
     <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
@@ -409,433 +419,408 @@
   </ocl.ecore:Variable>
   <ecore:EAnnotation source="positions">
     <eAnnotations source="positions.0" references="/0/generateComposer">
-      <details key="start" value="256"/>
-      <details key="end" value="8053"/>
+      <details key="start" value="295"/>
+      <details key="end" value="7923"/>
       <details key="line" value="5"/>
     </eAnnotations>
     <eAnnotations source="positions.1" references="/0/generateComposer/%">
-      <details key="start" value="345"/>
-      <details key="end" value="8041"/>
+      <details key="start" value="420"/>
+      <details key="end" value="7911"/>
       <details key="line" value="6"/>
     </eAnnotations>
     <eAnnotations source="positions.2" references="/0/generateComposer/%/%">
-      <details key="start" value="452"/>
-      <details key="end" value="460"/>
+      <details key="start" value="527"/>
+      <details key="end" value="535"/>
       <details key="line" value="7"/>
     </eAnnotations>
     <eAnnotations source="positions.3" references="/0/generateComposer/%/projectName">
-      <details key="start" value="461"/>
-      <details key="end" value="472"/>
+      <details key="start" value="536"/>
+      <details key="end" value="547"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.4" references="/0/generateComposer/%/%.1">
-      <details key="start" value="474"/>
-      <details key="end" value="1247"/>
+      <details key="start" value="549"/>
+      <details key="end" value="1383"/>
       <details key="line" value="7"/>
     </eAnnotations>
     <eAnnotations source="positions.5" references="/0/generateComposer/%/projectName.1">
-      <details key="start" value="1248"/>
-      <details key="end" value="1259"/>
+      <details key="start" value="1384"/>
+      <details key="end" value="1395"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.6" references="/0/generateComposer/%/%.2">
-      <details key="start" value="1261"/>
-      <details key="end" value="2012"/>
-      <details key="line" value="30"/>
+      <details key="start" value="1397"/>
+      <details key="end" value="2094"/>
+      <details key="line" value="32"/>
     </eAnnotations>
     <eAnnotations source="positions.7" references="/0/generateComposer/%/%.3">
-      <details key="start" value="2013"/>
-      <details key="end" value="2049"/>
+      <details key="start" value="2095"/>
+      <details key="end" value="2131"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.8" references="/0/generateComposer/%/%.3/toExtendViewpoint">
-      <details key="start" value="2013"/>
-      <details key="end" value="2030"/>
+      <details key="start" value="2095"/>
+      <details key="end" value="2112"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.9" references="/0/generateComposer/%/%.4">
-      <details key="start" value="2051"/>
-      <details key="end" value="2301"/>
-      <details key="line" value="45"/>
+      <details key="start" value="2133"/>
+      <details key="end" value="2229"/>
+      <details key="line" value="46"/>
     </eAnnotations>
     <eAnnotations source="positions.10" references="/0/generateComposer/%/%.5">
-      <details key="start" value="2302"/>
-      <details key="end" value="2305"/>
+      <details key="start" value="2230"/>
+      <details key="end" value="2276"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.11" references="/0/generateComposer/%/%.6">
-      <details key="start" value="2307"/>
-      <details key="end" value="2308"/>
-      <details key="line" value="53"/>
-    </eAnnotations>
-    <eAnnotations source="positions.12" references="/0/generateComposer/%/%.7">
-      <details key="start" value="2309"/>
-      <details key="end" value="2345"/>
+    <eAnnotations source="positions.11" references="/0/generateComposer/%/%.5/%">
+      <details key="start" value="2244"/>
+      <details key="end" value="2275"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.13" references="/0/generateComposer/%/%.7/toExtendViewpoint">
-      <details key="start" value="2309"/>
-      <details key="end" value="2326"/>
+    <eAnnotations source="positions.12" references="/0/generateComposer/%/%.5/%/pcDiagramDef">
+      <details key="start" value="2244"/>
+      <details key="end" value="2256"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.14" references="/0/generateComposer/%/%.8">
-      <details key="start" value="2347"/>
-      <details key="end" value="2481"/>
-      <details key="line" value="53"/>
-    </eAnnotations>
-    <eAnnotations source="positions.15" references="/0/generateComposer/%/%.9">
-      <details key="start" value="2482"/>
-      <details key="end" value="2485"/>
+    <eAnnotations source="positions.13" references="/0/generateComposer/%/%.5/%/%">
+      <details key="start" value="2267"/>
+      <details key="end" value="2274"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.16" references="/0/generateComposer/%/%.10">
-      <details key="start" value="2487"/>
-      <details key="end" value="2488"/>
-      <details key="line" value="58"/>
+    <eAnnotations source="positions.14" references="/0/generateComposer/%/%.6">
+      <details key="start" value="2279"/>
+      <details key="end" value="2533"/>
+      <details key="line" value="48"/>
     </eAnnotations>
-    <eAnnotations source="positions.17" references="/0/generateComposer/%/%.11">
-      <details key="start" value="2489"/>
-      <details key="end" value="2525"/>
+    <eAnnotations source="positions.15" references="/0/generateComposer/%/%.7">
+      <details key="start" value="2534"/>
+      <details key="end" value="2537"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.18" references="/0/generateComposer/%/%.11/toExtendViewpoint">
-      <details key="start" value="2489"/>
-      <details key="end" value="2506"/>
+    <eAnnotations source="positions.16" references="/0/generateComposer/%/%.8">
+      <details key="start" value="2539"/>
+      <details key="end" value="2540"/>
+      <details key="line" value="57"/>
+    </eAnnotations>
+    <eAnnotations source="positions.17" references="/0/generateComposer/%/%.9">
+      <details key="start" value="2541"/>
+      <details key="end" value="2577"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.19" references="/0/generateComposer/%/%.12">
-      <details key="start" value="2527"/>
-      <details key="end" value="2884"/>
-      <details key="line" value="58"/>
-    </eAnnotations>
-    <eAnnotations source="positions.20" references="/0/generateComposer/%/%.13">
-      <details key="start" value="2885"/>
-      <details key="end" value="2888"/>
+    <eAnnotations source="positions.18" references="/0/generateComposer/%/%.9/toExtendViewpoint">
+      <details key="start" value="2541"/>
+      <details key="end" value="2558"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.21" references="/0/generateComposer/%/%.14">
-      <details key="start" value="2890"/>
-      <details key="end" value="2891"/>
-      <details key="line" value="70"/>
+    <eAnnotations source="positions.19" references="/0/generateComposer/%/%.10">
+      <details key="start" value="2579"/>
+      <details key="end" value="2713"/>
+      <details key="line" value="57"/>
     </eAnnotations>
-    <eAnnotations source="positions.22" references="/0/generateComposer/%/%.15">
-      <details key="start" value="2892"/>
-      <details key="end" value="2928"/>
+    <eAnnotations source="positions.20" references="/0/generateComposer/%/%.11">
+      <details key="start" value="2714"/>
+      <details key="end" value="2717"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.23" references="/0/generateComposer/%/%.15/toExtendViewpoint">
-      <details key="start" value="2892"/>
-      <details key="end" value="2909"/>
+    <eAnnotations source="positions.21" references="/0/generateComposer/%/%.12">
+      <details key="start" value="2719"/>
+      <details key="end" value="2720"/>
+      <details key="line" value="62"/>
+    </eAnnotations>
+    <eAnnotations source="positions.22" references="/0/generateComposer/%/%.13">
+      <details key="start" value="2721"/>
+      <details key="end" value="2757"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.24" references="/0/generateComposer/%/%.16">
-      <details key="start" value="2930"/>
-      <details key="end" value="3127"/>
-      <details key="line" value="70"/>
-    </eAnnotations>
-    <eAnnotations source="positions.25" references="/0/generateComposer/%/%.17">
-      <details key="start" value="3128"/>
-      <details key="end" value="3131"/>
+    <eAnnotations source="positions.23" references="/0/generateComposer/%/%.13/toExtendViewpoint">
+      <details key="start" value="2721"/>
+      <details key="end" value="2738"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.26" references="/0/generateComposer/%/%.18">
-      <details key="start" value="3133"/>
-      <details key="end" value="3134"/>
+    <eAnnotations source="positions.24" references="/0/generateComposer/%/%.14">
+      <details key="start" value="2759"/>
+      <details key="end" value="3121"/>
+      <details key="line" value="62"/>
+    </eAnnotations>
+    <eAnnotations source="positions.25" references="/0/generateComposer/%/%.15">
+      <details key="start" value="3122"/>
+      <details key="end" value="3125"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.26" references="/0/generateComposer/%/%.16">
+      <details key="start" value="3127"/>
+      <details key="end" value="3128"/>
       <details key="line" value="74"/>
     </eAnnotations>
-    <eAnnotations source="positions.27" references="/0/generateComposer/%/%.19">
-      <details key="start" value="3135"/>
-      <details key="end" value="3171"/>
+    <eAnnotations source="positions.27" references="/0/generateComposer/%/%.17">
+      <details key="start" value="3129"/>
+      <details key="end" value="3165"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.28" references="/0/generateComposer/%/%.19/toExtendViewpoint">
-      <details key="start" value="3135"/>
-      <details key="end" value="3152"/>
+    <eAnnotations source="positions.28" references="/0/generateComposer/%/%.17/toExtendViewpoint">
+      <details key="start" value="3129"/>
+      <details key="end" value="3146"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.29" references="/0/generateComposer/%/%.20">
-      <details key="start" value="3173"/>
-      <details key="end" value="3404"/>
+    <eAnnotations source="positions.29" references="/0/generateComposer/%/%.18">
+      <details key="start" value="3167"/>
+      <details key="end" value="3364"/>
       <details key="line" value="74"/>
     </eAnnotations>
-    <eAnnotations source="positions.30" references="/0/generateComposer/%/%.21">
-      <details key="start" value="3405"/>
+    <eAnnotations source="positions.30" references="/0/generateComposer/%/%.19">
+      <details key="start" value="3365"/>
+      <details key="end" value="3368"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.31" references="/0/generateComposer/%/%.20">
+      <details key="start" value="3370"/>
+      <details key="end" value="3371"/>
+      <details key="line" value="78"/>
+    </eAnnotations>
+    <eAnnotations source="positions.32" references="/0/generateComposer/%/%.21">
+      <details key="start" value="3372"/>
       <details key="end" value="3408"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.31" references="/0/generateComposer/%/%.22">
+    <eAnnotations source="positions.33" references="/0/generateComposer/%/%.21/toExtendViewpoint">
+      <details key="start" value="3372"/>
+      <details key="end" value="3389"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.34" references="/0/generateComposer/%/%.22">
       <details key="start" value="3410"/>
-      <details key="end" value="3411"/>
-      <details key="line" value="84"/>
+      <details key="end" value="3871"/>
+      <details key="line" value="78"/>
     </eAnnotations>
-    <eAnnotations source="positions.32" references="/0/generateComposer/%/%.23">
-      <details key="start" value="3412"/>
-      <details key="end" value="3448"/>
+    <eAnnotations source="positions.35" references="/0/generateComposer/%/%.23">
+      <details key="start" value="3872"/>
+      <details key="end" value="3875"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.33" references="/0/generateComposer/%/%.23/toExtendViewpoint">
-      <details key="start" value="3412"/>
-      <details key="end" value="3429"/>
+    <eAnnotations source="positions.36" references="/0/generateComposer/%/%.24">
+      <details key="start" value="3877"/>
+      <details key="end" value="3878"/>
+      <details key="line" value="95"/>
+    </eAnnotations>
+    <eAnnotations source="positions.37" references="/0/generateComposer/%/%.25">
+      <details key="start" value="3879"/>
+      <details key="end" value="3915"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.34" references="/0/generateComposer/%/%.24">
-      <details key="start" value="3450"/>
-      <details key="end" value="3693"/>
-      <details key="line" value="84"/>
-    </eAnnotations>
-    <eAnnotations source="positions.35" references="/0/generateComposer/%/%.25">
-      <details key="start" value="3694"/>
-      <details key="end" value="3697"/>
+    <eAnnotations source="positions.38" references="/0/generateComposer/%/%.25/toExtendViewpoint">
+      <details key="start" value="3879"/>
+      <details key="end" value="3896"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.36" references="/0/generateComposer/%/%.26">
-      <details key="start" value="3699"/>
-      <details key="end" value="3700"/>
-      <details key="line" value="92"/>
+    <eAnnotations source="positions.39" references="/0/generateComposer/%/%.26">
+      <details key="start" value="3917"/>
+      <details key="end" value="4160"/>
+      <details key="line" value="95"/>
     </eAnnotations>
-    <eAnnotations source="positions.37" references="/0/generateComposer/%/%.27">
-      <details key="start" value="3701"/>
-      <details key="end" value="3737"/>
+    <eAnnotations source="positions.40" references="/0/generateComposer/%/%.27">
+      <details key="start" value="4161"/>
+      <details key="end" value="4164"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.38" references="/0/generateComposer/%/%.27/toExtendViewpoint">
-      <details key="start" value="3701"/>
-      <details key="end" value="3718"/>
+    <eAnnotations source="positions.41" references="/0/generateComposer/%/%.28">
+      <details key="start" value="4166"/>
+      <details key="end" value="4167"/>
+      <details key="line" value="103"/>
+    </eAnnotations>
+    <eAnnotations source="positions.42" references="/0/generateComposer/%/%.29">
+      <details key="start" value="4168"/>
+      <details key="end" value="4204"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.39" references="/0/generateComposer/%/%.28">
-      <details key="start" value="3739"/>
-      <details key="end" value="5018"/>
-      <details key="line" value="92"/>
-    </eAnnotations>
-    <eAnnotations source="positions.40" references="/0/generateComposer/%/%.29">
-      <details key="start" value="5019"/>
-      <details key="end" value="5022"/>
+    <eAnnotations source="positions.43" references="/0/generateComposer/%/%.29/toExtendViewpoint">
+      <details key="start" value="4168"/>
+      <details key="end" value="4185"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.41" references="/0/generateComposer/%/%.30">
-      <details key="start" value="5024"/>
-      <details key="end" value="5025"/>
-      <details key="line" value="122"/>
+    <eAnnotations source="positions.44" references="/0/generateComposer/%/%.30">
+      <details key="start" value="4206"/>
+      <details key="end" value="5228"/>
+      <details key="line" value="103"/>
     </eAnnotations>
-    <eAnnotations source="positions.42" references="/0/generateComposer/%/%.31">
-      <details key="start" value="5026"/>
-      <details key="end" value="5062"/>
+    <eAnnotations source="positions.45" references="/0/generateComposer/%/%.31">
+      <details key="start" value="5229"/>
+      <details key="end" value="5232"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.43" references="/0/generateComposer/%/%.31/toExtendViewpoint">
-      <details key="start" value="5026"/>
-      <details key="end" value="5043"/>
+    <eAnnotations source="positions.46" references="/0/generateComposer/%/%.32">
+      <details key="start" value="5234"/>
+      <details key="end" value="5308"/>
+      <details key="line" value="125"/>
+    </eAnnotations>
+    <eAnnotations source="positions.47" references="/0/generateComposer/%/%.33">
+      <details key="start" value="5309"/>
+      <details key="end" value="5312"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.44" references="/0/generateComposer/%/%.32">
-      <details key="start" value="5064"/>
-      <details key="end" value="5281"/>
-      <details key="line" value="122"/>
+    <eAnnotations source="positions.48" references="/0/generateComposer/%/%.34">
+      <details key="start" value="5314"/>
+      <details key="end" value="5515"/>
+      <details key="line" value="127"/>
     </eAnnotations>
-    <eAnnotations source="positions.45" references="/0/generateComposer/%/%.33">
-      <details key="start" value="5282"/>
-      <details key="end" value="5285"/>
+    <eAnnotations source="positions.49" references="/0/generateComposer/%/%.35">
+      <details key="start" value="5516"/>
+      <details key="end" value="5519"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.46" references="/0/generateComposer/%/%.34">
-      <details key="start" value="5287"/>
-      <details key="end" value="5288"/>
-      <details key="line" value="131"/>
+    <eAnnotations source="positions.50" references="/0/generateComposer/%/%.36">
+      <details key="start" value="5521"/>
+      <details key="end" value="5681"/>
+      <details key="line" value="133"/>
     </eAnnotations>
-    <eAnnotations source="positions.47" references="/0/generateComposer/%/%.35">
-      <details key="start" value="5289"/>
-      <details key="end" value="5325"/>
+    <eAnnotations source="positions.51" references="/0/generateComposer/%/%.37">
+      <details key="start" value="5682"/>
+      <details key="end" value="5685"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.48" references="/0/generateComposer/%/%.35/toExtendViewpoint">
-      <details key="start" value="5289"/>
-      <details key="end" value="5306"/>
-      <details key="line" value="0"/>
+    <eAnnotations source="positions.52" references="/0/generateComposer/%/%.38">
+      <details key="start" value="5687"/>
+      <details key="end" value="5735"/>
+      <details key="line" value="137"/>
     </eAnnotations>
-    <eAnnotations source="positions.49" references="/0/generateComposer/%/%.36">
-      <details key="start" value="5327"/>
-      <details key="end" value="5389"/>
-      <details key="line" value="131"/>
-    </eAnnotations>
-    <eAnnotations source="positions.50" references="/0/generateComposer/%/%.37">
-      <details key="start" value="5390"/>
-      <details key="end" value="5393"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.51" references="/0/generateComposer/%/%.38">
-      <details key="start" value="5395"/>
-      <details key="end" value="5396"/>
-      <details key="line" value="134"/>
-    </eAnnotations>
-    <eAnnotations source="positions.52" references="/0/generateComposer/%/%.39">
-      <details key="start" value="5397"/>
-      <details key="end" value="5433"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.53" references="/0/generateComposer/%/%.39/toExtendViewpoint">
-      <details key="start" value="5397"/>
-      <details key="end" value="5414"/>
+    <eAnnotations source="positions.53" references="/0/generateComposer/%/%.39">
+      <details key="start" value="5736"/>
+      <details key="end" value="5739"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.54" references="/0/generateComposer/%/%.40">
-      <details key="start" value="5435"/>
-      <details key="end" value="5621"/>
-      <details key="line" value="134"/>
+      <details key="start" value="5741"/>
+      <details key="end" value="5766"/>
+      <details key="line" value="138"/>
     </eAnnotations>
     <eAnnotations source="positions.55" references="/0/generateComposer/%/%.41">
-      <details key="start" value="5622"/>
-      <details key="end" value="5625"/>
+      <details key="start" value="5767"/>
+      <details key="end" value="5770"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.56" references="/0/generateComposer/%/%.42">
-      <details key="start" value="5627"/>
-      <details key="end" value="5787"/>
-      <details key="line" value="140"/>
+      <details key="start" value="5772"/>
+      <details key="end" value="5906"/>
+      <details key="line" value="138"/>
     </eAnnotations>
     <eAnnotations source="positions.57" references="/0/generateComposer/%/%.43">
-      <details key="start" value="5788"/>
-      <details key="end" value="5791"/>
+      <details key="start" value="5907"/>
+      <details key="end" value="5910"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.58" references="/0/generateComposer/%/%.44">
-      <details key="start" value="5793"/>
-      <details key="end" value="5841"/>
-      <details key="line" value="144"/>
+      <details key="start" value="5912"/>
+      <details key="end" value="5927"/>
+      <details key="line" value="141"/>
     </eAnnotations>
     <eAnnotations source="positions.59" references="/0/generateComposer/%/%.45">
-      <details key="start" value="5842"/>
-      <details key="end" value="5845"/>
+      <details key="start" value="5928"/>
+      <details key="end" value="5931"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.60" references="/0/generateComposer/%/%.46">
-      <details key="start" value="5847"/>
-      <details key="end" value="5872"/>
-      <details key="line" value="145"/>
+      <details key="start" value="5933"/>
+      <details key="end" value="5953"/>
+      <details key="line" value="141"/>
     </eAnnotations>
     <eAnnotations source="positions.61" references="/0/generateComposer/%/%.47">
-      <details key="start" value="5873"/>
-      <details key="end" value="5876"/>
+      <details key="start" value="5954"/>
+      <details key="end" value="5957"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.62" references="/0/generateComposer/%/%.48">
-      <details key="start" value="5878"/>
-      <details key="end" value="6012"/>
-      <details key="line" value="145"/>
+      <details key="start" value="5959"/>
+      <details key="end" value="6263"/>
+      <details key="line" value="141"/>
     </eAnnotations>
     <eAnnotations source="positions.63" references="/0/generateComposer/%/%.49">
-      <details key="start" value="6013"/>
-      <details key="end" value="6016"/>
+      <details key="start" value="6264"/>
+      <details key="end" value="6267"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.64" references="/0/generateComposer/%/%.50">
-      <details key="start" value="6018"/>
-      <details key="end" value="6033"/>
-      <details key="line" value="148"/>
+      <details key="start" value="6269"/>
+      <details key="end" value="6270"/>
+      <details key="line" value="153"/>
     </eAnnotations>
     <eAnnotations source="positions.65" references="/0/generateComposer/%/%.51">
-      <details key="start" value="6034"/>
-      <details key="end" value="6037"/>
+      <details key="start" value="6271"/>
+      <details key="end" value="6307"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.66" references="/0/generateComposer/%/%.52">
-      <details key="start" value="6039"/>
-      <details key="end" value="6059"/>
-      <details key="line" value="148"/>
-    </eAnnotations>
-    <eAnnotations source="positions.67" references="/0/generateComposer/%/%.53">
-      <details key="start" value="6060"/>
-      <details key="end" value="6063"/>
+    <eAnnotations source="positions.66" references="/0/generateComposer/%/%.51/toExtendViewpoint">
+      <details key="start" value="6271"/>
+      <details key="end" value="6288"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.68" references="/0/generateComposer/%/%.54">
-      <details key="start" value="6065"/>
-      <details key="end" value="6369"/>
-      <details key="line" value="148"/>
+    <eAnnotations source="positions.67" references="/0/generateComposer/%/%.52">
+      <details key="start" value="6309"/>
+      <details key="end" value="7502"/>
+      <details key="line" value="153"/>
     </eAnnotations>
-    <eAnnotations source="positions.69" references="/0/generateComposer/%/%.55">
-      <details key="start" value="6370"/>
-      <details key="end" value="6373"/>
+    <eAnnotations source="positions.68" references="/0/generateComposer/%/%.53">
+      <details key="start" value="7503"/>
+      <details key="end" value="7506"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.70" references="/0/generateComposer/%/%.56">
-      <details key="start" value="6375"/>
-      <details key="end" value="6376"/>
-      <details key="line" value="160"/>
+    <eAnnotations source="positions.69" references="/0/generateComposer/%/%.54">
+      <details key="start" value="7508"/>
+      <details key="end" value="7509"/>
+      <details key="line" value="180"/>
     </eAnnotations>
-    <eAnnotations source="positions.71" references="/0/generateComposer/%/%.57">
-      <details key="start" value="6377"/>
-      <details key="end" value="6413"/>
+    <eAnnotations source="positions.70" references="/0/generateComposer/%/%.55">
+      <details key="start" value="7510"/>
+      <details key="end" value="7546"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.72" references="/0/generateComposer/%/%.57/toExtendViewpoint">
-      <details key="start" value="6377"/>
-      <details key="end" value="6394"/>
+    <eAnnotations source="positions.71" references="/0/generateComposer/%/%.55/toExtendViewpoint">
+      <details key="start" value="7510"/>
+      <details key="end" value="7527"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.73" references="/0/generateComposer/%/%.58">
-      <details key="start" value="6415"/>
-      <details key="end" value="7632"/>
-      <details key="line" value="160"/>
+    <eAnnotations source="positions.72" references="/0/generateComposer/%/%.56">
+      <details key="start" value="7548"/>
+      <details key="end" value="7904"/>
+      <details key="line" value="180"/>
     </eAnnotations>
-    <eAnnotations source="positions.74" references="/0/generateComposer/%/%.59">
-      <details key="start" value="7633"/>
-      <details key="end" value="7636"/>
+    <eAnnotations source="positions.73" references="/0/generateComposer/%/%.57">
+      <details key="start" value="427"/>
+      <details key="end" value="508"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.75" references="/0/generateComposer/%/%.60">
-      <details key="start" value="7638"/>
-      <details key="end" value="7639"/>
-      <details key="line" value="192"/>
-    </eAnnotations>
-    <eAnnotations source="positions.76" references="/0/generateComposer/%/%.61">
-      <details key="start" value="7640"/>
-      <details key="end" value="7676"/>
+    <eAnnotations source="positions.74" references="/0/generateComposer/%/%.57/%">
+      <details key="start" value="427"/>
+      <details key="end" value="467"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.77" references="/0/generateComposer/%/%.61/toExtendViewpoint">
-      <details key="start" value="7640"/>
-      <details key="end" value="7657"/>
+    <eAnnotations source="positions.75" references="/0/generateComposer/%/%.57/%/projectName">
+      <details key="start" value="455"/>
+      <details key="end" value="466"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.78" references="/0/generateComposer/%/%.62">
-      <details key="start" value="7678"/>
-      <details key="end" value="8034"/>
-      <details key="line" value="192"/>
-    </eAnnotations>
-    <eAnnotations source="positions.79" references="/0/generateComposer/%/%.63">
-      <details key="start" value="352"/>
-      <details key="end" value="433"/>
+    <eAnnotations source="positions.76" references="/0/generateComposer/%/%.57/%.1">
+      <details key="start" value="475"/>
+      <details key="end" value="507"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.80" references="/0/generateComposer/%/%.63/%">
-      <details key="start" value="352"/>
-      <details key="end" value="392"/>
+    <eAnnotations source="positions.77" references="/0/generateComposer/%/%.58">
+      <details key="start" value="517"/>
+      <details key="end" value="524"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.81" references="/0/generateComposer/%/%.63/%/projectName">
-      <details key="start" value="380"/>
-      <details key="end" value="391"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.82" references="/0/generateComposer/%/%.63/%.1">
-      <details key="start" value="400"/>
-      <details key="end" value="432"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.83" references="/0/generateComposer/%/%.64">
-      <details key="start" value="442"/>
-      <details key="end" value="449"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.84" references="/0/generateComposer/projectName">
-      <details key="start" value="290"/>
-      <details key="end" value="311"/>
+    <eAnnotations source="positions.78" references="/0/generateComposer/projectName">
+      <details key="start" value="329"/>
+      <details key="end" value="350"/>
       <details key="line" value="5"/>
     </eAnnotations>
-    <eAnnotations source="positions.85" references="/0/generateComposer/toExtendViewpoint">
-      <details key="start" value="313"/>
-      <details key="end" value="342"/>
+    <eAnnotations source="positions.79" references="/0/generateComposer/toExtendViewpoint">
+      <details key="start" value="352"/>
+      <details key="end" value="381"/>
+      <details key="line" value="5"/>
+    </eAnnotations>
+    <eAnnotations source="positions.80" references="/0/generateComposer/pcDiagramDef">
+      <details key="start" value="383"/>
+      <details key="end" value="417"/>
       <details key="line" value="5"/>
     </eAnnotations>
   </ecore:EAnnotation>

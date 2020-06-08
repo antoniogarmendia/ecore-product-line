@@ -37,6 +37,10 @@ public class FeatureIDEProvider implements IFeatureProvider {
 	public boolean getFeatureValue(String name) {
 		return this.cfg.getSelectedFeatureNames().contains(name);
 	}
+
+	public Configuration getCfg() {
+		return this.cfg;
+	}
 }
 
 [/file]

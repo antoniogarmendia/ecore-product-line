@@ -1,7 +1,7 @@
 [comment encoding = UTF-8 /]
-[module queriesPresenceCondUtils('http://www.eclipse.org/emf/2002/Ecore')]
+[module queriesPresenceCondUtils('http://www.eclipse.org/emf/2002/Ecore', 'http://org.pc.definition.diagram/1.0')]
 
 [query public getPackagePathbyProjectName(projectName : String) : String = 'src/'.concat(projectName.replaceAll('\\.','/')).concat('/') /]
 
-
-
+[query public workspacePath(eObject : EObject) : String 
+	= invoke('org.variability.definition.diagram.design.generate.template.request.VariabilityServices', 'workspacePath(org.eclipse.emf.ecore.EObject)', Sequence{eObject}) /]

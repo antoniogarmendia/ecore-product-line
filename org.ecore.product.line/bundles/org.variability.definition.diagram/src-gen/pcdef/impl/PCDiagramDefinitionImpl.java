@@ -4,16 +4,15 @@ package pcdef.impl;
 
 import java.util.Collection;
 
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.InternalEObject;
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
-import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 
 import pcdef.PCDiagramDefinition;
@@ -29,7 +28,7 @@ import pcdef.StrongerThan;
  * </p>
  * <ul>
  *   <li>{@link pcdef.impl.PCDiagramDefinitionImpl#getGraphicalElements <em>Graphical Elements</em>}</li>
- *   <li>{@link pcdef.impl.PCDiagramDefinitionImpl#getPredicates <em>Predicates</em>}</li>
+ *   <li>{@link pcdef.impl.PCDiagramDefinitionImpl#getStronger <em>Stronger</em>}</li>
  * </ul>
  *
  * @generated
@@ -46,14 +45,14 @@ public class PCDiagramDefinitionImpl extends RepresentationExtensionFeatureImpl 
 	protected EList<DiagramElementMapping> graphicalElements;
 
 	/**
-	 * The cached value of the '{@link #getPredicates() <em>Predicates</em>}' containment reference list.
+	 * The cached value of the '{@link #getStronger() <em>Stronger</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getPredicates()
+	 * @see #getStronger()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<StrongerThan> predicates;
+	protected StrongerThan stronger;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -94,12 +93,50 @@ public class PCDiagramDefinitionImpl extends RepresentationExtensionFeatureImpl 
 	 * @generated
 	 */
 	@Override
-	public EList<StrongerThan> getPredicates() {
-		if (predicates == null) {
-			predicates = new EObjectContainmentEList<StrongerThan>(StrongerThan.class, this,
-					PcdefPackage.PC_DIAGRAM_DEFINITION__PREDICATES);
+	public StrongerThan getStronger() {
+		return stronger;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetStronger(StrongerThan newStronger, NotificationChain msgs) {
+		StrongerThan oldStronger = stronger;
+		stronger = newStronger;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+					PcdefPackage.PC_DIAGRAM_DEFINITION__STRONGER, oldStronger, newStronger);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
 		}
-		return predicates;
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setStronger(StrongerThan newStronger) {
+		if (newStronger != stronger) {
+			NotificationChain msgs = null;
+			if (stronger != null)
+				msgs = ((InternalEObject) stronger).eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE - PcdefPackage.PC_DIAGRAM_DEFINITION__STRONGER, null, msgs);
+			if (newStronger != null)
+				msgs = ((InternalEObject) newStronger).eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - PcdefPackage.PC_DIAGRAM_DEFINITION__STRONGER, null, msgs);
+			msgs = basicSetStronger(newStronger, msgs);
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, PcdefPackage.PC_DIAGRAM_DEFINITION__STRONGER,
+					newStronger, newStronger));
 	}
 
 	/**
@@ -110,8 +147,8 @@ public class PCDiagramDefinitionImpl extends RepresentationExtensionFeatureImpl 
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-		case PcdefPackage.PC_DIAGRAM_DEFINITION__PREDICATES:
-			return ((InternalEList<?>) getPredicates()).basicRemove(otherEnd, msgs);
+		case PcdefPackage.PC_DIAGRAM_DEFINITION__STRONGER:
+			return basicSetStronger(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -126,8 +163,8 @@ public class PCDiagramDefinitionImpl extends RepresentationExtensionFeatureImpl 
 		switch (featureID) {
 		case PcdefPackage.PC_DIAGRAM_DEFINITION__GRAPHICAL_ELEMENTS:
 			return getGraphicalElements();
-		case PcdefPackage.PC_DIAGRAM_DEFINITION__PREDICATES:
-			return getPredicates();
+		case PcdefPackage.PC_DIAGRAM_DEFINITION__STRONGER:
+			return getStronger();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -145,9 +182,8 @@ public class PCDiagramDefinitionImpl extends RepresentationExtensionFeatureImpl 
 			getGraphicalElements().clear();
 			getGraphicalElements().addAll((Collection<? extends DiagramElementMapping>) newValue);
 			return;
-		case PcdefPackage.PC_DIAGRAM_DEFINITION__PREDICATES:
-			getPredicates().clear();
-			getPredicates().addAll((Collection<? extends StrongerThan>) newValue);
+		case PcdefPackage.PC_DIAGRAM_DEFINITION__STRONGER:
+			setStronger((StrongerThan) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -164,8 +200,8 @@ public class PCDiagramDefinitionImpl extends RepresentationExtensionFeatureImpl 
 		case PcdefPackage.PC_DIAGRAM_DEFINITION__GRAPHICAL_ELEMENTS:
 			getGraphicalElements().clear();
 			return;
-		case PcdefPackage.PC_DIAGRAM_DEFINITION__PREDICATES:
-			getPredicates().clear();
+		case PcdefPackage.PC_DIAGRAM_DEFINITION__STRONGER:
+			setStronger((StrongerThan) null);
 			return;
 		}
 		super.eUnset(featureID);
@@ -181,8 +217,8 @@ public class PCDiagramDefinitionImpl extends RepresentationExtensionFeatureImpl 
 		switch (featureID) {
 		case PcdefPackage.PC_DIAGRAM_DEFINITION__GRAPHICAL_ELEMENTS:
 			return graphicalElements != null && !graphicalElements.isEmpty();
-		case PcdefPackage.PC_DIAGRAM_DEFINITION__PREDICATES:
-			return predicates != null && !predicates.isEmpty();
+		case PcdefPackage.PC_DIAGRAM_DEFINITION__STRONGER:
+			return stronger != null;
 		}
 		return super.eIsSet(featureID);
 	}

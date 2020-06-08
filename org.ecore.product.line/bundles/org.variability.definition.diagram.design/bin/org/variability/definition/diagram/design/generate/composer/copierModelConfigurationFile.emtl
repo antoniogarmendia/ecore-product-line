@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:mtl="http://www.eclipse.org/acceleo/mtl/3.0" xmlns:ocl.ecore="http://www.eclipse.org/ocl/1.1.0/Ecore">
-  <mtl:Module name="featureProviderFile" nsURI="org::variability::definition::diagram::design::generate::composer::featureProviderFile" startHeaderPosition="30" endHeaderPosition="261">
+  <mtl:Module name="copierModelConfigurationFile" nsURI="org::variability::definition::diagram::design::generate::composer::copierModelConfigurationFile" startHeaderPosition="29" endHeaderPosition="268">
     <input>
       <takesTypesFrom href="http://www.eclipse.org/emf/2002/Ecore#/"/>
     </input>
@@ -12,23 +12,27 @@
       <takesTypesFrom href="http://www.eclipse.org/sirius/1.1.0#//description/audit"/>
     </input>
     <imports href="../template/request/queriesPresenceCondUtils.emtl#/0"/>
-    <ownedModuleElement xsi:type="mtl:Template" name="generateFeatureProviderFile" visibility="Public">
+    <ownedModuleElement xsi:type="mtl:Template" name="generateCopierModelConfigurationFile" visibility="Public">
       <body xsi:type="mtl:FileBlock" openMode="OverWrite">
         <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="package "/>
-        <body xsi:type="ocl.ecore:VariableExp" name="projectName" referredVariable="/0/generateFeatureProviderFile/projectName">
+        <body xsi:type="ocl.ecore:VariableExp" name="projectName" referredVariable="/0/generateCopierModelConfigurationFile/projectName">
           <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         </body>
-        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=".composer;&#xD;&#xA;&#xD;&#xA;import de.ovgu.featureide.fm.core.configuration.Configuration;&#xD;&#xA;import de.ovgu.featureide.fm.core.configuration.SelectableFeature;&#xD;&#xA;import solver.features.IFeature;&#xD;&#xA;import solver.features.IFeatureProvider;&#xD;&#xA;import solver.features.impl.Feature;&#xD;&#xA;&#xD;&#xA;public class FeatureIDEProvider implements IFeatureProvider {&#xD;&#xA;&#x9;&#xD;&#xA;&#x9;private Configuration cfg;&#xD;&#xA;&#x9;&#xD;&#xA;&#x9;public FeatureIDEProvider (Configuration cfg) {&#xD;&#xA;&#x9;&#x9;this.cfg = cfg;&#xD;&#xA;&#x9;}&#xD;&#xA;&#xD;&#xA;&#x9;@Override&#xD;&#xA;&#x9;public boolean isValidFeature(String name) {&#xD;&#xA;&#x9;&#x9;for (SelectableFeature sf : this.cfg.getFeatures() ) &#xD;&#xA;&#x9;&#x9;&#x9;if (sf.getName().equals(name)) return true;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;return false;&#xD;&#xA;&#x9;}&#xD;&#xA;&#xD;&#xA;&#x9;@Override&#xD;&#xA;&#x9;public IFeature getFeature(String token) {&#xD;&#xA;&#x9;&#x9;if (isValidFeature(token)) return new Feature(token);&#xD;&#xA;&#x9;&#x9;return null;&#xD;&#xA;&#x9;}&#xD;&#xA;&#xD;&#xA;&#x9;@Override&#xD;&#xA;&#x9;public boolean getFeatureValue(String name) {&#xD;&#xA;&#x9;&#x9;return this.cfg.getSelectedFeatureNames().contains(name);&#xD;&#xA;&#x9;}&#xD;&#xA;&#xD;&#xA;&#x9;public Configuration getCfg() {&#xD;&#xA;&#x9;&#x9;return this.cfg;&#xD;&#xA;&#x9;}&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;"/>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=".composer;&#xA;&#xA;import org.eclipse.emf.common.util.EList;&#xA;import org.eclipse.emf.ecore.EObject;&#xA;import org.eclipse.emf.ecore.EReference;&#xA;import org.eclipse.emf.ecore.EStructuralFeature;&#xA;import org.eclipse.emf.ecore.util.EcoreUtil;&#xA;&#xA;import base.petrinet.design.variability.utils.EMFHandler;&#xA;import solver.presenceConditions.ConditionParser;&#xA;import variability.PresenceCondition;&#xA;import variability.Variability;&#xA;&#xA;public class CopierModelConfiguration extends EcoreUtil.Copier{&#xA;&#xA;&#x9;private static final long serialVersionUID = 1L;&#xA;&#x9;&#xA;&#x9;private Variability vRoot = null;&#xA;&#x9;private FeatureIDEProvider fip = null;&#xA;&#x9;private EList&lt;EReference> strongerThan;&#xA;&#x9;private EMFHandler emh;&#xA;&#x9;&#xA;&#x9;public CopierModelConfiguration(Variability vRoot, FeatureIDEProvider fip,  EMFHandler emh, &#xA;&#x9;&#x9;EList&lt;EReference> strongerThan) {&#xA;&#x9;&#x9;super();&#xA;&#x9;&#x9;this.vRoot = vRoot;&#xA;&#x9;&#x9;this.fip = fip;&#xA;&#x9;&#x9;this.strongerThan = strongerThan;&#xA;&#x9;&#x9;this.emh = emh;&#xA;&#x9;}&#xA;&#x9;&#xA;&#x9;/**&#xA;     * Check the PC to EObjects &#xA;     * before performing the copy              &#xA;     * @param eObject the object to copy.&#xA;     * @return the copy.&#xA;     */&#xA;&#x9;@Override&#xA;    public EObject copy(EObject eObject)&#xA;    {&#xA;      if (eObject == null) {&#xA;        return null;&#xA;      } else {&#xA;    &#x9;  boolean checkPC = checkEObjectPCPredicates(eObject);&#xA;    &#x9;  if (checkPC == false) &#xA;    &#x9;&#x9;  return null;&#xA;          return super.copy(eObject);&#xA;&#x9;  }&#xA;    }&#xA;&#x9;&#xA;&#x9;private boolean checkEObjectPCPredicates(EObject eObject) {&#xA;&#x9;&#x9;String name = getNameOf(eObject);&#xA;&#x9;    if (name != null) {&#xA;&#x9;    &#x9;PresenceCondition pc = vRoot.getPresencecondition(name);&#xA;&#x9;   &#x9;&#x9;if (pc != null ) {&#xA;&#x9;&#x9;      ConditionParser cp = new ConditionParser(this.emh.object2xtext(pc.getExpression()), this.fip);&#xA;&#x9;&#x9;      if (!cp.eval()) {&#xA;&#x9;&#x9;    &#x9; System.out.println(&quot;"/>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="[">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=" petrinets pn PLs] CFG &quot; + fip.getCfg().getSelectedFeatureNames() + &quot;deleting &quot; + eObject);&#xA;&#x9;&#x9;    &#x9; return false;&#xA;&#x9;&#x9;      }&#xA;&#x9;   &#x9;&#x9;}&#x9;   &#x9;&#x9;&#xA;&#x9;   }&#xA;&#x9;   return true;&#xA;&#x9;}&#xA;&#xA;&#x9;@Override&#xA;&#x9;protected void copyReference(EReference eReference, EObject eObject, EObject copyEObject) {&#xA;&#x9;&#x9;super.copyReference(eReference, eObject, copyEObject);&#xA;&#x9;&#x9;if (this.strongerThan != null) {&#xA;&#x9;&#x9;&#x9;int referenceIndex = this.strongerThan.indexOf(eReference);&#xA;&#x9;&#x9;&#x9;if (referenceIndex != -1) {&#xA;&#x9;&#x9;&#x9;&#x9;Object objectReferenced = copyEObject.eGet(eReference);&#xA;&#x9;&#x9;&#x9;&#x9;if (objectReferenced == null) {&#x9;&#x9;&#x9;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;EcoreUtil.remove(copyEObject);&#xA;&#x9;&#x9;&#x9;&#x9;}&#x9;&#x9;&#x9;&#x9;&#xA;&#x9;&#x9;&#x9;}&#xA;&#x9;&#x9;}&#xA;&#x9;}&#xA;&#x9;&#xA;&#x9;private String getNameOf(EObject obj) {&#x9;&#x9;&#xA;&#x9;&#x9;EStructuralFeature featureName = obj.eClass().getEStructuralFeature(&quot;name&quot;);&#xA;&#x9;&#x9;if (featureName != null)&#x9;&#x9;&#xA;&#x9;&#x9;&#x9;return obj.eGet(featureName).toString();&#x9;&#xA;&#x9;&#x9;return null;&#x9;&#xA;&#x9;}&#xA;}&#xA;&#xA;"/>
         <fileUrl xsi:type="ocl.ecore:OperationCallExp">
           <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
           <source xsi:type="mtl:QueryInvocation">
             <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
             <definition href="../template/request/queriesPresenceCondUtils.emtl#/0/getPackagePathbyProjectName"/>
-            <argument xsi:type="ocl.ecore:VariableExp" name="projectName" referredVariable="/0/generateFeatureProviderFile/projectName">
+            <argument xsi:type="ocl.ecore:VariableExp" name="projectName" referredVariable="/0/generateCopierModelConfigurationFile/projectName">
               <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
             </argument>
           </source>
-          <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="/composer/FeatureIDEProvider.java">
+          <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="/composer/CopierModelConfiguration.java">
             <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
           </argument>
           <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/concat"/>
@@ -62,11 +66,11 @@
       <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
         <references href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
       </eAnnotations>
-      <eOperations name="generateFeatureProviderFile">
+      <eOperations name="generateCopierModelConfigurationFile">
         <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
-        <eAnnotations source="MTL" references="/0/generateFeatureProviderFile"/>
+        <eAnnotations source="MTL" references="/0/generateCopierModelConfigurationFile"/>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="projectName">
           <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
@@ -134,62 +138,75 @@
     <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
   </ocl.ecore:Variable>
   <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
     <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
   </ocl.ecore:Variable>
   <ecore:EAnnotation source="positions">
-    <eAnnotations source="positions.0" references="/0/generateFeatureProviderFile">
-      <details key="start" value="267"/>
-      <details key="end" value="1440"/>
+    <eAnnotations source="positions.0" references="/0/generateCopierModelConfigurationFile">
+      <details key="start" value="272"/>
+      <details key="end" value="3065"/>
       <details key="line" value="5"/>
     </eAnnotations>
-    <eAnnotations source="positions.1" references="/0/generateFeatureProviderFile/%">
-      <details key="start" value="337"/>
-      <details key="end" value="1427"/>
+    <eAnnotations source="positions.1" references="/0/generateCopierModelConfigurationFile/%">
+      <details key="start" value="350"/>
+      <details key="end" value="3053"/>
       <details key="line" value="6"/>
     </eAnnotations>
-    <eAnnotations source="positions.2" references="/0/generateFeatureProviderFile/%/%">
-      <details key="start" value="448"/>
-      <details key="end" value="456"/>
+    <eAnnotations source="positions.2" references="/0/generateCopierModelConfigurationFile/%/%">
+      <details key="start" value="466"/>
+      <details key="end" value="474"/>
       <details key="line" value="7"/>
     </eAnnotations>
-    <eAnnotations source="positions.3" references="/0/generateFeatureProviderFile/%/projectName">
-      <details key="start" value="457"/>
-      <details key="end" value="468"/>
+    <eAnnotations source="positions.3" references="/0/generateCopierModelConfigurationFile/%/projectName">
+      <details key="start" value="475"/>
+      <details key="end" value="486"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.4" references="/0/generateFeatureProviderFile/%/%.1">
-      <details key="start" value="470"/>
-      <details key="end" value="1420"/>
+    <eAnnotations source="positions.4" references="/0/generateCopierModelConfigurationFile/%/%.1">
+      <details key="start" value="488"/>
+      <details key="end" value="2208"/>
       <details key="line" value="7"/>
     </eAnnotations>
-    <eAnnotations source="positions.5" references="/0/generateFeatureProviderFile/%/%.2">
-      <details key="start" value="344"/>
-      <details key="end" value="428"/>
+    <eAnnotations source="positions.5" references="/0/generateCopierModelConfigurationFile/%/%.2">
+      <details key="start" value="2209"/>
+      <details key="end" value="2212"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.6" references="/0/generateFeatureProviderFile/%/%.2/%">
-      <details key="start" value="344"/>
-      <details key="end" value="384"/>
+    <eAnnotations source="positions.6" references="/0/generateCopierModelConfigurationFile/%/%.3">
+      <details key="start" value="2214"/>
+      <details key="end" value="3046"/>
+      <details key="line" value="64"/>
+    </eAnnotations>
+    <eAnnotations source="positions.7" references="/0/generateCopierModelConfigurationFile/%/%.4">
+      <details key="start" value="357"/>
+      <details key="end" value="447"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.7" references="/0/generateFeatureProviderFile/%/%.2/%/projectName">
-      <details key="start" value="372"/>
-      <details key="end" value="383"/>
+    <eAnnotations source="positions.8" references="/0/generateCopierModelConfigurationFile/%/%.4/%">
+      <details key="start" value="357"/>
+      <details key="end" value="397"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.8" references="/0/generateFeatureProviderFile/%/%.2/%.1">
-      <details key="start" value="392"/>
-      <details key="end" value="427"/>
+    <eAnnotations source="positions.9" references="/0/generateCopierModelConfigurationFile/%/%.4/%/projectName">
+      <details key="start" value="385"/>
+      <details key="end" value="396"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.9" references="/0/generateFeatureProviderFile/%/%.3">
-      <details key="start" value="437"/>
-      <details key="end" value="444"/>
+    <eAnnotations source="positions.10" references="/0/generateCopierModelConfigurationFile/%/%.4/%.1">
+      <details key="start" value="405"/>
+      <details key="end" value="446"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.10" references="/0/generateFeatureProviderFile/projectName">
-      <details key="start" value="312"/>
-      <details key="end" value="333"/>
+    <eAnnotations source="positions.11" references="/0/generateCopierModelConfigurationFile/%/%.5">
+      <details key="start" value="456"/>
+      <details key="end" value="463"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.12" references="/0/generateCopierModelConfigurationFile/projectName">
+      <details key="start" value="326"/>
+      <details key="end" value="347"/>
       <details key="line" value="5"/>
     </eAnnotations>
   </ecore:EAnnotation>

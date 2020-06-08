@@ -62,6 +62,10 @@ public class EMFHandler {
 		IFile iFile = ResourcesPlugin.getWorkspace().getRoot().getFileForLocation(Path.fromOSString(model.getAbsolutePath()));
 		return rs.getResource(URI.createPlatformResourceURI(iFile.getFullPath().toString(), true), true);
 	}
+	
+	public Resource getResourceFromURI(URI uri) {		
+		return rs.getResource(uri, true);
+	}
 
 	public String object2xtext (EObject eobj) {
 		Serializer serializer = injector.getInstance(Serializer.class);  
@@ -71,7 +75,6 @@ public class EMFHandler {
 	public void removeAllPNObjects(Resource newr, List<EObject> toDelete) {
 		EcoreUtil.removeAll(toDelete);		
 	}
-	
 }
 
 [/file]

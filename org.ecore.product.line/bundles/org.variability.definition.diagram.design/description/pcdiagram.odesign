@@ -4,6 +4,7 @@
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="PCDiagramDefinition" initialisation="true" domainClass="pcdef::PCDiagramDefinition" enablePopupBars="true">
       <metamodel href="http://www.eclipse.org/sirius/diagram/1.1.0#//description"/>
       <metamodel href="../../org.variability.definition.diagram/model/PCDiagramDefinition.ecore#/"/>
+      <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
       <defaultLayer name="Default">
         <containerMappings name="GraphicalElementsContainer" semanticCandidatesExpression="aql:self" domainClass="pcdef::PCDiagramDefinition" childrenPresentation="List">
           <subNodeMappings name="NodeMappingNode" semanticCandidatesExpression="aql:self.graphicalElements" domainClass="description::NodeMapping">
@@ -35,9 +36,9 @@
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
           </style>
         </containerMappings>
-        <containerMappings name="StrongerThanContainer" semanticCandidatesExpression="aql:self" domainClass="pcdef::PCDiagramDefinition" childrenPresentation="List">
-          <subNodeMappings name="StrongerThanNode" semanticCandidatesExpression="feature:predicates" domainClass="pcdef::StrongerThan">
-            <style xsi:type="style:SquareDescription" labelSize="12" showIcon="false" labelExpression="aql:'(' + if (self.isSourceStronger = true) then self.ref.eContainer().name + ',  '+ self.ref.eType.name else self.ref.eType.name + ', '+ self.ref.eContainer().name endif + ', ' + self.ref.name + ' : ' + self.ref.eType.name +  ')'" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
+        <containerMappings name="StrongerThanContainer" semanticCandidatesExpression="feature:stronger" domainClass="pcdef::StrongerThan" childrenPresentation="List">
+          <subNodeMappings name="StrongerThanNode" semanticCandidatesExpression="feature:strongerThanRef" domainClass="ecore::EReference">
+            <style xsi:type="style:SquareDescription" labelSize="12" showIcon="false" labelExpression="aql:'(' + self.eType.name + ', '+ self.eContainer().name + ', ' + self.name + ' : ' + self.eType.name +  ')'" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
@@ -53,7 +54,7 @@
         </containerMappings>
         <toolSections>
           <ownedTools xsi:type="tool:PopupMenu" name="Variability">
-            <menuItemDescription xsi:type="tool:OperationAction" name="LoadOdesign">
+            <menuItemDescription xsi:type="tool:OperationAction" name="Load *.odesign">
               <view name="views"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ExternalJavaAction" name="LoadOdesign" id="org.variability.definition.diagram.design.condition.LoadOdesign">
@@ -61,13 +62,21 @@
                 </firstModelOperations>
               </initialOperation>
             </menuItemDescription>
+            <menuItemDescription xsi:type="tool:OperationAction" name="Load Ecore">
+              <view name="views"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ExternalJavaAction" name="LoadEcore" id="org.variability.definition.diagram.design.condition.LoadEcore">
+                  <parameters name="diagram" value="var:diagram"/>
+                </firstModelOperations>
+              </initialOperation>
+            </menuItemDescription>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:NodeCreationDescription" name="Create Predicate Stronger-Than" nodeMappings="//@ownedViewpoints[name='PCDiagramVp']/@ownedRepresentations[name='PCDiagramDefinition']/@defaultLayer/@containerMappings[name='StrongerThanContainer']/@subNodeMappings[name='StrongerThanNode']">
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" name="Stronger Than" precondition="aql:container.stronger.size() = 0" containerMappings="//@ownedViewpoints[name='PCDiagramVp']/@ownedRepresentations[name='PCDiagramDefinition']/@defaultLayer/@containerMappings[name='StrongerThanContainer']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:container">
-                <subModelOperations xsi:type="tool:CreateInstance" typeName="pcdef::StrongerThan" referenceName="predicates"/>
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="pcdef::StrongerThan" referenceName="stronger"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>

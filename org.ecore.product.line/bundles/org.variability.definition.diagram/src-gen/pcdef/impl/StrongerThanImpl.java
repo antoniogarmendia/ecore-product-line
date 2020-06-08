@@ -2,14 +2,16 @@
  */
 package pcdef.impl;
 
-import org.eclipse.emf.common.notify.Notification;
+import java.util.Collection;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.ecore.InternalEObject;
 
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
 import pcdef.PcdefPackage;
 import pcdef.StrongerThan;
@@ -22,42 +24,21 @@ import pcdef.StrongerThan;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link pcdef.impl.StrongerThanImpl#getRef <em>Ref</em>}</li>
- *   <li>{@link pcdef.impl.StrongerThanImpl#isIsSourceStronger <em>Is Source Stronger</em>}</li>
+ *   <li>{@link pcdef.impl.StrongerThanImpl#getStrongerThanRef <em>Stronger Than Ref</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class StrongerThanImpl extends MinimalEObjectImpl.Container implements StrongerThan {
 	/**
-	 * The cached value of the '{@link #getRef() <em>Ref</em>}' reference.
+	 * The cached value of the '{@link #getStrongerThanRef() <em>Stronger Than Ref</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getRef()
+	 * @see #getStrongerThanRef()
 	 * @generated
 	 * @ordered
 	 */
-	protected EReference ref;
-
-	/**
-	 * The default value of the '{@link #isIsSourceStronger() <em>Is Source Stronger</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isIsSourceStronger()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final boolean IS_SOURCE_STRONGER_EDEFAULT = true;
-
-	/**
-	 * The cached value of the '{@link #isIsSourceStronger() <em>Is Source Stronger</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isIsSourceStronger()
-	 * @generated
-	 * @ordered
-	 */
-	protected boolean isSourceStronger = IS_SOURCE_STRONGER_EDEFAULT;
+	protected EList<EReference> strongerThanRef;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -84,63 +65,12 @@ public class StrongerThanImpl extends MinimalEObjectImpl.Container implements St
 	 * @generated
 	 */
 	@Override
-	public EReference getRef() {
-		if (ref != null && ref.eIsProxy()) {
-			InternalEObject oldRef = (InternalEObject) ref;
-			ref = (EReference) eResolveProxy(oldRef);
-			if (ref != oldRef) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, PcdefPackage.STRONGER_THAN__REF, oldRef,
-							ref));
-			}
+	public EList<EReference> getStrongerThanRef() {
+		if (strongerThanRef == null) {
+			strongerThanRef = new EObjectResolvingEList<EReference>(EReference.class, this,
+					PcdefPackage.STRONGER_THAN__STRONGER_THAN_REF);
 		}
-		return ref;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference basicGetRef() {
-		return ref;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setRef(EReference newRef) {
-		EReference oldRef = ref;
-		ref = newRef;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PcdefPackage.STRONGER_THAN__REF, oldRef, ref));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public boolean isIsSourceStronger() {
-		return isSourceStronger;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setIsSourceStronger(boolean newIsSourceStronger) {
-		boolean oldIsSourceStronger = isSourceStronger;
-		isSourceStronger = newIsSourceStronger;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PcdefPackage.STRONGER_THAN__IS_SOURCE_STRONGER,
-					oldIsSourceStronger, isSourceStronger));
+		return strongerThanRef;
 	}
 
 	/**
@@ -151,12 +81,8 @@ public class StrongerThanImpl extends MinimalEObjectImpl.Container implements St
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case PcdefPackage.STRONGER_THAN__REF:
-			if (resolve)
-				return getRef();
-			return basicGetRef();
-		case PcdefPackage.STRONGER_THAN__IS_SOURCE_STRONGER:
-			return isIsSourceStronger();
+		case PcdefPackage.STRONGER_THAN__STRONGER_THAN_REF:
+			return getStrongerThanRef();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -166,14 +92,13 @@ public class StrongerThanImpl extends MinimalEObjectImpl.Container implements St
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case PcdefPackage.STRONGER_THAN__REF:
-			setRef((EReference) newValue);
-			return;
-		case PcdefPackage.STRONGER_THAN__IS_SOURCE_STRONGER:
-			setIsSourceStronger((Boolean) newValue);
+		case PcdefPackage.STRONGER_THAN__STRONGER_THAN_REF:
+			getStrongerThanRef().clear();
+			getStrongerThanRef().addAll((Collection<? extends EReference>) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -187,11 +112,8 @@ public class StrongerThanImpl extends MinimalEObjectImpl.Container implements St
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case PcdefPackage.STRONGER_THAN__REF:
-			setRef((EReference) null);
-			return;
-		case PcdefPackage.STRONGER_THAN__IS_SOURCE_STRONGER:
-			setIsSourceStronger(IS_SOURCE_STRONGER_EDEFAULT);
+		case PcdefPackage.STRONGER_THAN__STRONGER_THAN_REF:
+			getStrongerThanRef().clear();
 			return;
 		}
 		super.eUnset(featureID);
@@ -205,29 +127,10 @@ public class StrongerThanImpl extends MinimalEObjectImpl.Container implements St
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case PcdefPackage.STRONGER_THAN__REF:
-			return ref != null;
-		case PcdefPackage.STRONGER_THAN__IS_SOURCE_STRONGER:
-			return isSourceStronger != IS_SOURCE_STRONGER_EDEFAULT;
+		case PcdefPackage.STRONGER_THAN__STRONGER_THAN_REF:
+			return strongerThanRef != null && !strongerThanRef.isEmpty();
 		}
 		return super.eIsSet(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String toString() {
-		if (eIsProxy())
-			return super.toString();
-
-		StringBuilder result = new StringBuilder(super.toString());
-		result.append(" (isSourceStronger: ");
-		result.append(isSourceStronger);
-		result.append(')');
-		return result.toString();
 	}
 
 } //StrongerThanImpl

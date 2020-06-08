@@ -78,7 +78,8 @@ public class GenericResourceServiceProvider implements IResourceServiceProvider 
 							Optional<EStructuralFeature> possibleFeatures = eObject.eClass().getEAllStructuralFeatures().stream().filter(struct -> struct.getName().equals("name")).findAny();
 							if (possibleFeatures.isPresent() == true)
 								return QualifiedName.create(eObject.eGet(possibleFeatures.get()).toString());
-						}
+						} else
+							return QualifiedName.create(eObjectID);
 						return null;
 					}
 					
