@@ -1,4 +1,4 @@
-ecore-product-line
+VERSO (Variability injEctoR for Sirius editOrs)
 
 Update Site:
 
